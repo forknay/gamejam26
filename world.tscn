@@ -51,6 +51,11 @@ material = SubResource("StandardMaterial3D_ic0uy")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f3sb7"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_f3sb7"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tlwt5"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera", "target_computer", "target_closet")]
 script = ExtResource("1_f3sb7")
 camera = NodePath("Camera3D")
@@ -123,5 +128,15 @@ transform = Transform3D(0.01486743, 0.044409864, 0.9989028, 0, 0.9990132, -0.044
 [node name="ClosetCamera" type="Marker3D" parent="." unique_id=466368038]
 transform = Transform3D(0.55704755, -0.13998972, 0.81859696, 0, 0.9856906, 0.1685647, -0.83048064, -0.09389855, 0.5490765, -1.3467134, 0.49041033, 0.66575086)
 
+[node name="RadioBridge" type="MeshInstance3D" parent="." unique_id=220736413]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.644517, 0.34222627, 0.14562434)
+mesh = SubResource("BoxMesh_f3sb7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RadioBridge" unique_id=1014674888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RadioBridge/StaticBody3D" unique_id=945780002]
+shape = SubResource("ConcavePolygonShape3D_tlwt5")
+
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]
+[connection signal="input_event" from="RadioBridge/StaticBody3D" to="." method="_on_static_body_3d_input_event_radio"]

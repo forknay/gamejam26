@@ -64,3 +64,13 @@ func _on_static_body_3d_input_event_closet(camera: Node, event: InputEvent, even
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("CLOSET CLICKED!")
 			zoom_in_closet()
+
+
+func _on_static_body_3d_input_event_radio(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_zoomed_in:
+		change_scene("res://scenes/radio_game.tscn")
+
+func change_scene(path):
+	var error = get_tree().change_scene_to_file(path)
+	if error != OK:
+		print("Failed to change scene:", error)

@@ -1,23 +1,24 @@
 extends Node3D
 
-@onready var camera = $Camera3D
-@onready var target = $Marker3D
+@export var camera : Camera3D
+@export var target : Marker3D
 
 # Vars for start position
 var start_transform : Transform3D
 var is_zoomed_in = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Save camera position at start
-	start_transform = camera.global_transform
+	if not camera or not target:
+		print("ERROR: Please assign Camera and Target in the Inspector!")
+	else:
+		# Save camera position at start
+		start_transform = camera.global_transform
 	
 func _input(event):
 	# Temp use SPACE
-	if event.is_action_pressed("ui_accept"):
-		if is_zoomed_in:
-			zoom_out()
-		else:
-			zoom_in()
+	if event.is_action_pressed("ui_accept") and is_zoomed_in:
+		zoom_out()
+		
 func zoom_in():
 	is_zoomed_in = true
 	var tween = create_tween()
@@ -39,3 +40,10 @@ func zoom_out():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_static_body_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("COMPUTER CLICKED!")
+			zoom_in()

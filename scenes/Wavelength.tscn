@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://6t8iqgidf3xo"]
+
+[ext_resource type="Script" uid="uid://cm3wgxvi62cp8" path="res://scripts/wavelength.gd" id="1_qh5k3"]
+
+[node name="Wavelength" type="Node2D" unique_id=411897449]
+script = ExtResource("1_qh5k3")
+
+[node name="TargetWave" type="Line2D" parent="." unique_id=187156729]
+position = Vector2(568, 456)
+default_color = Color(1, 0, 0, 1)
+
+[node name="PlayerWave" type="Line2D" parent="." unique_id=36921713]
+position = Vector2(568, 456)
+default_color = Color(0, 1, 1, 1)
+
+[node name="FreqSlider" type="HSlider" parent="." unique_id=600778432]
+anchors_preset = -1
+anchor_left = 25.273
+anchor_top = 16.068
+anchor_right = 25.273
+anchor_bottom = 16.068
+offset_left = 568.0
+offset_top = 640.0
+offset_right = 1351.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="Button" type="Button" parent="." unique_id=77824357]
+offset_left = 928.0
+offset_top = 704.0
+offset_right = 991.0
+offset_bottom = 735.0
+text = "Submit
+"
+
+[node name="AmpSlider" type="VSlider" parent="." unique_id=636785030]
+offset_left = 440.0
+offset_top = 312.0
+offset_right = 456.0
+offset_bottom = 584.0
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.0

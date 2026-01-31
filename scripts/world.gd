@@ -48,25 +48,25 @@ func zoom_out():
 	
 	tween_out.tween_property(camera, "global_transform", start_transform, 1.5)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_static_body_3d_input_event_computer(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_static_body_3d_input_event_computer(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("COMPUTER CLICKED!")
 			zoom_in_computer()
 
 
-func _on_static_body_3d_input_event_closet(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_static_body_3d_input_event_closet(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("CLOSET CLICKED!")
 			zoom_in_closet()
 
 
-func _on_static_body_3d_input_event_radio(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_static_body_3d_input_event_radio(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_zoomed_in:
 		change_scene("res://scenes/radio_game.tscn")
 

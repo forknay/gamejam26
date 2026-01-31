@@ -7,15 +7,57 @@ var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
 
+var alarm_active: bool = false
+
 @onready var node_viewport = $SubViewport
 @onready var node_quad = $Quad
 @onready var node_area = $Screen/Area3D
+@onready var viewport = $SubViewport
+# We target the MeshInstance3D to change the actual "screen" material's emission
+@onready var screen_mesh = $Screen
 
 func _ready():
+	start_alarm_interval(2.0)
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
 
+func flash_red():
+	# 1. Get the material from the MeshInstance
+	# We use get_surface_override_material(0) to avoid changing the original resource
+	var material = screen_mesh.get_active_material(0)
+	if not material: return
+
+	# 2. Create a Tween for the smooth transition
+	var tween = create_tween()
+	
+	# Initial color (Normal) and Flash color (HDR Red)
+	# Note: Values above 1.0 in Color() trigger the 'Glow' environment effect
+	var normal_color = Color(1, 1, 1, 1)
+	var flash_color = Color(5.0, 0.2, 0.2, 1.0) # Intense HDR Red
+
+	# 3. Animate: Go to Red (0.1s) then back to White (0.9s)
+	tween.tween_property(material, "albedo_color", flash_color, 0.1)
+	tween.tween_property(material, "albedo_color", normal_color, 0.9).set_delay(0.1)
+
+
+## Call this to start the repeating red glow
+func start_alarm_interval(interval: float):
+	alarm_active = true
+	_run_alarm_loop(interval)
+
+## This function calls itself recursively to create a clean interval
+func _run_alarm_loop(interval: float):
+	if not alarm_active:
+		return
+		
+	flash_red()
+	
+	# Wait for the interval, then run again
+	get_tree().create_timer(interval).timeout.connect(
+		func(): _run_alarm_loop(interval)
+	)
+	
 
 func _mouse_entered_area():
 	is_mouse_inside = true

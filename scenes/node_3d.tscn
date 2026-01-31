@@ -10,7 +10,7 @@ albedo_color = Color(0.334122, 0.334122, 0.334122, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_4arys"]
 resource_local_to_scene = true
-size = Vector2(0.5, 0.4)
+size = Vector2(0.4, 0.3)
 
 [sub_resource type="Theme" id="Theme_wosnj"]
 TabContainer/font_sizes/font_size = 24
@@ -31,7 +31,7 @@ shader_parameter/distort_intensity = 0.0290000013775
 shader_parameter/noise_opacity = 0.2610000123975
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.18000000855
-shader_parameter/aberration = 0.015000048212499895
+shader_parameter/aberration = 0.01500004821249989
 shader_parameter/brightness = 1.45
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.0
@@ -218,7 +218,7 @@ mesh = SubResource("ArrayMesh_a8auw")
 shape = SubResource("ConcavePolygonShape3D_ifh66")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=645454336]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.504846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43233413)
 script = ExtResource("3_t3l2h")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=704701405]

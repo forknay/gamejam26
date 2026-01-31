@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://blxffmmsgextb"]
+[gd_scene format=3 uid="uid://cv4dbb04tbts3"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="2_go701"]
+[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="2_go701"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -140,6 +140,7 @@ shape = SubResource("ConcavePolygonShape3D_tlwt5")
 
 [node name="ASM - PBR Metallic Roughness" parent="." unique_id=1884127131 instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8807361, 0, -0.075232506)
+visible = false
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

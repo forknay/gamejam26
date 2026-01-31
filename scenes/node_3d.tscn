@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://1n340fkai7j4"]
 
 [ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
-[ext_resource type="Texture2D" uid="uid://bormvtoyuj10o" path="res://Assets/icon.svg" id="2_wosnj"]
 [ext_resource type="Script" uid="uid://cm2s1qijrh2xq" path="res://Scripts/player_camera.gd" id="3_t3l2h"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Scenes/crt_shader.gdshader" id="3_wosnj"]
 
@@ -169,36 +168,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wosnj")
 
-[node name="TabContainer" type="TabContainer" parent="Computer/SubViewport/Control" unique_id=1709192817]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-current_tab = 0
-
-[node name="TextureRect" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer" unique_id=1820607935]
-layout_mode = 2
-texture = ExtResource("2_wosnj")
-metadata/_tab_index = 0
-
-[node name="TextureRect2" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer" unique_id=1736987409]
-visible = false
-modulate = Color(2.45467e-06, 0.615723, 0.31067, 1)
-layout_mode = 2
-texture = ExtResource("2_wosnj")
-metadata/_tab_index = 1
-
-[node name="TextureRect3" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer" unique_id=1397929928]
-visible = false
-modulate = Color(0.990857, 0.305122, 0.315717, 1)
-layout_mode = 2
-texture = ExtResource("2_wosnj")
-metadata/_tab_index = 2
-
 [node name="ColorRect" type="ColorRect" parent="Computer/SubViewport/Control" unique_id=1592861809]
-z_index = 1
+z_index = 3
 material = SubResource("ShaderMaterial_t3l2h")
 layout_mode = 1
 anchors_preset = 15

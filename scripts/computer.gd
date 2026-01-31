@@ -49,8 +49,7 @@ func start_alarm_interval(interval: float):
 ## This function calls itself recursively to create a clean interval
 func _run_alarm_loop(interval: float):
 	if not alarm_active:
-		return
-		
+		return	
 	flash_red()
 	
 	# Wait for the interval, then run again
@@ -76,6 +75,15 @@ func _unhandled_input(event):
 			return
 	node_viewport.push_input(event)
 
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		alarm_active = !alarm_active
+		
+		if alarm_active:
+			print("Alarm Restarted")
+			# This is the line that was missing! 
+			# It kickstarts the loop again.
+			_run_alarm_loop(2.0)
 
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
 	# Get mesh size to detect edges and make conversions. This code only support PlaneMesh and QuadMesh.

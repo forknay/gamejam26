@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mipg6fio2flq"]
 
-[ext_resource type="Script" uid="uid://vyjb8e46e3th" path="res://character_body_2d.gd" id="1_luano"]
+[ext_resource type="Script" uid="uid://vyjb8e46e3th" path="res://Scripts/character_body_2d.gd" id="1_luano"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_u4y0o"]
 

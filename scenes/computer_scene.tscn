@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://de2snmx8bnuni"]
+[gd_scene format=4 uid="uid://dcahuc56xf532"]
 
 [ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://scripts/computer.gd" id="1_nlfvp"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="2_l3tiw"]

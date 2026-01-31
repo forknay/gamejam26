@@ -10,7 +10,7 @@ func _ready():
 	trail.top_level = true
 	trail.add_point(global_position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_input()
 
 	velocity = move_dir * speed

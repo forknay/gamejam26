@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://de2snmx8bnuni" path="res://scenes/node_3d.tscn" id="3_4wyf3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -115,12 +116,14 @@ transform = Transform3D(0.4342422, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.5565207, 0
 mesh = SubResource("BoxMesh_wse8f")
 
 [node name="Computer" type="MeshInstance3D" parent="." unique_id=1595879813]
-transform = Transform3D(0.08218378, 0, 0, 0, 0.30529216, 0, 0, 0, 0.57026684, -1.7793893, 0.54225826, 1.0320771)
+transform = Transform3D(0.08218378, 0, 0, 0, 0.30529216, 0, 0, 0, 0.57026684, -1.8737025, 0.54225826, 1.0320771)
+layers = 0
 mesh = SubResource("BoxMesh_k3n1d")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Computer" unique_id=228022101]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Computer/StaticBody3D" unique_id=2085406005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 3.4555378, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_f3sb7")
 
 [node name="ComputerCamera" type="Marker3D" parent="." unique_id=545295627]
@@ -141,6 +144,9 @@ shape = SubResource("ConcavePolygonShape3D_tlwt5")
 [node name="ASM - PBR Metallic Roughness" parent="." unique_id=1884127131 instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8807361, 0, -0.075232506)
 visible = false
+
+[node name="computerbody" parent="." unique_id=314615975 instance=ExtResource("3_4wyf3")]
+transform = Transform3D(0.11923579, 0, 0.992866, 0, 1, 0, -0.992866, 0, 0.11923579, -1.8335662, 0.54952884, 1.0170634)
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

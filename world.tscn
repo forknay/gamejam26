@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://blxffmmsgextb"]
 
+[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://world.gd" id="1_f3sb7"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
 sky_horizon_color = Color(0.56147665, 0.36923143, 0.17342266, 1)
@@ -44,9 +46,11 @@ albedo_color = Color(0.03475541, 0.27250457, 1, 1)
 material = SubResource("StandardMaterial3D_ic0uy")
 
 [node name="World" type="Node3D" unique_id=784583246]
+script = ExtResource("1_f3sb7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=24601984]
 transform = Transform3D(0.87077653, 0, 0.49167907, 0, 1, 0, -0.49167907, 0, 0.87077653, 0.28375676, 0.3586011, 2.2850993)
+current = true
 fov = 37.849285
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
@@ -92,3 +96,6 @@ mesh = SubResource("BoxMesh_wse8f")
 [node name="Computer" type="MeshInstance3D" parent="." unique_id=1595879813]
 transform = Transform3D(0.08218378, 0, 0, 0, 0.30529216, 0, 0, 0, 0.57026684, -1.7793893, 0.54225826, 1.0320771)
 mesh = SubResource("BoxMesh_k3n1d")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=545295627]
+transform = Transform3D(0.01486743, 0.044409864, 0.9989028, 0, 0.9990132, -0.044414774, -0.9998895, 0.0006603335, 0.0148527585, -1.1936463, 0.5133571, 1.0202436)

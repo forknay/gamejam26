@@ -13,38 +13,16 @@ default_color = Color(1, 0, 0, 1)
 position = Vector2(568, 456)
 default_color = Color(0, 1, 1, 1)
 
-[node name="FreqSlider" type="HSlider" parent="." unique_id=600778432]
-anchors_preset = -1
-anchor_left = 25.273
-anchor_top = 16.068
-anchor_right = 25.273
-anchor_bottom = 16.068
-offset_left = 568.0
-offset_top = 640.0
-offset_right = 1351.0
-offset_bottom = 656.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-min_value = 1.0
-max_value = 10.0
-step = 0.1
-value = 1.0
+[node name="InputBox" type="Panel" parent="." unique_id=1866831856]
+offset_left = 808.0
+offset_top = 632.0
+offset_right = 1112.0
+offset_bottom = 936.0
 
-[node name="Button" type="Button" parent="." unique_id=77824357]
-offset_left = 928.0
-offset_top = 704.0
-offset_right = 991.0
-offset_bottom = 735.0
-text = "Submit
-"
-
-[node name="AmpSlider" type="VSlider" parent="." unique_id=636785030]
-offset_left = 440.0
-offset_top = 312.0
-offset_right = 456.0
-offset_bottom = 584.0
-min_value = 1.0
-max_value = 10.0
-step = 0.1
-value = 1.0
+[node name="DragPoint" type="ColorRect" parent="InputBox" unique_id=1350122802]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 136.0
+offset_right = 168.0
+offset_bottom = 168.0
+mouse_filter = 2

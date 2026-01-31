@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bworwd5ab4fdy"]
+
+[ext_resource type="Script" uid="uid://c3o0kwaekgejn" path="res://scripts/knob_test.gd" id="1_yup0e"]
+[ext_resource type="AudioStream" uid="uid://cvuef1quvrsgw" path="res://audio/Radio_Static_Sound_Effect_128k.mp3" id="2_npoti"]
+[ext_resource type="AudioStream" uid="uid://6eefoav0clja" path="res://audio/Yakuza_OST_-_We_Are_Charlie_Kirk_(我らはチャーリー・カーク)_Kiryu_full_version_128k.ogg" id="3_pj17d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oa5ig"]
+
+[sub_resource type="Gradient" id="Gradient_brph6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xth47"]
+gradient = SubResource("Gradient_brph6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_yup0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dteum"]
+radius = 0.49233535
+
+[node name="RadioGame" type="Node2D" unique_id=1447352774]
+position = Vector2(980, 531)
+
+[node name="RadioTest" type="MeshInstance2D" parent="." unique_id=301356372]
+scale = Vector2(215.5, 108.50001)
+mesh = SubResource("BoxMesh_oa5ig")
+texture = SubResource("GradientTexture1D_xth47")
+
+[node name="KnobTest" type="MeshInstance2D" parent="." unique_id=1555799345]
+scale = Vector2(52.809536, 50.682236)
+mesh = SubResource("SphereMesh_yup0e")
+script = ExtResource("1_yup0e")
+
+[node name="ColorRect" type="ColorRect" parent="KnobTest" unique_id=2073457483]
+offset_left = -0.24835712
+offset_top = -0.37488478
+offset_right = -0.22723168
+offset_bottom = 0.13811547
+color = Color(0.078431375, 1, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="KnobTest" unique_id=405897819]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnobTest/Area2D" unique_id=1836356993]
+shape = SubResource("CircleShape2D_dteum")
+
+[node name="StaticSound" type="AudioStreamPlayer" parent="." unique_id=1017594578]
+stream = ExtResource("2_npoti")
+volume_db = -80.0
+autoplay = true
+
+[node name="RescueVoice" type="AudioStreamPlayer" parent="." unique_id=1560814358]
+stream = ExtResource("3_pj17d")
+volume_db = -80.0
+autoplay = true

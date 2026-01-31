@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bl5dgyqk82lo6"]
 
-[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="1_hvh5m"]
-[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://scripts/lamp.gd" id="2_ea6bw"]
+[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="1_hvh5m"]
+[ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_45h3q"]
+[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://Scripts/lamp.gd" id="2_ea6bw"]
 [ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="3_02bju"]
 [ext_resource type="Texture2D" uid="uid://iqel25f470po" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Metalness.jpg" id="3_hjbl5"]
 [ext_resource type="Texture2D" uid="uid://bx4c1o41hbi1j" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg" id="4_7d41o"]
@@ -59,11 +60,7 @@ albedo_color = Color(0.7218587, 0.7218587, 0.7218587, 1)
 metallic = 1.0
 emission_enabled = true
 
-<<<<<<< HEAD
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmuxb"]
-=======
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02bju"]
->>>>>>> 6bffc4fa7346d62cde641fa0b3b4f287684b5cff
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwvvg"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0.16470589, 0, 1)
 metallic = 1.0
@@ -99,13 +96,6 @@ sky_energy_multiplier = 0.5
 ground_bottom_color = Color(0.27058825, 0.1254902, 0.09019608, 1)
 ground_horizon_color = Color(0.60784316, 0.4627451, 0.25490198, 1)
 
-<<<<<<< HEAD
-[node name="spaceship industrial_wall_lamp lamp2" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1211454531) index="0" unique_id=380187350]
-material_override = SubResource("StandardMaterial3D_8n8ju")
-
-[node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1211454531) index="1" unique_id=1193930620]
-material_override = SubResource("StandardMaterial3D_mmuxb")
-=======
 [sub_resource type="Sky" id="Sky_02bju"]
 sky_material = SubResource("ProceduralSkyMaterial_ea6bw")
 
@@ -114,14 +104,11 @@ background_mode = 2
 background_energy_multiplier = 0.5
 sky = SubResource("Sky_02bju")
 ambient_light_source = 3
-ambient_light_color = Color(0.60555077, 0.15547046, 0.15957499, 1)
-ambient_light_energy = 2.33
+ambient_light_color = Color(0, 0.3995674, 0.3688902, 1)
+ambient_light_energy = 0.61
 reflected_light_source = 2
+volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.57696825, 0.17190048, 0.077964164, 1)
-adjustment_enabled = true
-adjustment_brightness = 0.97
-adjustment_contrast = 1.035
-adjustment_saturation = 1.4
 
 [node name="ASM - PBR Metallic Roughness" unique_id=2052187317 instance=ExtResource("1_hvh5m")]
 
@@ -189,8 +176,7 @@ material_override = SubResource("StandardMaterial3D_5i0y1")
 material_override = SubResource("StandardMaterial3D_8n8ju")
 
 [node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1333761477) index="1" unique_id=681700237]
-material_override = SubResource("StandardMaterial3D_02bju")
->>>>>>> 6bffc4fa7346d62cde641fa0b3b4f287684b5cff
+material_override = SubResource("StandardMaterial3D_dwvvg")
 script = ExtResource("2_ea6bw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp/spaceship industrial_wall_lamp lamp3" index="0" unique_id=546621059]
@@ -240,5 +226,4 @@ light_energy = 0.3
 sky_mode = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="DirectionalLight3D" index="0" unique_id=1284864931]
-transform = Transform3D(1, -7.450581e-09, 0, 0, 1.0000001, 1.8626451e-08, 0, 3.7252903e-09, 1.0000001, 17.35852, 1.9437171, 32.24939)
-light_color = Color(0.8856082, 0.47926527, 0.36970973, 1)
+transform = Transform3D(1, -7.450581e-09, 2.9802322e-08, 0, 1.0000001, 7.450581e-09, 0, 3.7252903e-09, 1.0000001, -14.62508, -12.75104, 39.882477)

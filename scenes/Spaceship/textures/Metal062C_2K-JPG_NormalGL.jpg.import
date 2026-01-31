@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlraf8om42vv4"
-path="res://.godot/imported/Metal062C_2K-JPG_NormalGL.jpg-f8b1c9ff4391215468e74758cdff31ce.ctex"
+path="res://.godot/imported/Metal062C_2K-JPG_NormalGL.jpg-594f29efc39c3aa49629b95c7f5fc733.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalGL.jpg"
-dest_files=["res://.godot/imported/Metal062C_2K-JPG_NormalGL.jpg-f8b1c9ff4391215468e74758cdff31ce.ctex"]
+source_file="res://scenes/Spaceship/textures/Metal062C_2K-JPG_NormalGL.jpg"
+dest_files=["res://.godot/imported/Metal062C_2K-JPG_NormalGL.jpg-594f29efc39c3aa49629b95c7f5fc733.ctex"]
 
 [params]
 

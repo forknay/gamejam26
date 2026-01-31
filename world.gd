@@ -1,14 +1,14 @@
 extends Node3D
 
 @export var camera : Camera3D
-@export var target : Marker3D
-
+@export var target_computer : Marker3D
+@export var target_closet : Marker3D
 # Vars for start position
 var start_transform : Transform3D
 var is_zoomed_in = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not camera or not target:
+	if not camera or not target_computer:
 		print("ERROR: Please assign Camera and Target in the Inspector!")
 	else:
 		# Save camera position at start
@@ -19,7 +19,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and is_zoomed_in:
 		zoom_out()
 		
-func zoom_in():
+func zoom_in_computer():
 	is_zoomed_in = true
 	var tween = create_tween()
 	
@@ -27,8 +27,18 @@ func zoom_in():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	# match camera over 1.5s
-	tween.tween_property(camera, "global_transform", target.global_transform, 1.5)
+	tween.tween_property(camera, "global_transform", target_computer.global_transform, 1.5)
 	
+func zoom_in_closet():
+	is_zoomed_in = true
+	var tween = create_tween()
+	
+	#cubic = cinematic
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	# match camera over 1.5s
+	tween.tween_property(camera, "global_transform", target_closet.global_transform, 1.5)
+
 func zoom_out():
 	is_zoomed_in = false
 	var tween_out = create_tween()
@@ -42,8 +52,15 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_static_body_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_static_body_3d_input_event_computer(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("COMPUTER CLICKED!")
-			zoom_in()
+			zoom_in_computer()
+
+
+func _on_static_body_3d_input_event_closet(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
+			print("CLOSET CLICKED!")
+			zoom_in_closet()

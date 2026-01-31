@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bl5dgyqk82lo6"]
 
-[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="1_hvh5m"]
-[ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_45h3q"]
-[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://Scripts/lamp.gd" id="2_ea6bw"]
+[ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="1_hvh5m"]
+[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://scripts/lamp.gd" id="2_ea6bw"]
 [ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="3_02bju"]
 [ext_resource type="Texture2D" uid="uid://iqel25f470po" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Metalness.jpg" id="3_hjbl5"]
 [ext_resource type="Texture2D" uid="uid://bx4c1o41hbi1j" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg" id="4_7d41o"]
@@ -60,7 +59,11 @@ albedo_color = Color(0.7218587, 0.7218587, 0.7218587, 1)
 metallic = 1.0
 emission_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwvvg"]
+<<<<<<< HEAD
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmuxb"]
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02bju"]
+>>>>>>> 6bffc4fa7346d62cde641fa0b3b4f287684b5cff
 resource_local_to_scene = true
 albedo_color = Color(1, 0.16470589, 0, 1)
 metallic = 1.0
@@ -96,6 +99,13 @@ sky_energy_multiplier = 0.5
 ground_bottom_color = Color(0.27058825, 0.1254902, 0.09019608, 1)
 ground_horizon_color = Color(0.60784316, 0.4627451, 0.25490198, 1)
 
+<<<<<<< HEAD
+[node name="spaceship industrial_wall_lamp lamp2" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1211454531) index="0" unique_id=380187350]
+material_override = SubResource("StandardMaterial3D_8n8ju")
+
+[node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1211454531) index="1" unique_id=1193930620]
+material_override = SubResource("StandardMaterial3D_mmuxb")
+=======
 [sub_resource type="Sky" id="Sky_02bju"]
 sky_material = SubResource("ProceduralSkyMaterial_ea6bw")
 
@@ -179,7 +189,8 @@ material_override = SubResource("StandardMaterial3D_5i0y1")
 material_override = SubResource("StandardMaterial3D_8n8ju")
 
 [node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1333761477) index="1" unique_id=681700237]
-material_override = SubResource("StandardMaterial3D_dwvvg")
+material_override = SubResource("StandardMaterial3D_02bju")
+>>>>>>> 6bffc4fa7346d62cde641fa0b3b4f287684b5cff
 script = ExtResource("2_ea6bw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp/spaceship industrial_wall_lamp lamp3" index="0" unique_id=546621059]

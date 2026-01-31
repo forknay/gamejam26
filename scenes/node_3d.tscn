@@ -1,7 +1,9 @@
-[gd_scene format=4 uid="uid://63ioceooy8d4"]
+[gd_scene format=4 uid="uid://de2snmx8bnuni"]
 
-[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
+[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://scripts/computer.gd" id="1_okq71"]
+[ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://scenes/maze1.tscn" id="3_5t4e2"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
+[ext_resource type="Script" uid="uid://certppg5830qr" path="res://scenes/container.gd" id="3_xvgsr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.334122, 0.334122, 0.334122, 1)
@@ -164,6 +166,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Container" type="Container" parent="Computer/SubViewport" unique_id=1638678698]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_xvgsr")
+minigame_scene = ExtResource("3_5t4e2")
+
+[node name="Maze" parent="Computer/SubViewport/Container" unique_id=85097020 instance=ExtResource("3_5t4e2")]
 
 [node name="Screen" type="MeshInstance3D" parent="Computer" unique_id=589376458]
 transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, 0, 0.213525)

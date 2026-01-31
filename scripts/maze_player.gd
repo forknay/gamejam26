@@ -3,14 +3,14 @@ extends CharacterBody2D
 @export var speed := 130
 
 var move_dir := Vector2.RIGHT
-
+signal i_died
 @onready var trail: Line2D = $Line2D
 
 func _ready():
 	trail.top_level = true
 	trail.add_point(global_position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_input()
 
 	velocity = move_dir * speed
@@ -24,7 +24,8 @@ func _physics_process(delta):
 	
 	if collided:
 		print("wall")
-		get_tree().reload_current_scene() # Restart level
+		i_died.emit()
+		set_physics_process(false)
 
 func handle_input():
 	if Input.is_action_just_pressed("up") and move_dir != Vector2.DOWN:

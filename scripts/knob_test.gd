@@ -3,7 +3,7 @@ extends Node2D
 # --- CONFIG ---
 var target_angle = 90.0  # The "Winning" angle (0 to 360)
 var tolerance = 25.0     # How close you need to be
-
+var max_volume = -15.0
 # --- REFS ---
 # If these paths fail, delete them and drag the nodes from the tree into the script!
 @onready var static_sound = $"../StaticSound"
@@ -46,9 +46,10 @@ func update_audio():
 	if dist < tolerance:
 		# Close to target: Voice loud, Static quiet
 		var strength = 1.0 - (dist / tolerance)
-		rescue_voice.volume_db = linear_to_db(strength)
-		static_sound.volume_db = linear_to_db(1.0 - strength)
+		rescue_voice.volume_db = linear_to_db(strength) + max_volume
+		static_sound.volume_db = linear_to_db(1.0 - strength) + max_volume
 	else:
 		# Far away: Static loud, Voice silent
 		rescue_voice.volume_db = -80
-		static_sound.volume_db = 0
+		static_sound.volume_db = max_volume
+		

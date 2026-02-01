@@ -74,6 +74,8 @@
 [ext_resource type="Script" uid="uid://dvlieg2bcagq7" path="res://Scenes/day_night.gd" id="71_a2m5q"]
 [ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="72_7gkqi"]
 [ext_resource type="PackedScene" uid="uid://dlqnp7dmeg6ha" path="res://Animations/openingCam_v02.fbx" id="73_7gkqi"]
+[ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://scripts/opening_cam_v_02.gd" id="74_753oq"]
+[ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://scenes/overlay.gd" id="75_753oq"]
 [ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://Scripts/opening_cam_v_02.gd" id="74_753oq"]
 [ext_resource type="PackedScene" uid="uid://3il8njkibrx" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 
@@ -1487,14 +1489,17 @@ unique_name_in_owner = true
 environment = SubResource("Environment_fj7yv")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=24601984]
-transform = Transform3D(0.909258, 0, -0.41623318, 0, 1, 0, 0.41623318, 0, 0.909258, -1.5699277, 0.5089226, 2.5462348)
+transform = Transform3D(0.58778524, 0, -0.809017, 0, 1, 0, 0.809017, 0, 0.58778524, -2.228, 1.388, 0.971)
 current = true
 fov = 37.849285
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
+environment = SubResource("Environment_fj7yv")
 
 [node name="Closet" type="MeshInstance3D" parent="." unique_id=1187232117]
 transform = Transform3D(1.4889376, 0, 0, 0, 2.1499302, 0, 0, 0, 1.187279, 0.25552237, 0.905953, -2.7593842)
 material_override = SubResource("StandardMaterial3D_gv5m4")
-transparency = 0.51
+transparency = 1.0
 mesh = SubResource("CylinderMesh_aqk2v")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Closet" unique_id=600768324]
@@ -1544,6 +1549,7 @@ transform = Transform3D(0.8539863, 0.11392256, -0.5076702, 0, 0.9757344, 0.21895
 
 [node name="RadioBridge" type="MeshInstance3D" parent="." unique_id=220736413]
 transform = Transform3D(0.7102087, 0, 0, 0, 0.4094828, 0, 0, 0, 0.1, 0.14820915, 1.400127, -3.771822)
+transparency = 1.0
 mesh = SubResource("BoxMesh_f3sb7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RadioBridge" unique_id=1014674888]
@@ -1654,6 +1660,7 @@ mesh = SubResource("ArrayMesh_texxq")
 [node name="spaceship topfloor roof_1" type="Node3D" parent="spaceShip_v03_obj" unique_id=2110830673]
 
 [node name="spaceship topfloor roof_12" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship topfloor roof_1" unique_id=271565287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14561415, -0.20924807, 0.10609627)
 material_override = SubResource("StandardMaterial3D_rjeju")
 mesh = SubResource("ArrayMesh_bdqdv")
 
@@ -1796,13 +1803,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061321616, 0.09376502, 0.1
 
 [node name="radio" parent="radio" unique_id=972764560 instance=ExtResource("72_7gkqi")]
 
-[node name="desired_cam_position" type="Camera3D" parent="." unique_id=1495837030]
-transform = Transform3D(0.6542262, 0, -0.75629896, 0, 1, 0, 0.75629896, 0, 0.6542262, -1.6025548, 0.7418386, 1.3862684)
-
 [node name="openingCam_v02" parent="." unique_id=847132554 instance=ExtResource("73_7gkqi")]
 script = ExtResource("74_753oq")
 
-[node name="Opening_cam" parent="openingCam_v02" index="0" unique_id=1777072689]
+[node name="Opening_cam" parent="openingCam_v02" index="0" unique_id=976576168]
+transform = Transform3D(0.66297096, 0.42054158, -0.6193661, 0, 0.827316, 0.5617369, 0.7486451, -0.37241524, 0.5484865, -2.2278154, 0.39101002, 0.97110337)
 fov = 55.0
 
 [node name="Terrain" parent="." unique_id=900018755 instance=ExtResource("75_ff75x")]

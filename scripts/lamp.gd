@@ -10,11 +10,12 @@ func _ready():
 	pass
 
 func _input(event):
-	if event.is_action_pressed(""): # Spacebar/Enter
-		if is_alarm_on:
-			stop_alarm()
-		else:
-			start_alarm()
+	#if event.is_action_pressed("ui"): # Spacebar/Enter
+	#	if is_alarm_on:
+	#		stop_alarm()
+	#	else:
+	#		start_alarm()
+	pass
 
 func start_alarm():
 	is_alarm_on = true

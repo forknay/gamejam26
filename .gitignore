@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+# Ignore all .import files starting with ASM
+ASM*.import

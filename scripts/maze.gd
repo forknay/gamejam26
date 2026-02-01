@@ -3,13 +3,41 @@ extends Node2D
 @onready var spawn = $Spawn
 const PLAYER_SCENE = preload("res://scenes/maze_player.tscn")
 
+var started = false
+var deaths = 0 # Track deaths here
+var current_player = null # Keep a reference to delete it later
+
+func _input(event):
+	# Only allow start if game is NOT running
+	if event.is_action_pressed("start") and not started:
+		spawn_player()
+		started = true
+
 func _ready():
-	spawn_player()
+	pass
 
 func spawn_player():
 	var player = PLAYER_SCENE.instantiate()
-	
-	# Set the player's position to the Marker2D's position
 	player.position = spawn.position
 	
+	# --- NEW: Connect the signal ---
+	player.i_died.connect(_on_i_died)
+	
 	add_child(player)
+	current_player = player # Save reference
+
+# --- NEW: Handle the death ---
+func _on_i_died():
+	deaths += 1
+	print("Died! Total Deaths: ", deaths)
+	
+	# 1. Delete the dead player
+	if current_player:
+		current_player.queue_free()
+	
+	# 2. Reset the "started" flag so you can press D again
+	started = false
+	
+	# Optional: If you want instant respawn without pressing D:
+	# call_deferred("spawn_player")
+	# started = true

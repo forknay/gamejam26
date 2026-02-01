@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://63ioceooy8d4"]
 
-[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
-[ext_resource type="Script" uid="uid://cm2s1qijrh2xq" path="res://Scripts/player_camera.gd" id="3_t3l2h"]
-[ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Scenes/crt_shader.gdshader" id="3_wosnj"]
+[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://scripts/computer.gd" id="1_okq71"]
+[ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://scenes/maze1.tscn" id="3_5t4e2"]
+[ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.334122, 0.334122, 0.334122, 1)
@@ -115,19 +115,6 @@ shadow_mesh = SubResource("ArrayMesh_u3ios")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ifh66"]
 data = PackedVector3Array(0.2406, -0.3, 0.0026, 0.3997, 0.3, 0.025, 0.2406, 0.3, 0.0026, 0.2406, -0.3, 0.0026, 0.3997, -0.3, 0.025, 0.3997, 0.3, 0.025, 0.0803, -0.3, -0.0086, 0.2406, -0.3, 0.0026, 0.2406, 0.3, 0.0026, 0.0803, -0.3, -0.0086, 0.2406, 0.3, 0.0026, 0.0803, 0.3, -0.0086, -0.0803, -0.3, -0.0086, 0.0803, -0.3, -0.0086, 0.0803, 0.3, -0.0086, -0.0803, -0.3, -0.0086, 0.0803, 0.3, -0.0086, -0.0803, 0.3, -0.0086, -0.2406, -0.3, 0.0026, -0.0803, -0.3, -0.0086, -0.0803, 0.3, -0.0086, -0.2406, -0.3, 0.0026, -0.0803, 0.3, -0.0086, -0.2406, 0.3, 0.0026, -0.3997, -0.3, 0.025, -0.2406, -0.3, 0.0026, -0.2406, 0.3, 0.0026, -0.3997, -0.3, 0.025, -0.2406, 0.3, 0.0026, -0.3997, 0.3, 0.025, -0.2406, 0.3, 0.0026, -0.3962, 0.3, 0.0447, -0.3997, 0.3, 0.025, -0.3962, -0.3, 0.0447, -0.3997, 0.3, 0.025, -0.3962, 0.3, 0.0447, -0.3962, -0.3, 0.0447, -0.3997, -0.3, 0.025, -0.3997, 0.3, 0.025, -0.2406, 0.3, 0.0026, -0.2385, 0.3, 0.0225, -0.3962, 0.3, 0.0447, -0.3997, -0.3, 0.025, -0.3962, -0.3, 0.0447, -0.2385, -0.3, 0.0225, -0.2385, -0.3, 0.0225, -0.3962, -0.3, 0.0447, -0.3962, 0.3, 0.0447, -0.2385, -0.3, 0.0225, -0.3962, 0.3, 0.0447, -0.2385, 0.3, 0.0225, -0.3997, -0.3, 0.025, -0.2385, -0.3, 0.0225, -0.2406, -0.3, 0.0026, -0.0803, 0.3, -0.0086, -0.2385, 0.3, 0.0225, -0.2406, 0.3, 0.0026, -0.2406, -0.3, 0.0026, -0.2385, -0.3, 0.0225, -0.0796, -0.3, 0.0114, -0.0796, -0.3, 0.0114, -0.2385, -0.3, 0.0225, -0.2385, 0.3, 0.0225, -0.2406, -0.3, 0.0026, -0.0796, -0.3, 0.0114, -0.0803, -0.3, -0.0086, -0.0803, 0.3, -0.0086, -0.0796, 0.3, 0.0114, -0.2385, 0.3, 0.0225, -0.0796, -0.3, 0.0114, -0.2385, 0.3, 0.0225, -0.0796, 0.3, 0.0114, 0.0803, 0.3, -0.0086, -0.0796, 0.3, 0.0114, -0.0803, 0.3, -0.0086, -0.0803, -0.3, -0.0086, -0.0796, -0.3, 0.0114, 0.0796, -0.3, 0.0114, 0.0796, -0.3, 0.0114, -0.0796, -0.3, 0.0114, -0.0796, 0.3, 0.0114, -0.0803, -0.3, -0.0086, 0.0796, -0.3, 0.0114, 0.0803, -0.3, -0.0086, 0.0803, 0.3, -0.0086, 0.0796, 0.3, 0.0114, -0.0796, 0.3, 0.0114, 0.0796, -0.3, 0.0114, -0.0796, 0.3, 0.0114, 0.0796, 0.3, 0.0114, 0.2406, 0.3, 0.0026, 0.0796, 0.3, 0.0114, 0.0803, 0.3, -0.0086, 0.0803, -0.3, -0.0086, 0.0796, -0.3, 0.0114, 0.2385, -0.3, 0.0225, 0.2385, -0.3, 0.0225, 0.0796, -0.3, 0.0114, 0.0796, 0.3, 0.0114, 0.0803, -0.3, -0.0086, 0.2385, -0.3, 0.0225, 0.2406, -0.3, 0.0026, 0.2406, 0.3, 0.0026, 0.2385, 0.3, 0.0225, 0.0796, 0.3, 0.0114, 0.2385, -0.3, 0.0225, 0.0796, 0.3, 0.0114, 0.2385, 0.3, 0.0225, 0.3997, 0.3, 0.025, 0.2385, 0.3, 0.0225, 0.2406, 0.3, 0.0026, 0.2406, -0.3, 0.0026, 0.2385, -0.3, 0.0225, 0.3962, -0.3, 0.0447, 0.3962, -0.3, 0.0447, 0.2385, -0.3, 0.0225, 0.2385, 0.3, 0.0225, 0.2406, -0.3, 0.0026, 0.3962, -0.3, 0.0447, 0.3997, -0.3, 0.025, 0.3997, 0.3, 0.025, 0.3962, 0.3, 0.0447, 0.2385, 0.3, 0.0225, 0.3962, -0.3, 0.0447, 0.2385, 0.3, 0.0225, 0.3962, 0.3, 0.0447, 0.3997, -0.3, 0.025, 0.3962, 0.3, 0.0447, 0.3997, 0.3, 0.025, 0.3997, -0.3, 0.025, 0.3962, -0.3, 0.0447, 0.3962, 0.3, 0.0447)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_okq71"]
-
-[sub_resource type="Sky" id="Sky_wosnj"]
-sky_material = SubResource("ProceduralSkyMaterial_okq71")
-
-[sub_resource type="Environment" id="Environment_t3l2h"]
-background_mode = 2
-background_energy_multiplier = 1.02
-sky = SubResource("Sky_wosnj")
-ambient_light_source = 3
-glow_enabled = true
-glow_strength = 0.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wosnj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8auw"]
@@ -147,7 +134,7 @@ material = SubResource("StandardMaterial3D_i5arm")
 [node name="CSGBox3D2" type="CSGBox3D" parent="Computer/CSGCombiner3D" unique_id=1618524004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0611729)
 operation = 2
-size = Vector3(0.4, 0.3, 0.3)
+size = Vector3(0.445, 0.3, 0.3)
 
 [node name="Quad" type="MeshInstance3D" parent="Computer" unique_id=1425084984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.213765)
@@ -156,7 +143,7 @@ mesh = SubResource("QuadMesh_4arys")
 skeleton = NodePath("../..")
 
 [node name="SubViewport" type="SubViewport" parent="Computer" unique_id=1898976195]
-size = Vector2i(1000, 750)
+size = Vector2i(1900, 1024)
 
 [node name="Control" type="Control" parent="Computer/SubViewport" unique_id=990562234]
 layout_mode = 3
@@ -179,6 +166,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Maze" parent="Computer/SubViewport" unique_id=85097020 instance=ExtResource("3_5t4e2")]
+
 [node name="Screen" type="MeshInstance3D" parent="Computer" unique_id=589376458]
 transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, 0, 0.213525)
 mesh = SubResource("ArrayMesh_a8auw")
@@ -187,13 +176,6 @@ mesh = SubResource("ArrayMesh_a8auw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Computer/Screen/Area3D" unique_id=739403404]
 shape = SubResource("ConcavePolygonShape3D_ifh66")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=645454336]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43233413)
-script = ExtResource("3_t3l2h")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=704701405]
-environment = SubResource("Environment_t3l2h")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=165070618]
 visible = false

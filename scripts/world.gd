@@ -6,7 +6,9 @@ extends Node3D
 @onready var day_night_sys = $DayNight
 @onready var back_prompt = $DialogueCanvas/BackPrompt
 @onready var alarm_signal = $Spaceship/Windows/Window
-
+@onready var window_hitbox = $Window
+@onready var computer_hitbox = $Computer
+@onready var closet_hitbox = $Closet
 
 @export var camera : Camera3D
 @export var target_computer : Marker3D
@@ -316,3 +318,34 @@ func _on_static_body_3d_input_event_radio(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_closet:
 		radio_overlay.show_overlay()
 		GameManager.heard_radio_count += 1
+
+
+func _on_static_body_3d_mouse_entered_computer() -> void:
+	if is_computer:
+		computer_hitbox.transparency = 1.0
+	else:
+		computer_hitbox.transparency = 0.9
+
+func _on_static_body_3d_mouse_exited_computer() -> void:
+		computer_hitbox.transparency = 1.0
+
+
+func _on_static_body_3d_mouse_entered_window() -> void:
+	if is_window:
+		window_hitbox.transparency = 1.0
+	else:
+		window_hitbox.transparency = 0.9
+
+func _on_static_body_3d_mouse_exited_window() -> void:
+		window_hitbox.transparency = 1.0
+
+
+func _on_static_body_3d_mouse_entered_closet() -> void:
+	if is_closet:
+		closet_hitbox.transparency = 1.0
+	else:
+		closet_hitbox.transparency = 0.9
+
+
+func _on_static_body_3d_mouse_exited_closet() -> void:
+	closet_hitbox.transparency = 1.0

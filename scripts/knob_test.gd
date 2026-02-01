@@ -8,7 +8,6 @@ var max_volume = -15.0
 # --- LORE AUDIO (Assign these in the Inspector) ---
 @export var night_1_ogg: AudioStream
 @export var night_2_ogg: AudioStream
-
 # --- REFS ---
 @onready var static_sound = $"../StaticSound"
 @onready var rescue_voice = $"../RescueVoice"

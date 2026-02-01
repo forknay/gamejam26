@@ -7,11 +7,10 @@ var is_alarm_on: bool = false
 var tween: Tween
 
 func _ready():
-	# Test it immediately
-	start_alarm()
+	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"): # Spacebar/Enter
+	if event.is_action_pressed(""): # Spacebar/Enter
 		if is_alarm_on:
 			stop_alarm()
 		else:

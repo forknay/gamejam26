@@ -6,7 +6,6 @@ extends Node3D
 signal anim_done
 
 func _ready():
-	
 	cam.make_current()
 	anim.play(anim.get_animation_list()[0])
 	$AnimationPlayer.animation_finished.connect(_on_animation_finished)

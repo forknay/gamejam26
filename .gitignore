@@ -3,3 +3,5 @@
 /android/
 # Ignore all .import files starting with ASM
 ASM*.import
+
+*.exe

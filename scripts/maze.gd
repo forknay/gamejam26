@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var spawn = $Spawn
 @onready var finish_area = $Finish 
-const PLAYER_SCENE = preload("res://scenes/maze_player.tscn")
+const PLAYER_SCENE = preload("res://Scenes/maze_player.tscn")
 
 var started = false
 var deaths = 0 # Track deaths here
@@ -29,14 +29,12 @@ func _on_finish_line_reached():
 func spawn_player():
 	var player = PLAYER_SCENE.instantiate()
 	player.position = spawn.position
-	
-	# --- NEW: Connect the signal ---
+	# Player tells maze he died, maze tells game_playlist manager 
 	player.i_died.connect(_on_i_died)
 	
 	add_child(player)
 	current_player = player # Save reference
 
-# --- NEW: Handle the death ---
 func _on_i_died():
 	deaths += 1
 	print("Died! Total Deaths: ", deaths)
@@ -48,6 +46,5 @@ func _on_i_died():
 	# 2. Reset the "started" flag so you can press D again
 	started = false
 	
-	# Optional: If you want instant respawn without pressing D:
-	# call_deferred("spawn_player")
-	# started = true
+	call_deferred("spawn_player")
+	started = true

@@ -1,6 +1,5 @@
 extends SubViewport
 
-# Signal to tell computer.gd that we are done
 signal sequence_finished 
 
 var playlist: Array[PackedScene] = []
@@ -23,7 +22,7 @@ func load_level(index):
 	# CHECK: Are we out of games?
 	if index >= playlist.size():
 		print("Viewport: Playlist complete.")
-		sequence_finished.emit() # <--- CRITICAL: Triggers the "Good Job" dialogue
+		sequence_finished.emit() 
 		return
 
 	# Load the next game
@@ -45,7 +44,6 @@ func _on_level_cleared():
 	current_index += 1
 	load_level(current_index)
 
-# --- HELPER LOGIC ---
 func show_single_scene(scene: PackedScene):
 	clear_screen()
 	if scene:

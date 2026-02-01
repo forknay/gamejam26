@@ -1,13 +1,11 @@
 extends Node3D
 
-# --- SIGNALS ---
 signal all_games_finished 
 
-# --- CONFIGURATION (Assign in Inspector) ---
 @export_group("Screen Content")
 @export var day_1_games: Array[PackedScene]
 @export var day_2_games: Array[PackedScene] 
-@export var day_3_games: Array[PackedScene] # <--- ADDED FOR CLIMAX
+@export var day_3_games: Array[PackedScene] 
 @export var screen_static: PackedScene      
 
 # --- REFERENCES ---
@@ -20,7 +18,6 @@ func _ready():
 	# 1. Connect Mouse Logic
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
-	node_area.input_event.connect(_mouse_input_event)
 	
 	# 2. Connect the Signal Chain
 	if not node_viewport.has_signal("sequence_finished"):
@@ -49,7 +46,7 @@ func load_day_content(state):
 			else:
 				print("Computer: No games assigned for Day 2!")
 
-		GameManager.State.DAY_3_WORK: # <--- ADDED CASE
+		GameManager.State.DAY_3_WORK: 
 			if day_3_games.size() > 0:
 				node_viewport.start_game_sequence(day_3_games)
 			else:
@@ -59,8 +56,6 @@ func load_day_content(state):
 			if screen_static:
 				node_viewport.show_single_scene(screen_static)
 
-
-# --- MOUSE INPUT LOGIC (Standard) ---
 func _mouse_entered_area():
 	is_mouse_inside = true
 
@@ -72,8 +67,3 @@ func _unhandled_input(event):
 		if is_instance_of(event, mouse_event):
 			return
 	node_viewport.push_input(event)
-
-func _mouse_input_event(_camera: Camera3D, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int):
-	# (Your existing coordinate conversion code goes here - removed for brevity but keep it!)
-	# If you need me to paste the coordinate math again, let me know.
-	pass

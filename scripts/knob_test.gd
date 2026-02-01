@@ -1,25 +1,20 @@
 extends Node2D
 
-# --- CONFIG ---
 var target_angle = 90.0
 var tolerance = 25.0
 var max_volume = -15.0
 
-# --- LORE AUDIO (Assign these in the Inspector) ---
 @export var night_1_ogg: AudioStream
 @export var night_2_ogg: AudioStream
-# --- REFS ---
 @onready var static_sound = $"../StaticSound"
 @onready var rescue_voice = $"../RescueVoice"
 @onready var area_2d = $Area2D
 
-# --- STATE ---
 var is_dragging = false
 var has_won_this_night = false
 
 func _ready():
 	area_2d.input_event.connect(_on_area_input)
-	
 	# Load the correct audio file for the current night
 	_setup_nightly_audio()
 
@@ -57,7 +52,6 @@ func update_audio():
 		rescue_voice.volume_db = linear_to_db(strength) + max_volume
 		static_sound.volume_db = linear_to_db(1.0 - strength) + max_volume
 		
-		# --- WIN CONDITION ---
 		# If they hold it steady near the target, count it as "heard"
 		if strength > 0.9 and not has_won_this_night:
 			_register_radio_discovery()

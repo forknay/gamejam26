@@ -11,9 +11,6 @@ extends Node3D
 @onready var closet_hitbox = $Closet
 
 @export var camera : Camera3D
-@export var target_computer : Marker3D
-@export var target_closet : Marker3D
-@export var opening_camera : Camera3D
 
 var start_transform : Transform3D
 var is_computer = false
@@ -22,18 +19,11 @@ var is_window = false
 
 # --- SETUP ---
 func _ready() -> void:
-	# 1. Handle Camera Logic based on State
 	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
 		# ONLY play the animation on the very first start
 		$openingCam_v04.anim_done.connect(_on_anim_done)
 	else:
-		# SKIP animation for all other days/nights
 		_skip_opening_animation()
-	
-	if not camera or not target_computer:
-		print("ERROR: Please assign Camera and Target in the Inspector!")
-	else:
-		start_transform = camera.global_transform
 	
 	var comp_node = $Node3D/Computer
 	if comp_node:
@@ -48,22 +38,18 @@ func _skip_opening_animation():
 	# Hide the static/overlay immediately
 	if has_node("overlay"):
 		$overlay.hide() # or remove_overlay() if that's your function name
-	
 	# Set the gameplay camera as active immediately
 	if camera:
 		camera.make_current()
-	
 	# Ensure the opening camera isn't processing
 	if has_node("openingCam_v04"):
 		$openingCam_v04.set_process(false)
 
 func _on_anim_done():
-	# This only triggers on INTRO_WAKEUP
+	# This only triggers on INTRO_WAKEUP so you don't click on stuff before anim is done
 	if has_node("overlay"):
 		$overlay.remove_overlay()
 	camera.make_current()
-
-
 
 # --- SETUP ---
 
@@ -74,7 +60,7 @@ func setup_scene_state():
 	else:
 		day_night_sys.setNight(false)
 
-	# --- STORY PROGRESSION: MORNING DIALOGUE ---
+	# --- STORY PROGRESSION ---
 	match GameManager.current_state:
 		GameManager.State.INTRO_WAKEUP:
 			dialogue_ui.start_dialogue([
@@ -109,7 +95,6 @@ func setup_scene_state():
 				"(Click on the window to talk to MAIA)",
 				"(Click on the bed to end the day)",
 			])
-		# NEW: Day 2 Morning Lore
 		GameManager.State.DAY_2_WORK:
 			alarm_signal.start_alarm()
 			dialogue_ui.start_dialogue([
@@ -128,22 +113,19 @@ func setup_scene_state():
 				"MAIA: If you don't block these signals now, they willl be at our door at any minute."
 			])
 
-# ... (Top of script remains the same) ...
-
-# --- LOGIC: COMPUTER FINISHED ---
 func _on_computer_finished():
 	if GameManager.current_state == GameManager.State.DAY_1_WORK:
 		alarm_signal.stop_alarm()
 		dialogue_ui.start_dialogue([
-			"AI: Good job blocking their signal", 
-			"AI: They won’t bother us anymore today but they will try to hunt us again so be on alert."
+			"MAIA: Good job blocking their signal", 
+			"MAIA: They won’t bother us anymore today but they will try to hunt us again so be on alert."
 		], [], _transition_to_evening)
 	
 	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
 		alarm_signal.stop_alarm()
 		dialogue_ui.start_dialogue([
-			"AI: Excellent work. Their drones lost our scent.",
-			"AI: We are safe for now..."
+			"MAIA: Excellent work. Their drones lost our scent.",
+			"MAIA: We are safe for now..."
 		], [], _transition_to_evening)
 		
 	elif GameManager.current_state == GameManager.State.DAY_3_WORK:
@@ -163,14 +145,11 @@ func _on_computer_finished():
 			], [], func(): GameManager.game_over("END: ALONE"))
 
 func _transition_to_evening():
-	# Determines which evening state to move to based on the current day
 	if GameManager.current_state == GameManager.State.DAY_1_WORK:
 		GameManager.advance_state(GameManager.State.DAY_1_EVENING)
 	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
 		GameManager.advance_state(GameManager.State.DAY_2_EVENING)
-	# Note: Day 3 doesn't call this, it goes straight to the endings!
 
-# ... (Rest of script remains the same) ...
 func _on_final_choice(index):
 	if index == 0: # TRUST RADIO
 		dialogue_ui.start_dialogue([
@@ -185,25 +164,10 @@ func _on_final_choice(index):
             "(You sit in the dark, starving.)"
 		], [], func(): GameManager.game_over("END: STARVED"))
 
+# Little corner [E] to go back
 func set_back_prompt(is_visiblee: bool):
 	if back_prompt:
 		back_prompt.visible = is_visiblee
-
-
-func _input(event):
-	if event.is_action_pressed("back"):
-		if dialogue_ui.text_box.visible:
-			return
-			
-		if is_closet:
-			zoom_out_closet()
-			is_closet = false
-		elif is_computer:
-			zoom_out_computer()
-			is_computer = false
-		elif is_window:
-			zoom_out_window()
-			is_window = false
 
 func _process(_delta: float):
 	# Manage the visibility of the "[E] Back" prompt
@@ -215,6 +179,20 @@ func _process(_delta: float):
 		set_back_prompt(true)
 	else:
 		set_back_prompt(false)
+
+func _input(event):
+	if event.is_action_pressed("back"):
+		if dialogue_ui.text_box.visible:
+			return
+		if is_closet:
+			zoom_out_closet()
+			is_closet = false
+		elif is_computer:
+			zoom_out_computer()
+			is_computer = false
+		elif is_window:
+			zoom_out_window()
+			is_window = false
 
 # --- ZOOM FUNCTIONS ---
 func zoom_out_closet():
@@ -305,6 +283,7 @@ func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
 				$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
 				$defaultRadio_v04.radio_anim()
 				zoom_in_closet()
+
 func _on_static_body_3d_input_event_bed(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameManager.is_night():
@@ -326,9 +305,9 @@ func _on_sleep_choice(index):
 func _on_static_body_3d_input_event_radio(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_closet:
 		radio_overlay.show_overlay()
-		GameManager.heard_radio_count += 1
+		GameManager.heard_radio_count += 1 # Keep track for diff endings
 
-
+# --- Hitboxes to show interactible nature ---
 func _on_static_body_3d_mouse_entered_computer() -> void:
 	if is_computer:
 		computer_hitbox.transparency = 1.0
@@ -337,7 +316,6 @@ func _on_static_body_3d_mouse_entered_computer() -> void:
 
 func _on_static_body_3d_mouse_exited_computer() -> void:
 		computer_hitbox.transparency = 1.0
-
 
 func _on_static_body_3d_mouse_entered_window() -> void:
 	if is_window:
@@ -348,13 +326,11 @@ func _on_static_body_3d_mouse_entered_window() -> void:
 func _on_static_body_3d_mouse_exited_window() -> void:
 		window_hitbox.transparency = 1.0
 
-
 func _on_static_body_3d_mouse_entered_closet() -> void:
 	if is_closet:
 		closet_hitbox.transparency = 1.0
 	else:
 		closet_hitbox.transparency = 0.9
-
 
 func _on_static_body_3d_mouse_exited_closet() -> void:
 	closet_hitbox.transparency = 1.0

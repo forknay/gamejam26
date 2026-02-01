@@ -1,4 +1,3 @@
-# GameManager.gd (Autoload)
 extends Node
 
 enum State {
@@ -7,22 +6,20 @@ enum State {
 	DAY_1_EVENING,
 	DAY_2_WORK,
 	DAY_2_EVENING,
-	DAY_3_WORK, # Added Day 3
+	DAY_3_WORK, 
 	ENDING
 }
 @onready var music_player = AudioStreamPlayer.new()
-@export var climax_music: AudioStream # Assign your new track here
+@export var climax_music: AudioStream 
 
 var current_state = State.INTRO_WAKEUP
 var transition_overlay : ColorRect
 var canvas_layer : CanvasLayer
-var ending_label : Label # New: To show ending text on screen
+var ending_label : Label 
 var heard_radio_count = 0
-# Inside GameManager.gd
 
-# Add this at the top to store the menu path
-var menu_scene_path = "res://scenes/main_menu.tscn" # Adjust to your actual path
-var world_scene_path = "res://scenes/game.tscn"      # Adjust to your actual path
+var menu_scene_path = "res://Scenes/main_menu.tscn" 
+var world_scene_path = "res://Scenes/game.tscn"     
 
 func start_new_game():
 	current_state = State.INTRO_WAKEUP
@@ -60,9 +57,7 @@ func game_over(ending_type: String):
 
 func play_climax_music():
 	if not music_player.playing:
-		# If the Inspector slot is empty, load it manually from your folder
-		if climax_music == null:
-			climax_music = load("res://audio/soundtrack.ogg")
+		climax_music = load("res://audio/soundtrack.ogg")
 		print("playing music")
 		music_player.stream = climax_music
 		music_player.play()
@@ -89,9 +84,6 @@ func _ready():
 	ending_label.set_anchors_preset(Control.PRESET_CENTER)
 	ending_label.modulate.a = 0.0 # Start invisible
 	canvas_layer.add_child(ending_label)
-
-
-# --- TRANSITION LOGIC ---
 
 func fade_out():
 	transition_overlay.mouse_filter = Control.MOUSE_FILTER_STOP

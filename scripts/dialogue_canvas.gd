@@ -9,10 +9,8 @@ var dialogue_lines: Array = []
 var current_line_index = 0
 var is_typing = false
 var can_advance = false
-
 var custom_font = load("res://Assets/Fonts/insanity.ttf")
-
-# Storage for the choices to show at the end
+# Ending choices
 var pending_choices: Array = []
 var pending_callback: Callable
 
@@ -61,9 +59,7 @@ func _unhandled_input(event):
 			
 		elif can_advance:
 			current_line_index += 1
-			if current_line_index >= dialogue_lines.size():
-				# --- TEXT FINISHED ---
-				
+			if current_line_index >= dialogue_lines.size():				
 				if pending_choices.size() > 0:
 					# Case A: Show Buttons
 					show_choices()
@@ -71,10 +67,8 @@ func _unhandled_input(event):
 					# Case B: Standard Dialogue Finished
 					close_dialogue()
 					
-					# --- THE FIX: TRIGGER THE CALLBACK HERE ---
 					if pending_callback.is_valid():
 						pending_callback.call() 
-						
 			else:
 				# Show next line
 				show_text()
@@ -104,8 +98,6 @@ func show_choices():
 func _on_choice_clicked(index):
 	choice_container.visible = false
 	close_dialogue()
-	
-	# Case C: Choice Clicked Callback (Passes the index)
 	if pending_callback.is_valid():
 		pending_callback.call(index)
 

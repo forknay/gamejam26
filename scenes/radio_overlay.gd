@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var audio1 = $RadioGame/StaticSound
 @onready var audio2 = $RadioGame/RescueVoice
 
-
 func _ready():
 	visible = false # Start hidden
 
@@ -12,6 +11,7 @@ func show_overlay():
 	# Unlock mouse so you can click dials
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 	AudioManager.mute_ambience()
+
 func hide_overlay():
 	visible = false
 	if audio1 or audio2:
@@ -19,6 +19,7 @@ func hide_overlay():
 		audio2.stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	AudioManager.unmute_ambience()
+	
 func _input(event):
 	if visible:
 		# Close on ESC or E

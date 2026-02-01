@@ -72,8 +72,6 @@
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
 [ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="72_7gkqi"]
-[ext_resource type="PackedScene" uid="uid://dlqnp7dmeg6ha" path="res://Animations/openingCam_v02.fbx" id="73_7gkqi"]
-[ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://scripts/opening_cam_v_02.gd" id="74_753oq"]
 [ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://scenes/overlay.gd" id="75_753oq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
@@ -1793,17 +1791,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061321616, 0.09376502, 0.1
 
 [node name="radio" parent="radio" unique_id=972764560 instance=ExtResource("72_7gkqi")]
 
-[node name="openingCam_v02" parent="." unique_id=847132554 instance=ExtResource("73_7gkqi")]
-script = ExtResource("74_753oq")
-
-[node name="Opening_cam" parent="openingCam_v02" index="0" unique_id=976576168]
-transform = Transform3D(0.66297096, 0.42054158, -0.6193661, 0, 0.827316, 0.5617369, 0.7486451, -0.37241524, 0.5484865, -2.2278154, 0.39101002, 0.97110337)
-fov = 55.0
-
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]
 [connection signal="input_event" from="Window/StaticBody3D" to="." method="_on_static_body_3d_input_event_window"]
 [connection signal="input_event" from="Bed/StaticBody3D" to="." method="_on_static_body_3d_input_event_bed"]
 [connection signal="input_event" from="RadioBridge/StaticBody3D" to="." method="_on_static_body_3d_input_event_radio"]
-
-[editable path="openingCam_v02"]

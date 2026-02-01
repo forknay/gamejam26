@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dacekq42yenco"]
+
+[ext_resource type="Script" uid="uid://dnuwjuvhyi3fk" path="res://scripts/projectile.gd" id="1_c8fcr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4uv6a"]
+radius = 3.0
+
+[sub_resource type="Gradient" id="Gradient_73obn"]
+offsets = PackedFloat32Array(0.89534885, 0.9372093, 1)
+colors = PackedColorArray(0, 1, 0.08235294, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4uv6a"]
+gradient = SubResource("Gradient_73obn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.22435898, 0.258547)
+
+[node name="Projectile" type="Area2D" unique_id=219182057]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_c8fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450219177]
+shape = SubResource("CircleShape2D_4uv6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2041312776]
+scale = Vector2(0.125, 0.123046875)
+texture = SubResource("GradientTexture2D_4uv6a")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

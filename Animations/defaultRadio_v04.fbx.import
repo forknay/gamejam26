@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d2fuutd87emqf"
-path="res://.godot/imported/default2window_v01.fbx-9cb94dbec2e57a88e3dcdad2ee5ba9ab.scn"
+uid="uid://b0d3ga1ak5qbd"
+path="res://.godot/imported/defaultRadio_v04.fbx-42866916a77bfb1bf72dcdc1135d7af2.scn"
 
 [deps]
 
-source_file="res://Animations/default2window_v01.fbx"
-dest_files=["res://.godot/imported/default2window_v01.fbx-9cb94dbec2e57a88e3dcdad2ee5ba9ab.scn"]
+source_file="res://Animations/defaultRadio_v04.fbx"
+dest_files=["res://.godot/imported/defaultRadio_v04.fbx-42866916a77bfb1bf72dcdc1135d7af2.scn"]
 
 [params]
 

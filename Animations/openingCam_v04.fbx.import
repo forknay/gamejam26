@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmsqf5ttg5eb0"
-path="res://.godot/imported/default2computer_v01.fbx-1d50797fd0ccd9462d8468b6b335b84e.scn"
+uid="uid://dod8gdfexyosm"
+path="res://.godot/imported/openingCam_v04.fbx-843e695c19bd39e1cdb9bcfe089c7928.scn"
 
 [deps]
 
-source_file="res://Animations/default2computer_v01.fbx"
-dest_files=["res://.godot/imported/default2computer_v01.fbx-1d50797fd0ccd9462d8468b6b335b84e.scn"]
+source_file="res://Animations/openingCam_v04.fbx"
+dest_files=["res://.godot/imported/openingCam_v04.fbx-843e695c19bd39e1cdb9bcfe089c7928.scn"]
 
 [params]
 

@@ -34,8 +34,8 @@ func game_over(ending_type: String):
 	
 	var msg = ""
 	match ending_type:
-		"END: RESCUED": msg = "THE CHIP IS REMOVED.\nYOU ARE FREE."
-		"END: STARVED": msg = "THE HUNTERS WERE BLOCKED.\nYOU DIED IN THE DARK, SAFE AND ALONE."
+		"END: RESCUED": msg = "THE CHIP IS REMOVED.\nYOU ARE SAVED."
+		"END: STARVED": msg = "THE RESCUERS WERE BLOCKED.\n AI LIED\nYOU DIED IN THE DARK, ALONE."
 		"END: ALONE":   msg = "SIGNAL LOST.\nAI DEACTIVATED.\nSYSTEM FAILURE."
 		
 	ending_label.text = msg

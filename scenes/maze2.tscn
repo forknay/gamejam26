@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cv2r5i2ywr0m3" path="res://art/black.png" id="2_j0jcg"]
 [ext_resource type="Texture2D" uid="uid://bu13hi58ya205" path="res://art/gray.png" id="3_kahk2"]
 [ext_resource type="Script" uid="uid://b4bx7bp54aape" path="res://Scripts/finish.gd" id="4_lvtnf"]
+[ext_resource type="Texture2D" uid="uid://1fegd2jwpk32" path="res://art/turq.png" id="4_t1xly"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgl6e"]
 texture = ExtResource("2_j0jcg")
@@ -25,8 +26,75 @@ sources/0 = SubResource("TileSetAtlasSource_l3biw")
 texture = ExtResource("3_kahk2")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tx1ln"]
+texture = ExtResource("4_t1xly")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_8hln8"]
 sources/0 = SubResource("TileSetAtlasSource_vqf1n")
+sources/1 = SubResource("TileSetAtlasSource_tx1ln")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hln8"]
 size = Vector2(50, 70)
@@ -47,7 +115,7 @@ tile_set = SubResource("TileSet_vqf1n")
 
 [node name="Start_End" type="TileMapLayer" parent="." unique_id=198345354]
 position = Vector2(960, 540)
-tile_map_data = PackedByteArray("AADY////AAAAAAAAAADZ////AAAAAAAAAADZ//7/AAAAAAAAAADZ/wAAAAAAAAAAAADZ/wEAAAAAAAAAAAAnAP7/AAAAAAAAAAAnAP//AAAAAAAAAAAnAAAAAAAAAAAAAAAnAAEAAAAAAAAAAAAmAP7/AAAAAAAAAAAmAP//AAAAAAAAAAAmAAAAAAAAAAAAAAAmAAEAAAAAAAAAAADa//7/AAAAAAAAAADa////AAAAAAAAAADa/wAAAAAAAAAAAADa/wEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADZ////AQAAAAAAAADZ//7/AQAAAAAAAADZ/wAAAQAAAAAAAADZ/wEAAQAAAAAAAAAnAP7/AQAAAAAAAAAnAP//AQAAAAAAAAAnAAAAAQAAAAAAAAAnAAEAAQAAAAAAAAAmAP7/AQAAAAAAAAAmAP//AQAAAAAAAAAmAAAAAQAAAAAAAAAmAAEAAQAAAAAAAADa//7/AQAAAAAAAADa////AQAAAAAAAADa/wAAAQAAAAAAAADa/wEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_8hln8")
 collision_enabled = false
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://danw7j4nmiacy" path="res://Scripts/maze.gd" id="1_8hln8"]
 [ext_resource type="Texture2D" uid="uid://cv2r5i2ywr0m3" path="res://art/black.png" id="1_ol5qi"]
 [ext_resource type="Texture2D" uid="uid://bu13hi58ya205" path="res://art/gray.png" id="2_fgl6e"]
+[ext_resource type="Texture2D" uid="uid://1fegd2jwpk32" path="res://art/turq.png" id="4_14ff2"]
 [ext_resource type="Script" uid="uid://b4bx7bp54aape" path="res://Scripts/finish.gd" id="4_vqf1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgl6e"]
@@ -25,11 +26,78 @@ sources/0 = SubResource("TileSetAtlasSource_l3biw")
 texture = ExtResource("2_fgl6e")
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmdcm"]
+texture = ExtResource("4_14ff2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_8hln8"]
 sources/0 = SubResource("TileSetAtlasSource_vqf1n")
+sources/1 = SubResource("TileSetAtlasSource_fmdcm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hln8"]
-size = Vector2(50, 72)
+size = Vector2(179, 72)
 
 [node name="Maze" type="Node2D" unique_id=85097020]
 script = ExtResource("1_8hln8")
@@ -47,7 +115,7 @@ tile_set = SubResource("TileSet_vqf1n")
 
 [node name="Start_End" type="TileMapLayer" parent="." unique_id=198345354]
 position = Vector2(960, 540)
-tile_map_data = PackedByteArray("AADZ/+P/AAAAAAAAAADZ/+T/AAAAAAAAAADZ/+X/AAAAAAAAAAAnABoAAAAAAAAAAAAmABoAAAAAAAAAAAAmABsAAAAAAAAAAAAmABwAAAAAAAAAAAAnABwAAAAAAAAAAAAnABsAAAAAAAAAAADa/+P/AAAAAAAAAADa/+T/AAAAAAAAAADa/+X/AAAAAAAAAADY/+X/AAAAAAAAAADY/+T/AAAAAAAAAADY/+P/AAAAAAAAAADZ/+b/AAAAAAAAAADY/+b/AAAAAAAAAADa/+b/AAAAAAAAAAAmAB0AAAAAAAAAAAAnAB0AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADZ/+P/AQAAAAAAAADZ/+T/AQAAAAAAAADZ/+X/AQAAAAAAAAAnABoAAQAAAAAAAAAmABoAAQAAAAAAAAAmABsAAQAAAAAAAAAmABwAAQAAAAAAAAAnABwAAQAAAAAAAAAnABsAAQAAAAAAAADa/+P/AQAAAAAAAADa/+T/AQAAAAAAAADa/+X/AQAAAAAAAADY/+X/AAAAAAAAAADY/+T/AAAAAAAAAADY/+P/AAAAAAAAAADZ/+b/AQAAAAAAAADY/+b/AAAAAAAAAADa/+b/AQAAAAAAAAAmAB0AAQAAAAAAAAAnAB0AAQAAAAAAAAAeABoAAQAAAAAAAAAeABsAAQAAAAAAAAAeABwAAQAAAAAAAAAeAB0AAQAAAAAAAAAeAB4AAQAAAAAAAAAfABoAAQAAAAAAAAAfABsAAQAAAAAAAAAfABwAAQAAAAAAAAAfAB0AAQAAAAAAAAAfAB4AAQAAAAAAAAAgABoAAQAAAAAAAAAgABsAAQAAAAAAAAAgABwAAQAAAAAAAAAgAB0AAQAAAAAAAAAgAB4AAQAAAAAAAAAhABoAAQAAAAAAAAAhABsAAQAAAAAAAAAhABwAAQAAAAAAAAAhAB0AAQAAAAAAAAAhAB4AAQAAAAAAAAAiABoAAQAAAAAAAAAiABsAAQAAAAAAAAAiABwAAQAAAAAAAAAiAB0AAQAAAAAAAAAiAB4AAQAAAAAAAAAjABoAAQAAAAAAAAAjABsAAQAAAAAAAAAjABwAAQAAAAAAAAAjAB0AAQAAAAAAAAAjAB4AAQAAAAAAAAAkABoAAQAAAAAAAAAkABsAAQAAAAAAAAAkABwAAQAAAAAAAAAkAB0AAQAAAAAAAAAkAB4AAQAAAAAAAAAlABoAAQAAAAAAAAAlABsAAQAAAAAAAAAlABwAAQAAAAAAAAAlAB0AAQAAAAAAAAAlAB4AAQAAAAAAAAAmAB4AAQAAAAAAAAAnAB4AAQAAAAAAAAAoABoAAAAAAAAAAAAoABsAAAAAAAAAAAAoABwAAAAAAAAAAAAoAB0AAAAAAAAAAAAoAB4AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_8hln8")
 collision_enabled = false
 
@@ -59,5 +127,5 @@ position = Vector2(1584, 981)
 script = ExtResource("4_vqf1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=1128402422]
-position = Vector2(2, 7)
+position = Vector2(-62.5, 7)
 shape = SubResource("RectangleShape2D_8hln8")

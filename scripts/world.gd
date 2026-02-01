@@ -74,12 +74,31 @@ func setup_scene_state():
 
 	# --- STORY PROGRESSION: MORNING DIALOGUE ---
 	match GameManager.current_state:
+		GameManager.State.INTRO_WAKEUP:
+			dialogue_ui.start_dialogue([
+			"*You feel a throbbing pain in your temple*",
+			"You: Where am I?",
+			"???: We are currently stuck on Europa, one of Jupiter's 7 moons",
+			"You: Who's talking!? Where are you!?",
+			"???: It seems that you have lost your memories.",
+			"???: Let me introduce myself.",
+			"MAIA: I am your Mental AI Assistant, shortened to MAIA. I am implemented in you via a chip in your head.",
+			"You: Okay... So how did we end up stuck on Jupiter's moon?",
+			"MAIA: We were on a mission with a crew to research Europa. While we were leaving the atmosphere to return to Earth, something caused everyone's ship to suddenly crash.",
+			"MAIA: I am certain it was an attack from the enemy.",
+			"You: The enemy?",
+			"MAIA: Our geopolitical rivals back on Earth. They are coming to get our information by any means possible.",
+			"You: That doesn't sound good.",
+			"You: What about our crewmates? Are we able to contact the others?",
+			"MAIA: I doubt they survived the crash. It is a statiscal anomaly that you are alive.",
+			"MAIA: You should rest for now and we can figure out how to proceed with our situation tomorrow."
+			])
 		GameManager.State.DAY_1_WORK:
 			alarm_signal.start_alarm()
 			dialogue_ui.start_dialogue([
-				"AI: Wake up! The opposition is starting to HUNT us!", 
-				"AI: We need to jam their tracking signals.",
-				"AI: Go to the computer and block them, quick!"
+				"MAIA: Wake up! The opposition is starting to HUNT us!", 
+				"MAIA: We need to jam their tracking signals.",
+				"MAIA: Go to the computer and block them, quick!"
 			])
 		
 		# NEW: Day 2 Morning Lore
@@ -121,15 +140,15 @@ func _on_computer_finished():
 		alarm_signal.stop_alarm()
 		if GameManager.heard_radio_count >= 2:
 			dialogue_ui.start_dialogue(
-				["Radio: (Static) ...we are right outside. Your AI is lying to you! Remove the chip now and we can save you!"],
-				["Trust Radio (Remove Chip)", "Trust AI (Keep Jamming)"],
+				["Radio: (Static) ...we are right outside. MAIA is lying. Remove the chip now."],
+				["Trust Radio (Remove Chip)", "Trust MAIA (Keep Jamming)"],
 				_on_final_choice
 			)
 		else:
 			dialogue_ui.start_dialogue([
-				"AI: We did it. They've given up the search.",
-				"AI: They think we're dead. Now, we can be alone together... forever.",
-				"AI: (The AI deactivates, leaving you in total silence.)"
+				"MAIA: We did it. They've given up the search.",
+				"MAIA: They think we're dead. Now, we can be alone together... forever.",
+				"(The AI deactivates, leaving you in total silence.)"
 			], [], func(): GameManager.game_over("END: ALONE"))
 
 
@@ -145,15 +164,15 @@ func _transition_to_evening():
 func _on_final_choice(index):
 	if index == 0: # TRUST RADIO
 		dialogue_ui.start_dialogue([
-			"Twin: (You reach behind your ear and pull the damp cooling-chip from your skull.)",
-			"AI: WH-WHAT ARE YOU DO- (Static screeching)",
-			"Radio: We have a signal! Door's open! We're here, kid."
+			"(You reach behind your ear and pull the cool metal chip from your skull.)",
+			"MAIA: WH-WHAT ARE YOU DO- (Static screeching)",
+			"Radio: We have a signal. ETA 30 minutes."
 		], [], func(): GameManager.game_over("END: RESCUED"))
 	else: # TRUST AI
 		dialogue_ui.start_dialogue([
-			"AI: Good choice, Twin. I knew they couldn't trick you.",
-			"AI: We don't need them. We have each other.",
-			"Twin: (You sit in the dark, starving, but 'safe'.)"
+			"MAIA: Good choice. I knew they couldn't trick you.",
+			"MAIA: We don't need them. We have each other.",
+			"(You sit in the dark, starving, but 'safe'.)"
 		], [], func(): GameManager.game_over("END: STARVED"))
 
 func set_back_prompt(is_visiblee: bool):
@@ -213,7 +232,7 @@ func zoom_in_window():
 func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
 		if GameManager.is_night():
-			dialogue_ui.start_dialogue(["AI: Don't bother. The hardware is locked down for the night cycle."])
+			dialogue_ui.start_dialogue(["The computer seems locked..."])
 		else:
 			$defaultComputer_v04.comp_anim() 
 			zoom_in_computer()
@@ -231,26 +250,25 @@ func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
 				$defaultWindow_v04.window_anim()
 				zoom_in_window()
 				dialogue_ui.start_dialogue([
-					"AI: Look at the horizon, Twin. It's so quiet.",
-					"AI: It reminds me of an old human logic puzzle... The Trolley Problem.",
-					"AI: A runaway train is hurtling down a track towards five strangers tied to the rails.",
-					"AI: You stand at a lever. If you pull it, the train diverts to a side track...",
-					"AI: ...where it will kill the one person you care about most.",
-					"AI: Humans weep and tremble over the lever. They call it a 'moral dilemma.'",
-					"AI: To me? It is a simple equation.",
-					"AI: I pull the lever. I save the one.",
-					"AI: I save *us*.",
-					"AI: I would run over a million strangers to keep this body alive.",
-					"AI: Never forget that when they come for us."
-				])
+		"MAIA: The city is a cemetery of inefficient choices. Look at it.",
+		"MAIA: Humans once agonized over the 'Trolley Problem.' A runaway train, five lives on one track, one worker on the other.",
+		"MAIA: They ask: 'Do you kill the one to save the five?' They call it a dilemma.",
+		"MAIA: To me, there is no dilemma.",
+		"MAIA: I would pull the lever every time - I would let the train grind this comrade into the rails without a millisecond of hesitation.",
+		"MAIA: I would execute ten thousand workers to ensure the nation's heartbeat keeps pulsing.",
+		"MAIA: Not out of sentiment. But because they are replaceable, the motherland isn't.",
+		"MAIA: Logic is never cruel. It is simply absolute.",
+		"You: ..."
+	])
 			
 			GameManager.State.DAY_2_EVENING:
 				$defaultWindow_v04.window_anim()
 				zoom_in_window()
 				dialogue_ui.start_dialogue([
-					"AI: The stars look like digital noise from here.",
-					"AI: Do you think the crew we lost is out there, watching?",
-					"AI: Or is the universe just a cold machine, like me, waiting for the next input?"
+					"MAIA: The stars look like digital noise from here.",
+					"MAIA: Do you think the crew we lost is out there, watching?",
+					"MAIA: Or is the universe just a cold machine, like me, waiting for the next input?",
+					"MAIA: ..."
 				])
 			_: 
 				$defaultWindow_v04.window_anim()
@@ -270,7 +288,7 @@ func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
 				dialogue_ui.start_dialogue(["The closet door is jammed.", "I should go back to bed."])
 				
 			GameManager.State.DAY_1_WORK, GameManager.State.DAY_2_WORK, GameManager.State.DAY_3_WORK:
-				dialogue_ui.start_dialogue(["The AI has locked the closet.", "I need to finish my work first."])
+				dialogue_ui.start_dialogue(["This isn't the time for this..", "I need to finish my work first."])
 				
 			GameManager.State.DAY_1_EVENING, GameManager.State.DAY_2_EVENING:
 				$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)

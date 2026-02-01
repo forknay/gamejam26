@@ -22,6 +22,6 @@ func hide_overlay():
 func _input(event):
 	if visible:
 		# Close on ESC or E
-		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("interact"):
+		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("interact") or event.is_action_pressed("ui_select"):
 			get_viewport().set_input_as_handled()
 			hide_overlay()

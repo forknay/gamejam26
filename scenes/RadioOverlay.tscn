@@ -2,12 +2,26 @@
 
 [ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://Scenes/radio_overlay.gd" id="1_i5h3r"]
 [ext_resource type="PackedScene" uid="uid://bworwd5ab4fdy" path="res://Scenes/radio_game.tscn" id="2_jlhoq"]
+[ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="3_jlhoq"]
 
 [node name="RadioOverlay" type="CanvasLayer" unique_id=1854559540]
 script = ExtResource("1_i5h3r")
 
 [node name="RadioGame" parent="." unique_id=1447352774 instance=ExtResource("2_jlhoq")]
 scale = Vector2(3, 3)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RadioGame" unique_id=1267664655]
+offset_left = 112.66667
+offset_top = -150.33334
+offset_right = 391.6667
+offset_bottom = -58.333344
+scale = Vector2(0.6136751, 0.90451324)
+theme_override_fonts/normal_font = ExtResource("3_jlhoq")
+theme_override_font_sizes/normal_font_size = 41
+text = "Press E to exit"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=836039411]
 anchors_preset = 15

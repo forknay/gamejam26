@@ -78,7 +78,7 @@
 [ext_resource type="PackedScene" uid="uid://3il8njkibrx" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 [ext_resource type="PackedScene" uid="uid://b61reuthpexnb" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
 [ext_resource type="PackedScene" uid="uid://bbye1smrqgm7h" path="res://Animations/defaultComputer_v04.fbx" id="78_fkywm"]
-[ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://Scripts/opening_cam_v_04.gd" id="78_s0g06"]
+[ext_resource type="Script" path="res://Scripts/opening_cam_v_04.gd" id="78_s0g06"]
 [ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://Scripts/default_computer_v_04.gd" id="79_dku7i"]
 [ext_resource type="PackedScene" uid="uid://b0d3ga1ak5qbd" path="res://Animations/defaultRadio_v04.fbx" id="80_veaf0"]
 [ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://Scripts/default_radio_v_04.gd" id="81_dku7i"]

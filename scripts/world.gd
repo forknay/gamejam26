@@ -45,10 +45,10 @@ func _input(event):
 			is_closet = false
 		elif is_computer:
 			zoom_out_computer()
-			is_closet = false
+			is_computer = false
 		elif is_window:
 			zoom_out_window()
-			is_closet = false
+			is_window = false
 
 func zoom_out_closet():
 	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", false)

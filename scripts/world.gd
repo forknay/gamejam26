@@ -8,7 +8,9 @@ extends Node3D
 # Vars for start position
 var start_transform : Transform3D
 var end_anim : Transform3D
-var is_zoomed_in = false
+var is_computer = false
+var is_closet = false
+var is_window = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,11 +39,27 @@ func _on_anim_done():
 	#tween.tween_property(camera, "global_transform", trans, 1.0)
 func _input(event):
 	# Temp use SPACE
-	if event.is_action_pressed("ui_accept") and is_zoomed_in:
-		zoom_out()
-		
+	if event.is_action_pressed("ui_accept"):
+		if is_closet:
+			zoom_out_closet()
+			is_closet = false
+		elif is_computer:
+			zoom_out_computer()
+			is_closet = false
+		elif is_window:
+			zoom_out_window()
+			is_closet = false
+
+func zoom_out_closet():
+	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", false)
+	$defaultRadio_v04.radio_anim_back()
+func zoom_out_computer():
+	$defaultComputer_v04.comp_anim_back()
+func zoom_out_window():
+	$defaultWindow_v04.window_anim_back()
+	
 func zoom_in_computer():
-	is_zoomed_in = true
+	is_computer = true
 	var tween = create_tween()
 	
 	#cubic = cinematic
@@ -51,7 +69,7 @@ func zoom_in_computer():
 	tween.tween_property(camera, "global_transform", target_computer.global_transform, 1.5)
 	
 func zoom_in_closet():
-	is_zoomed_in = true
+	is_closet = true
 	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
 	var tween = create_tween()
 	
@@ -62,8 +80,7 @@ func zoom_in_closet():
 	tween.tween_property(camera, "global_transform", target_closet.global_transform, 1.5)
 
 func zoom_out():
-	is_zoomed_in = false
-	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", false)
+	#is_zoomed_in = false
 
 	var tween_out = create_tween()
 	
@@ -78,21 +95,23 @@ func _process(_delta: float) -> void:
 
 func _on_static_body_3d_input_event_computer(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
 			print("COMPUTER CLICKED!")
 			#zoom_in_computer()
+			is_computer = true
 			$defaultComputer_v04.comp_anim()
 
 
 func _on_static_body_3d_input_event_closet(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
 			print("CLOSET CLICKED!")
+			is_closet = true
 			$defaultRadio_v04.radio_anim()
 
 
 func _on_static_body_3d_input_event_radio(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_zoomed_in:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_closet:
 		radio_overlay.show_overlay()
 
 func change_scene(path):
@@ -103,8 +122,9 @@ func change_scene(path):
 
 func _on_static_body_3d_input_event_window(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_window:
 			print("WINDOW CLICKED!")
+			is_window = true
 			$defaultWindow_v04.window_anim()
 
 

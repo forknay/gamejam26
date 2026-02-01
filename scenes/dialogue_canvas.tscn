@@ -45,6 +45,10 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_ujl4l")
 theme_override_font_sizes/normal_font_size = 45
 
-[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueOverlay/TextBox" unique_id=1031504563]
-visible = false
-layout_mode = 2
+[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueOverlay" unique_id=1031504563]
+layout_mode = 0
+offset_left = 1632.0
+offset_top = 815.0
+offset_right = 1848.0
+offset_bottom = 1031.0
+theme_override_constants/separation = 10

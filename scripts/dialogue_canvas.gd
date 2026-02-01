@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var text_box = $DialogueOverlay/TextBox
 @onready var dialogue_label = $DialogueOverlay/TextBox/MarginContainer/DialogueText
-@onready var choice_container = $DialogueOverlay/TextBox/ChoiceContainer
+@onready var choice_container = $DialogueOverlay/ChoiceContainer
 
 var dialogue_lines: Array = []
 var current_line_index = 0

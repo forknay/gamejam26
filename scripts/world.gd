@@ -2,8 +2,8 @@ extends Node3D
 
 # --- YOUR EXISTING VARIABLES ---
 @onready var radio_overlay = $RadioOverlay
-# Assuming you updated your Dialogue script to the new one:
 @onready var dialogue_ui = $DialogueCanvas
+@onready var day_night_sys = $DayNight
 
 @export var camera : Camera3D
 @export var target_computer : Marker3D
@@ -40,12 +40,9 @@ func setup_scene_state():
 	
 	# Example: Adjust Light Energy based on "Night" check
 	if GameManager.is_night():
-		# Assuming you have a node named SunLight, or access it via group
-		# $SunLight.energy = 0.1 
-		pass
+		day_night_sys.setNight(true)
 	else:
-		# $SunLight.energy = 1.0
-		pass
+		day_night_sys.setNight(false)
 
 	# Example: Disable Bed if it's work time
 	if GameManager.current_state == GameManager.State.DAY_1_WORK:

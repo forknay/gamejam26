@@ -1,48 +1,76 @@
 # GameManager.gd (Autoload)
 extends Node
 
-# --- STATE DEFINITIONS ---
 enum State {
-	INTRO_WAKEUP,    # Night 0
-	DAY_1_WORK,      # Day 1 Morning
-	DAY_1_EVENING,   # Day 1 Night
+	INTRO_WAKEUP,
+	DAY_1_WORK,
+	DAY_1_EVENING,
 	DAY_2_WORK,
 	DAY_2_EVENING,
+	DAY_3_WORK, # Added Day 3
 	ENDING
 }
 
 var current_state = State.INTRO_WAKEUP
 var transition_overlay : ColorRect
 var canvas_layer : CanvasLayer
+var ending_label : Label # New: To show ending text on screen
+var heard_radio_count = 0
 
 func _ready():
-	# Create a persistent black screen for fading
 	canvas_layer = CanvasLayer.new()
-	canvas_layer.layer = 100 # Always on top
+	canvas_layer.layer = 100 
 	add_child(canvas_layer)
 	
 	transition_overlay = ColorRect.new()
 	transition_overlay.color = Color.BLACK
-	transition_overlay.color.a = 0.0 # Start invisible
+	transition_overlay.color.a = 0.0
 	transition_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
-	transition_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE # Let clicks through when invisible
+	transition_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE 
 	canvas_layer.add_child(transition_overlay)
+	
+	# Create a label for ending messages
+	ending_label = Label.new()
+	ending_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ending_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	ending_label.set_anchors_preset(Control.PRESET_CENTER)
+	ending_label.modulate.a = 0.0 # Start invisible
+	canvas_layer.add_child(ending_label)
+
+func game_over(ending_type: String):
+	# 1. Fade to total black
+	await fade_out()
+	
+	# 2. Determine text
+	var msg = ""
+	match ending_type:
+		"END: RESCUED":
+			msg = "THE CHIP IS REMOVED.\nYOU ARE FREE."
+		"END: STARVED":
+			msg = "THE HUNTERS WERE BLOCKED.\nYOU DIED IN THE DARK, SAFE AND ALONE."
+		"END: ALONE":
+			msg = "SIGNAL LOST.\nAI DEACTIVATED.\nSYSTEM FAILURE."
+	
+	# 3. Show text over the black screen
+	ending_label.text = msg
+	var tween = create_tween()
+	tween.tween_property(ending_label, "modulate:a", 1.0, 2.0)
+	
+	# 4. Wait 6 seconds for the player to contemplate
+	await get_tree().create_timer(6.0).timeout
+	
+	# 5. Reset the game
+	current_state = State.INTRO_WAKEUP
+	ending_label.modulate.a = 0.0
+	get_tree().reload_current_scene()
 
 # --- TRANSITION LOGIC ---
-func advance_state(new_state):
-	# 1. Block input & Fade Out
-	transition_overlay.mouse_filter = Control.MOUSE_FILTER_STOP # Block clicks
+
+func fade_out():
+	transition_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	var tween = create_tween()
-	tween.tween_property(transition_overlay, "color:a", 1.0, 1.0) # Fade to Black
+	tween.tween_property(transition_overlay, "color:a", 1.0, 1.0)
 	await tween.finished
-	
-	# 2. Update State & Reload
-	current_state = new_state
-	get_tree().reload_current_scene()
-	
-	# 3. Wait for scene to load then Fade In
-	await get_tree().create_timer(0.5).timeout
-	fade_in()
 
 func fade_in():
 	var tween = create_tween()
@@ -50,6 +78,14 @@ func fade_in():
 	await tween.finished
 	transition_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-# --- HELPER ---
+func advance_state(new_state):
+	await fade_out()
+	current_state = new_state
+	get_tree().reload_current_scene()
+	
+	# Wait a bit for scene to settle
+	await get_tree().create_timer(0.5).timeout
+	fade_in()
+
 func is_night() -> bool:
 	return current_state in [State.INTRO_WAKEUP, State.DAY_1_EVENING, State.DAY_2_EVENING]

@@ -1,18 +1,18 @@
 extends Node3D
 
 # --- SIGNALS ---
-# This signal tells world.gd that the player won all the games
 signal all_games_finished 
 
 # --- CONFIGURATION (Assign in Inspector) ---
 @export_group("Screen Content")
-@export var day_1_games: Array[PackedScene] 
+@export var day_1_games: Array[PackedScene]
+@export var day_2_games: Array[PackedScene] 
+@export var day_3_games: Array[PackedScene] # <--- ADDED FOR CLIMAX
 @export var screen_static: PackedScene      
 
 # --- REFERENCES ---
 @onready var node_viewport = $SubViewport
 @onready var node_area = $Screen/Area3D
-# @onready var anim_player = $AnimationPlayer # Uncomment if you added the node back
 
 var is_mouse_inside = false
 
@@ -23,7 +23,6 @@ func _ready():
 	node_area.input_event.connect(_mouse_input_event)
 	
 	# 2. Connect the Signal Chain
-	# We listen to the Viewport. When it finishes, we trigger _on_sequence_finished
 	if not node_viewport.has_signal("sequence_finished"):
 		print("ERROR: SubViewport script is missing the 'sequence_finished' signal!")
 	else:
@@ -34,7 +33,7 @@ func _ready():
 
 func _on_sequence_finished():
 	print("Computer: All minigames beaten. Alerting World.")
-	all_games_finished.emit() # <--- Tells world.gd to play the "Good Job" dialogue
+	all_games_finished.emit() 
 
 func load_day_content(state):
 	match state:
@@ -43,10 +42,23 @@ func load_day_content(state):
 				node_viewport.start_game_sequence(day_1_games)
 			else:
 				print("Computer: No games assigned for Day 1!")
+				
+		GameManager.State.DAY_2_WORK: 
+			if day_2_games.size() > 0:
+				node_viewport.start_game_sequence(day_2_games)
+			else:
+				print("Computer: No games assigned for Day 2!")
+
+		GameManager.State.DAY_3_WORK: # <--- ADDED CASE
+			if day_3_games.size() > 0:
+				node_viewport.start_game_sequence(day_3_games)
+			else:
+				# Fallback: if you haven't made Day 3 specific games, use Day 2
+				node_viewport.start_game_sequence(day_2_games)
 		_: 
-			# Night time or default
 			if screen_static:
 				node_viewport.show_single_scene(screen_static)
+
 
 # --- MOUSE INPUT LOGIC (Standard) ---
 func _mouse_entered_area():

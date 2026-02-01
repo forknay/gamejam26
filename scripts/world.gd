@@ -14,6 +14,7 @@ extends Node3D
 var start_transform : Transform3D
 var end_anim : Transform3D
 
+
 var is_computer = false
 var is_closet = false
 var is_window = false
@@ -59,6 +60,14 @@ func setup_scene_state():
 				"AI: They are persistent. They want the data in your head.",
 				"AI: You know what to do. Block the incoming signals."
 			])
+		GameManager.State.DAY_3_WORK:
+			dialogue_ui.start_dialogue([
+				"AI: They're everywhere, Twin. The 'Hunters' have found the crash site.",
+				"AI: If you don't block these signals now, they'll be at our door in minutes.",
+				"AI: Do it for us. Do it to survive."
+			])
+
+# ... (Top of script remains the same) ...
 
 # --- LOGIC: COMPUTER FINISHED ---
 func _on_computer_finished():
@@ -66,24 +75,54 @@ func _on_computer_finished():
 		dialogue_ui.start_dialogue([
 			"AI: Good job...", 
 			"AI: Now they won’t bother us anymore for today.",
-			"AI: Those filthy bastards are trying to capture us and get intel from us.",
 			"AI: We need to support each other."
 		], [], _transition_to_evening)
 	
-	# NEW: Day 2 Completion
 	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
 		dialogue_ui.start_dialogue([
 			"AI: Excellent work. Their tracking drones are losing the scent.",
 			"AI: I can feel your heart racing. Calm down. We are safe... for now."
 		], [], _transition_to_evening)
+		
+	elif GameManager.current_state == GameManager.State.DAY_3_WORK:
+		# CLIMAX: No evening transition needed, we go straight to choice or ending
+		if GameManager.heard_radio_count >= 2:
+			dialogue_ui.start_dialogue(
+				["Radio: (Static) ...we are right outside. Your AI is lying to you! Remove the chip now and we can save you!"],
+				["Trust Radio (Remove Chip)", "Trust AI (Keep Jamming)"],
+				_on_final_choice
+			)
+		else:
+			dialogue_ui.start_dialogue([
+				"AI: We did it. They've given up the search.",
+				"AI: They think we're dead. Now, we can be alone together... forever.",
+				"AI: (The AI deactivates, leaving you in total silence.)"
+			], [], func(): GameManager.game_over("END: ALONE"))
+
+# ... (Final Choice and Sleep Choice remain the same) ...
 
 func _transition_to_evening():
 	# Determines which evening state to move to based on the current day
 	if GameManager.current_state == GameManager.State.DAY_1_WORK:
 		GameManager.advance_state(GameManager.State.DAY_1_EVENING)
 	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
-		# If you have a DAY_2_EVENING state defined:
 		GameManager.advance_state(GameManager.State.DAY_2_EVENING)
+	# Note: Day 3 doesn't call this, it goes straight to the endings!
+
+# ... (Rest of script remains the same) ...
+func _on_final_choice(index):
+	if index == 0: # TRUST RADIO
+		dialogue_ui.start_dialogue([
+			"Twin: (You reach behind your ear and pull the damp cooling-chip from your skull.)",
+			"AI: WH-WHAT ARE YOU DO- (Static screeching)",
+			"Radio: We have a signal! Door's open! We're here, kid."
+		], [], func(): GameManager.game_over("END: RESCUED"))
+	else: # TRUST AI
+		dialogue_ui.start_dialogue([
+			"AI: Good choice, Twin. I knew they couldn't trick you.",
+			"AI: We don't need them. We have each other.",
+			"Twin: (You sit in the dark, starving, but 'safe'.)"
+		], [], func(): GameManager.game_over("END: STARVED"))
 
 func set_back_prompt(is_visible: bool):
 	if back_prompt:
@@ -216,10 +255,10 @@ func _on_sleep_choice(index):
 		elif GameManager.current_state == GameManager.State.DAY_1_EVENING:
 			next_state = GameManager.State.DAY_2_WORK
 		elif GameManager.current_state == GameManager.State.DAY_2_EVENING:
-			# Advance to Day 3 or Ending here
-			pass
+			next_state = GameManager.State.DAY_3_WORK
 		GameManager.advance_state(next_state)
 
 func _on_static_body_3d_input_event_radio(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_closet:
 		radio_overlay.show_overlay()
+		GameManager.heard_radio_count += 1

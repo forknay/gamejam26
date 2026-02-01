@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx4c1o41hbi1j"
-path.s3tc="res://.godot/imported/Metal062C_2K-JPG_NormalDX.jpg-1812f2740dd8634ae409c15d1dd97e8b.s3tc.ctex"
+path.s3tc="res://.godot/imported/Metal062C_2K-JPG_NormalDX.jpg-4a3546ae3278f0b317e1113780f022e6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg"
-dest_files=["res://.godot/imported/Metal062C_2K-JPG_NormalDX.jpg-1812f2740dd8634ae409c15d1dd97e8b.s3tc.ctex"]
+source_file="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg"
+dest_files=["res://.godot/imported/Metal062C_2K-JPG_NormalDX.jpg-4a3546ae3278f0b317e1113780f022e6.s3tc.ctex"]
 
 [params]
 

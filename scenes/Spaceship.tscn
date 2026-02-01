@@ -6,10 +6,12 @@
 [ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="3_02bju"]
 [ext_resource type="Texture2D" uid="uid://iqel25f470po" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Metalness.jpg" id="3_hjbl5"]
 [ext_resource type="Texture2D" uid="uid://bx4c1o41hbi1j" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg" id="4_7d41o"]
-[ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="4_ea6bw"]
+[ext_resource type="PackedScene" uid="uid://de2snmx8bnuni" path="res://Scenes/node_3d.tscn" id="4_ea6bw"]
 [ext_resource type="Texture2D" uid="uid://badjfcwmxbxif" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Roughness.jpg" id="5_4er4g"]
 [ext_resource type="Texture2D" uid="uid://cu2pjwxi25qsr" path="res://Scenes/Spaceship/textures/Fabric080_2K-JPG_Color.jpg" id="7_7d41o"]
 [ext_resource type="Texture2D" uid="uid://r31asy3jgy5j" path="res://Scenes/Spaceship/textures/Fabric062_2K-JPG_Color.jpg" id="8_4er4g"]
+[ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="11_4er4g"]
+[ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="12_mluna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjbl5"]
 albedo_texture = ExtResource("2_45h3q")
@@ -91,8 +93,8 @@ shader_parameter/pixel_size = 3
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ea6bw"]
 sky_top_color = Color(0, 0, 0, 1)
 sky_horizon_color = Color(0.56078434, 0.36862746, 0.17254902, 1)
-sky_curve = 0.1218379
-sky_energy_multiplier = 0.5
+sky_curve = 0.067593835
+sky_energy_multiplier = 4.0
 ground_bottom_color = Color(0.27058825, 0.1254902, 0.09019608, 1)
 ground_horizon_color = Color(0.60784316, 0.4627451, 0.25490198, 1)
 
@@ -112,70 +114,70 @@ volumetric_fog_albedo = Color(0.57696825, 0.17190048, 0.077964164, 1)
 
 [node name="ASM - PBR Metallic Roughness" unique_id=2052187317 instance=ExtResource("1_hvh5m")]
 
-[node name="wall_3 walls spaceship2" parent="spaceShip_v03_obj/wall_3 walls spaceship" parent_id_path=PackedInt32Array(646750289) index="0" unique_id=1813197202]
+[node name="wall_3 walls spaceship2" parent="spaceShip_v03_obj/wall_3 walls spaceship" parent_id_path=PackedInt32Array(1587830308) index="0" unique_id=1071675521]
 material_override = SubResource("StandardMaterial3D_hjbl5")
 
-[node name="walls spaceship wall_12" parent="spaceShip_v03_obj/walls spaceship wall_1" parent_id_path=PackedInt32Array(396822861) index="0" unique_id=1087427272]
+[node name="walls spaceship wall_12" parent="spaceShip_v03_obj/walls spaceship wall_1" parent_id_path=PackedInt32Array(99272481) index="0" unique_id=1487614322]
 material_override = SubResource("StandardMaterial3D_7d41o")
 
-[node name="walls spaceship wall_22" parent="spaceShip_v03_obj/walls spaceship wall_2" parent_id_path=PackedInt32Array(620654097) index="0" unique_id=1773946203]
+[node name="walls spaceship wall_22" parent="spaceShip_v03_obj/walls spaceship wall_2" parent_id_path=PackedInt32Array(1120831299) index="0" unique_id=461870811]
 material_override = SubResource("StandardMaterial3D_4er4g")
 
-[node name="walls spaceship wall_52" parent="spaceShip_v03_obj/walls spaceship wall_5" parent_id_path=PackedInt32Array(685811300) index="0" unique_id=2011068455]
+[node name="walls spaceship wall_52" parent="spaceShip_v03_obj/walls spaceship wall_5" parent_id_path=PackedInt32Array(959235867) index="0" unique_id=512141173]
 material_override = SubResource("StandardMaterial3D_45h3q")
 
-[node name="walls spaceship wall_62" parent="spaceShip_v03_obj/walls spaceship wall_6" parent_id_path=PackedInt32Array(666165552) index="0" unique_id=650654909]
+[node name="walls spaceship wall_62" parent="spaceShip_v03_obj/walls spaceship wall_6" parent_id_path=PackedInt32Array(1734502100) index="0" unique_id=1831213472]
 material_override = SubResource("StandardMaterial3D_gg6f3")
 
-[node name="walls spaceship wall_72" parent="spaceShip_v03_obj/walls spaceship wall_7" parent_id_path=PackedInt32Array(438427518) index="0" unique_id=1878522924]
+[node name="walls spaceship wall_72" parent="spaceShip_v03_obj/walls spaceship wall_7" parent_id_path=PackedInt32Array(625322384) index="0" unique_id=841319333]
 material_override = SubResource("StandardMaterial3D_7d41o")
 
-[node name="walls spaceship wall_82" parent="spaceShip_v03_obj/walls spaceship wall_8" parent_id_path=PackedInt32Array(945445168) index="0" unique_id=967676529]
+[node name="walls spaceship wall_82" parent="spaceShip_v03_obj/walls spaceship wall_8" parent_id_path=PackedInt32Array(1065423002) index="0" unique_id=369866878]
 material_override = SubResource("StandardMaterial3D_7d41o")
 
-[node name="walls spaceship wall_92" parent="spaceShip_v03_obj/walls spaceship wall_9" parent_id_path=PackedInt32Array(2009068224) index="0" unique_id=813703501]
+[node name="walls spaceship wall_92" parent="spaceShip_v03_obj/walls spaceship wall_9" parent_id_path=PackedInt32Array(1311269899) index="0" unique_id=1737782607]
 material_override = SubResource("StandardMaterial3D_7d41o")
 
-[node name="walls spaceship wall_102" parent="spaceShip_v03_obj/walls spaceship wall_10" parent_id_path=PackedInt32Array(1528930762) index="0" unique_id=385077510]
+[node name="walls spaceship wall_102" parent="spaceShip_v03_obj/walls spaceship wall_10" parent_id_path=PackedInt32Array(1921137596) index="0" unique_id=40080779]
 material_override = SubResource("StandardMaterial3D_mluna")
 
-[node name="walls spaceship wall_112" parent="spaceShip_v03_obj/walls spaceship wall_11" parent_id_path=PackedInt32Array(670545495) index="0" unique_id=1734963449]
+[node name="walls spaceship wall_112" parent="spaceShip_v03_obj/walls spaceship wall_11" parent_id_path=PackedInt32Array(1450737971) index="0" unique_id=1148070851]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="walls spaceship wall_123" parent="spaceShip_v03_obj/walls spaceship wall_122" parent_id_path=PackedInt32Array(500295919) index="0" unique_id=1596712279]
+[node name="walls spaceship wall_123" parent="spaceShip_v03_obj/walls spaceship wall_122" parent_id_path=PackedInt32Array(545935104) index="0" unique_id=1408933047]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="walls spaceship wall_132" parent="spaceShip_v03_obj/walls spaceship wall_13" parent_id_path=PackedInt32Array(1872377369) index="0" unique_id=960814727]
+[node name="walls spaceship wall_132" parent="spaceShip_v03_obj/walls spaceship wall_13" parent_id_path=PackedInt32Array(703335618) index="0" unique_id=310282352]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="walls spaceship wall_152" parent="spaceShip_v03_obj/walls spaceship wall_15" parent_id_path=PackedInt32Array(1615972614) index="0" unique_id=1252271504]
+[node name="walls spaceship wall_152" parent="spaceShip_v03_obj/walls spaceship wall_15" parent_id_path=PackedInt32Array(1798288427) index="0" unique_id=205023930]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="walls spaceship wall_162" parent="spaceShip_v03_obj/walls spaceship wall_16" parent_id_path=PackedInt32Array(2089022535) index="0" unique_id=876001502]
+[node name="walls spaceship wall_162" parent="spaceShip_v03_obj/walls spaceship wall_16" parent_id_path=PackedInt32Array(1028153824) index="0" unique_id=148750297]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="walls spaceship window" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(208081361) index="14" unique_id=1224380729]
+[node name="walls spaceship window" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="14" unique_id=1242154244]
 visible = false
 
-[node name="walls spaceship window2" parent="spaceShip_v03_obj/walls spaceship window" index="0" unique_id=1107324376]
+[node name="walls spaceship window2" parent="spaceShip_v03_obj/walls spaceship window" index="0" unique_id=737234998]
 material_override = SubResource("StandardMaterial3D_hvh5m")
 
-[node name="spaceship floor_1 topfloor2" parent="spaceShip_v03_obj/spaceship floor_1 topfloor" parent_id_path=PackedInt32Array(1711371875) index="0" unique_id=1786717146]
+[node name="spaceship floor_1 topfloor2" parent="spaceShip_v03_obj/spaceship floor_1 topfloor" parent_id_path=PackedInt32Array(2101366113) index="0" unique_id=1297721986]
 material_override = SubResource("StandardMaterial3D_xff3i")
 
-[node name="spaceship topfloor roof_12" parent="spaceShip_v03_obj/spaceship topfloor roof_1" parent_id_path=PackedInt32Array(624724214) index="0" unique_id=1508468619]
+[node name="spaceship topfloor roof_12" parent="spaceShip_v03_obj/spaceship topfloor roof_1" parent_id_path=PackedInt32Array(702290822) index="0" unique_id=1964485330]
 material_override = SubResource("StandardMaterial3D_xff3i")
 
-[node name="spaceship door_1 closets_door2" parent="spaceShip_v03_obj/spaceship door_1 closets_door" parent_id_path=PackedInt32Array(1526663146) index="0" unique_id=1252360111]
+[node name="spaceship door_1 closets_door2" parent="spaceShip_v03_obj/spaceship door_1 closets_door" parent_id_path=PackedInt32Array(541715081) index="0" unique_id=1490768949]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="spaceship closets_door door_22" parent="spaceShip_v03_obj/spaceship closets_door door_2" parent_id_path=PackedInt32Array(723558794) index="0" unique_id=1569892884]
+[node name="spaceship closets_door door_22" parent="spaceShip_v03_obj/spaceship closets_door door_2" parent_id_path=PackedInt32Array(784839469) index="0" unique_id=1127998718]
 material_override = SubResource("StandardMaterial3D_5i0y1")
 
-[node name="spaceship industrial_wall_lamp lamp2" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1333761477) index="0" unique_id=1056100068]
+[node name="spaceship industrial_wall_lamp lamp2" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(285097465) index="0" unique_id=1698658666]
 material_override = SubResource("StandardMaterial3D_8n8ju")
 
-[node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(1333761477) index="1" unique_id=681700237]
+[node name="spaceship industrial_wall_lamp lamp3" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" parent_id_path=PackedInt32Array(285097465) index="1" unique_id=677768982]
 material_override = SubResource("StandardMaterial3D_dwvvg")
 script = ExtResource("2_ea6bw")
 
@@ -184,20 +186,41 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -117.583084, 249.36769,
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.0
 
-[node name="spaceship bed beds2" parent="spaceShip_v03_obj/spaceship bed beds" parent_id_path=PackedInt32Array(480344953) index="0" unique_id=776347355]
+[node name="spaceship radio_body radio" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="20" unique_id=1678121341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_lights" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="21" unique_id=1547943129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_antenna_1" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="22" unique_id=2103127878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_antenna_2" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="23" unique_id=1626577596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_antenna_3" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="24" unique_id=2135422502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_extra_1" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="25" unique_id=1099661897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship radio radio_extra_2" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="26" unique_id=866476398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
+
+[node name="spaceship bed beds2" parent="spaceShip_v03_obj/spaceship bed beds" parent_id_path=PackedInt32Array(15334107) index="0" unique_id=140826492]
 material_override = SubResource("StandardMaterial3D_3jwbg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(208081361) index="29" unique_id=723748639]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="29" unique_id=723748639]
 transform = Transform3D(-1.9073486e-06, 397.18787, 0, 0.35821572, 2.9737856e-07, -24.997437, -24.99743, -2.900149e-05, -0.35821566, -17.956419, 265.4234, 8.19061)
 material_override = SubResource("StandardMaterial3D_f3yfn")
 mesh = SubResource("CapsuleMesh_45h3q")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(208081361) index="30" unique_id=1761334978]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="spaceShip_v03_obj" parent_id_path=PackedInt32Array(1035004726) index="30" unique_id=1761334978]
 transform = Transform3D(-1.0927847e-06, -368.87244, 0, -0.3582157, 0, -24.997433, 24.997433, -1.6119808e-05, -0.3582157, 58.5566, 263.20264, -12.708488)
 material_override = SubResource("StandardMaterial3D_f3yfn")
 mesh = SubResource("CapsuleMesh_45h3q")
 
-[node name="spaceship beds pillow2" parent="spaceShip_v03_obj/spaceship beds pillow" parent_id_path=PackedInt32Array(1830016552) index="0" unique_id=815072599]
+[node name="spaceship beds pillow2" parent="spaceShip_v03_obj/spaceship beds pillow" parent_id_path=PackedInt32Array(260576863) index="0" unique_id=11244577]
 material_override = SubResource("StandardMaterial3D_o17x1")
 
 [node name="Camera3D" type="Camera3D" parent="." index="1" unique_id=903503559]
@@ -227,3 +250,8 @@ sky_mode = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="DirectionalLight3D" index="0" unique_id=1284864931]
 transform = Transform3D(1, -7.450581e-09, 2.9802322e-08, 0, 1.0000001, 7.450581e-09, 0, 3.7252903e-09, 1.0000001, -14.62508, -12.75104, 39.882477)
+
+[node name="radio" parent="." index="6" unique_id=972764560 instance=ExtResource("11_4er4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061321616, 0.09376502, 0.14024949)
+
+[node name="radio" parent="radio" index="1" unique_id=1269743934 instance=ExtResource("12_mluna")]

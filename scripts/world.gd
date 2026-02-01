@@ -5,6 +5,8 @@ extends Node3D
 @onready var dialogue_ui = $DialogueCanvas
 @onready var day_night_sys = $DayNight
 @onready var back_prompt = $DialogueCanvas/BackPrompt
+@onready var alarm_signal = $Spaceship/Windows/Window
+
 
 @export var camera : Camera3D
 @export var target_computer : Marker3D
@@ -73,6 +75,7 @@ func setup_scene_state():
 	# --- STORY PROGRESSION: MORNING DIALOGUE ---
 	match GameManager.current_state:
 		GameManager.State.DAY_1_WORK:
+			alarm_signal.start_alarm()
 			dialogue_ui.start_dialogue([
 				"AI: Wake up! The opposition is starting to HUNT us!", 
 				"AI: We need to jam their tracking signals.",
@@ -81,12 +84,14 @@ func setup_scene_state():
 		
 		# NEW: Day 2 Morning Lore
 		GameManager.State.DAY_2_WORK:
+			alarm_signal.start_alarm()
 			dialogue_ui.start_dialogue([
 				"AI: Wake up, Twin... we're under attack again.",
 				"AI: They are persistent. They want the data in your head.",
 				"AI: You know what to do. Block the incoming signals."
 			])
 		GameManager.State.DAY_3_WORK:
+			alarm_signal.start_alarm()
 			dialogue_ui.start_dialogue([
 				"AI: They're everywhere, Twin. The 'Hunters' have found the crash site.",
 				"AI: If you don't block these signals now, they'll be at our door in minutes.",
@@ -98,6 +103,7 @@ func setup_scene_state():
 # --- LOGIC: COMPUTER FINISHED ---
 func _on_computer_finished():
 	if GameManager.current_state == GameManager.State.DAY_1_WORK:
+		alarm_signal.stop_alarm()
 		dialogue_ui.start_dialogue([
 			"AI: Good job...", 
 			"AI: Now they won’t bother us anymore for today.",
@@ -105,13 +111,14 @@ func _on_computer_finished():
 		], [], _transition_to_evening)
 	
 	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
+		alarm_signal.stop_alarm()
 		dialogue_ui.start_dialogue([
 			"AI: Excellent work. Their tracking drones are losing the scent.",
 			"AI: I can feel your heart racing. Calm down. We are safe... for now."
 		], [], _transition_to_evening)
 		
 	elif GameManager.current_state == GameManager.State.DAY_3_WORK:
-		# CLIMAX: No evening transition needed, we go straight to choice or ending
+		alarm_signal.stop_alarm()
 		if GameManager.heard_radio_count >= 2:
 			dialogue_ui.start_dialogue(
 				["Radio: (Static) ...we are right outside. Your AI is lying to you! Remove the chip now and we can save you!"],

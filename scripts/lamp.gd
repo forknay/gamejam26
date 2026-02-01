@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 # This looks for a child node named exactly "OmniLight3D"
-@onready var light_node = $OmniLight3D 
+@onready var light_node = $Alarm 
 
 var is_alarm_on: bool = false
 var tween: Tween

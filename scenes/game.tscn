@@ -78,7 +78,7 @@
 [ext_resource type="PackedScene" uid="uid://3il8njkibrx" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 [ext_resource type="PackedScene" uid="uid://b61reuthpexnb" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
 [ext_resource type="PackedScene" uid="uid://bbye1smrqgm7h" path="res://Animations/defaultComputer_v04.fbx" id="78_fkywm"]
-[ext_resource type="Script" path="res://Scripts/opening_cam_v_04.gd" id="78_s0g06"]
+[ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://Scripts/opening_cam_v_04.gd" id="78_s0g06"]
 [ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://Scripts/default_computer_v_04.gd" id="79_dku7i"]
 [ext_resource type="PackedScene" uid="uid://b0d3ga1ak5qbd" path="res://Animations/defaultRadio_v04.fbx" id="80_veaf0"]
 [ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://Scripts/default_radio_v_04.gd" id="81_dku7i"]
@@ -1553,213 +1553,213 @@ mesh = SubResource("BoxMesh_f3sb7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RadioBridge/StaticBody3D" unique_id=945780002]
 shape = SubResource("ConcavePolygonShape3D_tlwt5")
 
-[node name="spaceShip_v03_obj" type="Node3D" parent="." unique_id=2030177951]
+[node name="Spaceship" type="Node3D" parent="." unique_id=2030177951]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 
-[node name="wall_3 walls spaceship" type="Node3D" parent="spaceShip_v03_obj" unique_id=916099881]
+[node name="wall_3 walls spaceship" type="Node3D" parent="Spaceship" unique_id=916099881]
 
-[node name="wall_3 walls spaceship2" type="MeshInstance3D" parent="spaceShip_v03_obj/wall_3 walls spaceship" unique_id=1435401888]
+[node name="wall_3 walls spaceship2" type="MeshInstance3D" parent="Spaceship/wall_3 walls spaceship" unique_id=1435401888]
 material_override = SubResource("StandardMaterial3D_fccuv")
 mesh = SubResource("ArrayMesh_nej56")
 
-[node name="walls spaceship wall_1" type="Node3D" parent="spaceShip_v03_obj" unique_id=1634833257]
+[node name="walls spaceship wall_1" type="Node3D" parent="Spaceship" unique_id=1634833257]
 
-[node name="walls spaceship wall_12" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_1" unique_id=1294451971]
+[node name="walls spaceship wall_12" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_1" unique_id=1294451971]
 material_override = SubResource("StandardMaterial3D_vgiqa")
 mesh = SubResource("ArrayMesh_x2ts8")
 
-[node name="walls spaceship wall_2" type="Node3D" parent="spaceShip_v03_obj" unique_id=1661165809]
+[node name="walls spaceship wall_2" type="Node3D" parent="Spaceship" unique_id=1661165809]
 
-[node name="walls spaceship wall_22" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_2" unique_id=73779253]
+[node name="walls spaceship wall_22" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_2" unique_id=73779253]
 material_override = SubResource("StandardMaterial3D_1fiuy")
 mesh = SubResource("ArrayMesh_iwdqm")
 
-[node name="walls spaceship wall_5" type="Node3D" parent="spaceShip_v03_obj" unique_id=1693922293]
+[node name="walls spaceship wall_5" type="Node3D" parent="Spaceship" unique_id=1693922293]
 
-[node name="walls spaceship wall_52" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_5" unique_id=1673145157]
+[node name="walls spaceship wall_52" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_5" unique_id=1673145157]
 material_override = SubResource("StandardMaterial3D_l0ny2")
 mesh = SubResource("ArrayMesh_6cwij")
 
-[node name="walls spaceship wall_6" type="Node3D" parent="spaceShip_v03_obj" unique_id=1065217399]
+[node name="walls spaceship wall_6" type="Node3D" parent="Spaceship" unique_id=1065217399]
 
-[node name="walls spaceship wall_62" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_6" unique_id=1476422208]
+[node name="walls spaceship wall_62" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_6" unique_id=1476422208]
 material_override = SubResource("StandardMaterial3D_bqsge")
 mesh = SubResource("ArrayMesh_osiit")
 
-[node name="walls spaceship wall_7" type="Node3D" parent="spaceShip_v03_obj" unique_id=509280346]
+[node name="walls spaceship wall_7" type="Node3D" parent="Spaceship" unique_id=509280346]
 
-[node name="walls spaceship wall_72" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_7" unique_id=1064853534]
+[node name="walls spaceship wall_72" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_7" unique_id=1064853534]
 material_override = SubResource("StandardMaterial3D_vgiqa")
 mesh = SubResource("ArrayMesh_d1om7")
 
-[node name="walls spaceship wall_8" type="Node3D" parent="spaceShip_v03_obj" unique_id=300558863]
+[node name="walls spaceship wall_8" type="Node3D" parent="Spaceship" unique_id=300558863]
 
-[node name="walls spaceship wall_82" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_8" unique_id=760937222]
+[node name="walls spaceship wall_82" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_8" unique_id=760937222]
 material_override = SubResource("StandardMaterial3D_vgiqa")
 mesh = SubResource("ArrayMesh_uh8v6")
 
-[node name="walls spaceship wall_9" type="Node3D" parent="spaceShip_v03_obj" unique_id=2070595841]
+[node name="walls spaceship wall_9" type="Node3D" parent="Spaceship" unique_id=2070595841]
 
-[node name="walls spaceship wall_92" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_9" unique_id=1598275888]
+[node name="walls spaceship wall_92" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_9" unique_id=1598275888]
 material_override = SubResource("StandardMaterial3D_vgiqa")
 mesh = SubResource("ArrayMesh_0mjh4")
 
-[node name="walls spaceship wall_10" type="Node3D" parent="spaceShip_v03_obj" unique_id=1819524756]
+[node name="walls spaceship wall_10" type="Node3D" parent="Spaceship" unique_id=1819524756]
 
-[node name="walls spaceship wall_102" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_10" unique_id=655528540]
+[node name="walls spaceship wall_102" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_10" unique_id=655528540]
 material_override = SubResource("StandardMaterial3D_bkxpl")
 mesh = SubResource("ArrayMesh_g33qm")
 
-[node name="walls spaceship wall_11" type="Node3D" parent="spaceShip_v03_obj" unique_id=518373365]
+[node name="walls spaceship wall_11" type="Node3D" parent="Spaceship" unique_id=518373365]
 
-[node name="walls spaceship wall_112" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_11" unique_id=1300635835]
+[node name="walls spaceship wall_112" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_11" unique_id=1300635835]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_uaaia")
 
-[node name="walls spaceship wall_122" type="Node3D" parent="spaceShip_v03_obj" unique_id=622295479]
+[node name="walls spaceship wall_122" type="Node3D" parent="Spaceship" unique_id=622295479]
 
-[node name="walls spaceship wall_123" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_122" unique_id=1052634707]
+[node name="walls spaceship wall_123" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_122" unique_id=1052634707]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_k4q15")
 
-[node name="walls spaceship wall_13" type="Node3D" parent="spaceShip_v03_obj" unique_id=1255147106]
+[node name="walls spaceship wall_13" type="Node3D" parent="Spaceship" unique_id=1255147106]
 
-[node name="walls spaceship wall_132" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_13" unique_id=319099873]
+[node name="walls spaceship wall_132" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_13" unique_id=319099873]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_rowo6")
 
-[node name="walls spaceship wall_15" type="Node3D" parent="spaceShip_v03_obj" unique_id=1123780357]
+[node name="walls spaceship wall_15" type="Node3D" parent="Spaceship" unique_id=1123780357]
 
-[node name="walls spaceship wall_152" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_15" unique_id=1546512928]
+[node name="walls spaceship wall_152" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_15" unique_id=1546512928]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_nmeq6")
 
-[node name="walls spaceship wall_16" type="Node3D" parent="spaceShip_v03_obj" unique_id=1549620728]
+[node name="walls spaceship wall_16" type="Node3D" parent="Spaceship" unique_id=1549620728]
 
-[node name="walls spaceship wall_162" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship wall_16" unique_id=931617749]
+[node name="walls spaceship wall_162" type="MeshInstance3D" parent="Spaceship/walls spaceship wall_16" unique_id=931617749]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_ae4wi")
 
-[node name="walls spaceship window" type="Node3D" parent="spaceShip_v03_obj" unique_id=1111493604]
+[node name="walls spaceship window" type="Node3D" parent="Spaceship" unique_id=1111493604]
 
-[node name="walls spaceship window2" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship window" unique_id=1654398405]
+[node name="walls spaceship window2" type="MeshInstance3D" parent="Spaceship/walls spaceship window" unique_id=1654398405]
 visible = false
 material_override = SubResource("StandardMaterial3D_n5r5x")
 mesh = SubResource("ArrayMesh_152wt")
 
-[node name="spaceship floor_1 topfloor" type="Node3D" parent="spaceShip_v03_obj" unique_id=1115008522]
+[node name="spaceship floor_1 topfloor" type="Node3D" parent="Spaceship" unique_id=1115008522]
 
-[node name="spaceship floor_1 topfloor2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship floor_1 topfloor" unique_id=1868717639]
+[node name="spaceship floor_1 topfloor2" type="MeshInstance3D" parent="Spaceship/spaceship floor_1 topfloor" unique_id=1868717639]
 material_override = SubResource("StandardMaterial3D_rjeju")
 mesh = SubResource("ArrayMesh_texxq")
 
-[node name="spaceship topfloor roof_1" type="Node3D" parent="spaceShip_v03_obj" unique_id=2110830673]
+[node name="spaceship topfloor roof_1" type="Node3D" parent="Spaceship" unique_id=2110830673]
 
-[node name="spaceship topfloor roof_12" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship topfloor roof_1" unique_id=271565287]
+[node name="spaceship topfloor roof_12" type="MeshInstance3D" parent="Spaceship/spaceship topfloor roof_1" unique_id=271565287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14561415, -0.20924807, 0.10609627)
 material_override = SubResource("StandardMaterial3D_rjeju")
 mesh = SubResource("ArrayMesh_bdqdv")
 
-[node name="spaceship door_1 closets_door" type="Node3D" parent="spaceShip_v03_obj" unique_id=1755667451]
+[node name="spaceship door_1 closets_door" type="Node3D" parent="Spaceship" unique_id=1755667451]
 
-[node name="spaceship door_1 closets_door2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship door_1 closets_door" unique_id=678533410]
+[node name="spaceship door_1 closets_door2" type="MeshInstance3D" parent="Spaceship/spaceship door_1 closets_door" unique_id=678533410]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_4kxhu")
 
-[node name="spaceship closets_door door_2" type="Node3D" parent="spaceShip_v03_obj" unique_id=677347936]
+[node name="spaceship closets_door door_2" type="Node3D" parent="Spaceship" unique_id=677347936]
 
-[node name="spaceship closets_door door_22" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship closets_door door_2" unique_id=1706663587]
+[node name="spaceship closets_door door_22" type="MeshInstance3D" parent="Spaceship/spaceship closets_door door_2" unique_id=1706663587]
 material_override = SubResource("StandardMaterial3D_hy75c")
 mesh = SubResource("ArrayMesh_vv4rj")
 
-[node name="spaceship industrial_wall_lamp lamp" type="Node3D" parent="spaceShip_v03_obj" unique_id=1067513723]
+[node name="Windows" type="Node3D" parent="Spaceship" unique_id=1067513723]
 
-[node name="spaceship industrial_wall_lamp lamp2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" unique_id=278046121]
+[node name="spaceship industrial_wall_lamp lamp2" type="MeshInstance3D" parent="Spaceship/Windows" unique_id=278046121]
 material_override = SubResource("StandardMaterial3D_nc1gq")
 mesh = SubResource("ArrayMesh_qw3q1")
 
-[node name="spaceship industrial_wall_lamp lamp3" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp" unique_id=300411932]
+[node name="Window" type="MeshInstance3D" parent="Spaceship/Windows" unique_id=300411932]
 material_override = SubResource("StandardMaterial3D_yakp7")
 mesh = SubResource("ArrayMesh_rso44")
 script = ExtResource("42_8tghg")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="spaceShip_v03_obj/spaceship industrial_wall_lamp lamp/spaceship industrial_wall_lamp lamp3" unique_id=1382265325]
+[node name="Alarm" type="OmniLight3D" parent="Spaceship/Windows/Window" unique_id=1382265325]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -117.583084, 249.36769, -248.55309)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.0
 
-[node name="spaceship radio_body radio" type="Node3D" parent="spaceShip_v03_obj" unique_id=1053254792]
+[node name="spaceship radio_body radio" type="Node3D" parent="Spaceship" unique_id=1053254792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio_body radio2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio_body radio" unique_id=1301103747]
+[node name="spaceship radio_body radio2" type="MeshInstance3D" parent="Spaceship/spaceship radio_body radio" unique_id=1301103747]
 mesh = SubResource("ArrayMesh_i0g1p")
 
-[node name="spaceship radio radio_lights" type="Node3D" parent="spaceShip_v03_obj" unique_id=686983916]
+[node name="spaceship radio radio_lights" type="Node3D" parent="Spaceship" unique_id=686983916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_lights2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_lights" unique_id=1867836712]
+[node name="spaceship radio radio_lights2" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_lights" unique_id=1867836712]
 mesh = SubResource("ArrayMesh_ougo0")
 
-[node name="spaceship radio radio_antenna_1" type="Node3D" parent="spaceShip_v03_obj" unique_id=2077709028]
+[node name="spaceship radio radio_antenna_1" type="Node3D" parent="Spaceship" unique_id=2077709028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_antenna_12" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_antenna_1" unique_id=140640958]
+[node name="spaceship radio radio_antenna_12" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_antenna_1" unique_id=140640958]
 mesh = SubResource("ArrayMesh_4hyal")
 
-[node name="spaceship radio radio_antenna_2" type="Node3D" parent="spaceShip_v03_obj" unique_id=1603535999]
+[node name="spaceship radio radio_antenna_2" type="Node3D" parent="Spaceship" unique_id=1603535999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_antenna_22" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_antenna_2" unique_id=407455544]
+[node name="spaceship radio radio_antenna_22" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_antenna_2" unique_id=407455544]
 mesh = SubResource("ArrayMesh_tif2q")
 
-[node name="spaceship radio radio_antenna_3" type="Node3D" parent="spaceShip_v03_obj" unique_id=305728270]
+[node name="spaceship radio radio_antenna_3" type="Node3D" parent="Spaceship" unique_id=305728270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_antenna_32" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_antenna_3" unique_id=109198633]
+[node name="spaceship radio radio_antenna_32" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_antenna_3" unique_id=109198633]
 mesh = SubResource("ArrayMesh_rdi5s")
 
-[node name="spaceship radio radio_extra_1" type="Node3D" parent="spaceShip_v03_obj" unique_id=856881101]
+[node name="spaceship radio radio_extra_1" type="Node3D" parent="Spaceship" unique_id=856881101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_extra_12" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_extra_1" unique_id=142297273]
+[node name="spaceship radio radio_extra_12" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_extra_1" unique_id=142297273]
 mesh = SubResource("ArrayMesh_k0l5t")
 
-[node name="spaceship radio radio_extra_2" type="Node3D" parent="spaceShip_v03_obj" unique_id=1347351677]
+[node name="spaceship radio radio_extra_2" type="Node3D" parent="Spaceship" unique_id=1347351677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7650.1597)
 
-[node name="spaceship radio radio_extra_22" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship radio radio_extra_2" unique_id=1155284210]
+[node name="spaceship radio radio_extra_22" type="MeshInstance3D" parent="Spaceship/spaceship radio radio_extra_2" unique_id=1155284210]
 mesh = SubResource("ArrayMesh_03dbc")
 
-[node name="spaceship computer computer" type="Node3D" parent="spaceShip_v03_obj" unique_id=1840759482]
+[node name="spaceship computer computer" type="Node3D" parent="Spaceship" unique_id=1840759482]
 
-[node name="spaceship computer computer2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship computer computer" unique_id=2139947426]
+[node name="spaceship computer computer2" type="MeshInstance3D" parent="Spaceship/spaceship computer computer" unique_id=2139947426]
 visible = false
 mesh = SubResource("ArrayMesh_8djkq")
 
-[node name="spaceship bed beds" type="Node3D" parent="spaceShip_v03_obj" unique_id=315454653]
+[node name="spaceship bed beds" type="Node3D" parent="Spaceship" unique_id=315454653]
 
-[node name="spaceship bed beds2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship bed beds" unique_id=1180078342]
+[node name="spaceship bed beds2" type="MeshInstance3D" parent="Spaceship/spaceship bed beds" unique_id=1180078342]
 material_override = SubResource("StandardMaterial3D_8wuql")
 mesh = SubResource("ArrayMesh_oa88d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="spaceShip_v03_obj" unique_id=258235883]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spaceship" unique_id=258235883]
 transform = Transform3D(-1.9073486e-06, 397.18787, 0, 0.35821572, 2.9737856e-07, -24.997437, -24.99743, -2.900149e-05, -0.35821566, -17.956419, 265.4234, 8.19061)
 material_override = SubResource("StandardMaterial3D_lygv6")
 mesh = SubResource("CapsuleMesh_ufjh3")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="spaceShip_v03_obj" unique_id=815854711]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spaceship" unique_id=815854711]
 transform = Transform3D(-1.0927847e-06, -368.87244, 0, -0.3582157, 0, -24.997433, 24.997433, -1.6119808e-05, -0.3582157, 58.5566, 263.20264, -12.708488)
 material_override = SubResource("StandardMaterial3D_lygv6")
 mesh = SubResource("CapsuleMesh_ufjh3")
 
-[node name="spaceship beds pillow" type="Node3D" parent="spaceShip_v03_obj" unique_id=740735066]
+[node name="spaceship beds pillow" type="Node3D" parent="Spaceship" unique_id=740735066]
 
-[node name="spaceship beds pillow2" type="MeshInstance3D" parent="spaceShip_v03_obj/spaceship beds pillow" unique_id=139303069]
+[node name="spaceship beds pillow2" type="MeshInstance3D" parent="Spaceship/spaceship beds pillow" unique_id=139303069]
 material_override = SubResource("StandardMaterial3D_eio5l")
 mesh = SubResource("ArrayMesh_jqiwq")
 
 [node name="Node3D" parent="." unique_id=314615975 instance=ExtResource("70_sxt1d")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.3135743, 1.2710932, -3.2082834)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.3135743, 1.3176984, -3.2082834)
 
 [node name="DayNight" type="Node3D" parent="." unique_id=1874549406]
 transform = Transform3D(0.4285333, 0.15435353, -0.89024395, -0.1716533, 0.98126334, 0.0875067, 0.8870707, 0.11531377, 0.4469993, 5.778244, 3.0000668, -2.5655308)
@@ -1806,13 +1806,13 @@ mouse_filter = 2
 [node name="openingCam_v04" parent="." unique_id=864377999 instance=ExtResource("74_3x338")]
 script = ExtResource("78_s0g06")
 
-[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1376350683]
+[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1338415636]
 transform = Transform3D(0.7664358, 0, -0.64232093, 0, 1, 0, 0.64232093, 0, 0.7664358, -2.369482, 1.147273, 1.1104856)
 
 [node name="defaultComputer_v04" parent="." unique_id=1415429130 instance=ExtResource("78_fkywm")]
 script = ExtResource("79_dku7i")
 
-[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1346608576]
+[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1660020586]
 transform = Transform3D(0.7664358, -1.6183634e-12, -0.64232093, -1.585726e-11, 1, -2.1440894e-11, 0.64232093, 2.6618518e-11, 0.7664358, -2.369482, 1.147273, 1.1104856)
 fov = 45.7
 
@@ -1822,7 +1822,7 @@ script = ExtResource("81_dku7i")
 [node name="defaultWindow_v04" parent="." unique_id=1766276658 instance=ExtResource("81_flw08")]
 script = ExtResource("83_veaf0")
 
-[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=1905451023]
+[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=1476147172]
 transform = Transform3D(0.12366737, -0.035827994, -0.99167675, -0.0126763955, 0.9992094, -0.037680954, 0.99224275, 0.01723079, 0.12311543, 2.806097, 1.0877379, 0.106592394)
 
 [node name="overlay" type="Control" parent="." unique_id=2141005858]

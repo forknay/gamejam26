@@ -27,11 +27,12 @@ anchor_right = 0.85
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_ujl4l")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueOverlay/TextBox" unique_id=1577776230]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -43,3 +44,19 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_ujl4l")
 theme_override_font_sizes/normal_font_size = 45
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueOverlay" unique_id=1031504563]
+layout_mode = 0
+offset_left = 1632.0
+offset_top = 815.0
+offset_right = 1848.0
+offset_bottom = 1031.0
+theme_override_constants/separation = 10
+
+[node name="BackPrompt" type="Label" parent="." unique_id=1638385515]
+visible = false
+offset_left = 110.0
+offset_top = 959.0
+offset_right = 198.0
+offset_bottom = 1001.0
+text = "[E] Back"

@@ -84,6 +84,7 @@
 [ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://Scripts/default_radio_v_04.gd" id="81_dku7i"]
 [ext_resource type="PackedScene" uid="uid://bk0railu7jfwp" path="res://Animations/defaultWindow_v04.fbx" id="81_flw08"]
 [ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://Scripts/default_window_v_04.gd" id="83_veaf0"]
+[ext_resource type="PackedScene" uid="uid://co85lx4ontryd" path="res://Scenes/dialogue_canvas.tscn" id="85_7sqp1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1805,13 +1806,13 @@ mouse_filter = 2
 [node name="openingCam_v04" parent="." unique_id=864377999 instance=ExtResource("74_3x338")]
 script = ExtResource("78_s0g06")
 
-[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1338415636]
+[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1376350683]
 transform = Transform3D(0.7664358, 0, -0.64232093, 0, 1, 0, 0.64232093, 0, 0.7664358, -2.369482, 1.147273, 1.1104856)
 
 [node name="defaultComputer_v04" parent="." unique_id=1415429130 instance=ExtResource("78_fkywm")]
 script = ExtResource("79_dku7i")
 
-[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1660020586]
+[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1346608576]
 transform = Transform3D(0.7664358, -1.6183634e-12, -0.64232093, -1.585726e-11, 1, -2.1440894e-11, 0.64232093, 2.6618518e-11, 0.7664358, -2.369482, 1.147273, 1.1104856)
 fov = 45.7
 
@@ -1821,7 +1822,7 @@ script = ExtResource("81_dku7i")
 [node name="defaultWindow_v04" parent="." unique_id=1766276658 instance=ExtResource("81_flw08")]
 script = ExtResource("83_veaf0")
 
-[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=1476147172]
+[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=1905451023]
 transform = Transform3D(0.12366737, -0.035827994, -0.99167675, -0.0126763955, 0.9992094, -0.037680954, 0.99224275, 0.01723079, 0.12311543, 2.806097, 1.0877379, 0.106592394)
 
 [node name="overlay" type="Control" parent="." unique_id=2141005858]
@@ -1832,6 +1833,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("75_753oq")
+
+[node name="DialogueCanvas" parent="." unique_id=1685635480 instance=ExtResource("85_7sqp1")]
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

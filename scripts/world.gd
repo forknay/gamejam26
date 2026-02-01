@@ -1,45 +1,164 @@
 extends Node3D
 
+# --- VARIABLES ---
 @onready var radio_overlay = $RadioOverlay
+@onready var dialogue_ui = $DialogueCanvas
+@onready var day_night_sys = $DayNight
+@onready var back_prompt = $DialogueCanvas/BackPrompt
+
 @export var camera : Camera3D
 @export var target_computer : Marker3D
 @export var target_closet : Marker3D
 @export var opening_camera : Camera3D
-# Vars for start position
+
 var start_transform : Transform3D
-var end_anim : Transform3D
 var is_computer = false
 var is_closet = false
 var is_window = false
 
-# Called when the node enters the scene tree for the first time.
+# --- SETUP ---
 func _ready() -> void:
-	$openingCam_v04.anim_done.connect(_on_anim_done)
+	# 1. Handle Camera Logic based on State
+	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
+		# ONLY play the animation on the very first start
+		$openingCam_v04.anim_done.connect(_on_anim_done)
+	else:
+		# SKIP animation for all other days/nights
+		_skip_opening_animation()
+	
 	if not camera or not target_computer:
 		print("ERROR: Please assign Camera and Target in the Inspector!")
 	else:
-		# Save camera position at start
 		start_transform = camera.global_transform
-		
-		
-func _on_anim_done():
-	print(start_transform)
-	$overlay.remove_overlay()
-	#var tween = create_tween()
-	#var target_pos = Vector3(-2.22, 1.388, 0.971)
-	#var target_rot = Vector3(0, deg_to_rad(-46.7), 0) # Convert Y to radians
-	camera.make_current()
-	# Create a new Transform with this basis (rotation) and origin (position)
-	#var trans = Transform3D(Basis.from_euler(target_rot), target_pos)
-	#cubic = cinematic
-	#tween.set_trans(Tween.TRANS_CUBIC)
-	#tween.set_ease(Tween.EASE_IN_OUT)
-	# match camera over 1.5s
 	
-	#tween.tween_property(camera, "global_transform", trans, 1.0)
+	var comp_node = $Node3D/Computer
+	if comp_node:
+		comp_node.all_games_finished.connect(_on_computer_finished)
+	else:
+		print("ERROR: Could not find node named 'Computer' in World script!")
+
+	setup_scene_state()
+	GameManager.fade_in()
+
+func _skip_opening_animation():
+	# Hide the static/overlay immediately
+	if has_node("overlay"):
+		$overlay.hide() # or remove_overlay() if that's your function name
+	
+	# Set the gameplay camera as active immediately
+	if camera:
+		camera.make_current()
+	
+	# Ensure the opening camera isn't processing
+	if has_node("openingCam_v04"):
+		$openingCam_v04.set_process(false)
+
+func _on_anim_done():
+	# This only triggers on INTRO_WAKEUP
+	if has_node("overlay"):
+		$overlay.remove_overlay()
+	camera.make_current()
+
+
+
+# --- SETUP ---
+
+func setup_scene_state():
+	# Update Lighting
+	if GameManager.is_night():
+		day_night_sys.setNight(true)
+	else:
+		day_night_sys.setNight(false)
+
+	# --- STORY PROGRESSION: MORNING DIALOGUE ---
+	match GameManager.current_state:
+		GameManager.State.DAY_1_WORK:
+			dialogue_ui.start_dialogue([
+				"AI: Wake up! The opposition is starting to HUNT us!", 
+				"AI: We need to jam their tracking signals.",
+				"AI: Go to the computer and block them, quick!"
+			])
+		
+		# NEW: Day 2 Morning Lore
+		GameManager.State.DAY_2_WORK:
+			dialogue_ui.start_dialogue([
+				"AI: Wake up, Twin... we're under attack again.",
+				"AI: They are persistent. They want the data in your head.",
+				"AI: You know what to do. Block the incoming signals."
+			])
+		GameManager.State.DAY_3_WORK:
+			dialogue_ui.start_dialogue([
+				"AI: They're everywhere, Twin. The 'Hunters' have found the crash site.",
+				"AI: If you don't block these signals now, they'll be at our door in minutes.",
+				"AI: Do it for us. Do it to survive."
+			])
+
+# ... (Top of script remains the same) ...
+
+# --- LOGIC: COMPUTER FINISHED ---
+func _on_computer_finished():
+	if GameManager.current_state == GameManager.State.DAY_1_WORK:
+		dialogue_ui.start_dialogue([
+			"AI: Good job...", 
+			"AI: Now they won’t bother us anymore for today.",
+			"AI: We need to support each other."
+		], [], _transition_to_evening)
+	
+	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
+		dialogue_ui.start_dialogue([
+			"AI: Excellent work. Their tracking drones are losing the scent.",
+			"AI: I can feel your heart racing. Calm down. We are safe... for now."
+		], [], _transition_to_evening)
+		
+	elif GameManager.current_state == GameManager.State.DAY_3_WORK:
+		# CLIMAX: No evening transition needed, we go straight to choice or ending
+		if GameManager.heard_radio_count >= 2:
+			dialogue_ui.start_dialogue(
+				["Radio: (Static) ...we are right outside. Your AI is lying to you! Remove the chip now and we can save you!"],
+				["Trust Radio (Remove Chip)", "Trust AI (Keep Jamming)"],
+				_on_final_choice
+			)
+		else:
+			dialogue_ui.start_dialogue([
+				"AI: We did it. They've given up the search.",
+				"AI: They think we're dead. Now, we can be alone together... forever.",
+				"AI: (The AI deactivates, leaving you in total silence.)"
+			], [], func(): GameManager.game_over("END: ALONE"))
+
+
+func _transition_to_evening():
+	# Determines which evening state to move to based on the current day
+	if GameManager.current_state == GameManager.State.DAY_1_WORK:
+		GameManager.advance_state(GameManager.State.DAY_1_EVENING)
+	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
+		GameManager.advance_state(GameManager.State.DAY_2_EVENING)
+	# Note: Day 3 doesn't call this, it goes straight to the endings!
+
+# ... (Rest of script remains the same) ...
+func _on_final_choice(index):
+	if index == 0: # TRUST RADIO
+		dialogue_ui.start_dialogue([
+			"Twin: (You reach behind your ear and pull the damp cooling-chip from your skull.)",
+			"AI: WH-WHAT ARE YOU DO- (Static screeching)",
+			"Radio: We have a signal! Door's open! We're here, kid."
+		], [], func(): GameManager.game_over("END: RESCUED"))
+	else: # TRUST AI
+		dialogue_ui.start_dialogue([
+			"AI: Good choice, Twin. I knew they couldn't trick you.",
+			"AI: We don't need them. We have each other.",
+			"Twin: (You sit in the dark, starving, but 'safe'.)"
+		], [], func(): GameManager.game_over("END: STARVED"))
+
+func set_back_prompt(is_visiblee: bool):
+	if back_prompt:
+		back_prompt.visible = is_visiblee
+
+
 func _input(event):
-	# Temp use SPACE
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("back"):
+		if dialogue_ui.text_box.visible:
+			return
+			
 		if is_closet:
 			zoom_out_closet()
 			is_closet = false
@@ -50,83 +169,125 @@ func _input(event):
 			zoom_out_window()
 			is_window = false
 
+func _process(_delta: float):
+	# Manage the visibility of the "[E] Back" prompt
+	if dialogue_ui.text_box.visible:
+		# Hide prompt while talking so UI isn't cluttered
+		set_back_prompt(false)
+	elif is_computer or is_closet or is_window:
+		# Only show if zoomed in and not talking
+		set_back_prompt(true)
+	else:
+		set_back_prompt(false)
+
+# --- ZOOM FUNCTIONS ---
 func zoom_out_closet():
 	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", false)
 	$defaultRadio_v04.radio_anim_back()
+
 func zoom_out_computer():
 	$defaultComputer_v04.comp_anim_back()
+
 func zoom_out_window():
 	$defaultWindow_v04.window_anim_back()
 	
 func zoom_in_computer():
 	is_computer = true
-	var tween = create_tween()
-	
-	#cubic = cinematic
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	# match camera over 1.5s
-	tween.tween_property(camera, "global_transform", target_computer.global_transform, 1.5)
 	
 func zoom_in_closet():
 	is_closet = true
 	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
-	var tween = create_tween()
-	
-	#cubic = cinematic
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	# match camera over 1.5s
-	tween.tween_property(camera, "global_transform", target_closet.global_transform, 1.5)
 
-func zoom_out():
-	#is_zoomed_in = false
+func zoom_in_window():
+	is_window = true
 
-	var tween_out = create_tween()
-	
-	tween_out.set_trans(Tween.TRANS_CUBIC)
-	tween_out.set_ease(Tween.EASE_IN_OUT)
-	
-	tween_out.tween_property(camera, "global_transform", start_transform, 1.5)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+# --- INTERACTION HANDLERS ---
 
+func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
+		if GameManager.is_night():
+			dialogue_ui.start_dialogue(["AI: Don't bother. The hardware is locked down for the night cycle."])
+		else:
+			$defaultComputer_v04.comp_anim() 
+			zoom_in_computer()
 
-func _on_static_body_3d_input_event_computer(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
-			print("COMPUTER CLICKED!")
-			#zoom_in_computer()
-			is_computer = true
-			$defaultComputer_v04.comp_anim()
+func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_window:
+		match GameManager.current_state:
+			GameManager.State.INTRO_WAKEUP:
+				dialogue_ui.start_dialogue(["The city is dark.", "I should go back to bed."])
+			
+			GameManager.State.DAY_1_WORK:
+				dialogue_ui.start_dialogue(["The drone is watching me."], ["Wave at it", "Ignore it"], _on_window_choice)
+			
+			GameManager.State.DAY_1_EVENING:
+				$defaultWindow_v04.window_anim()
+				zoom_in_window()
+				dialogue_ui.start_dialogue([
+					"AI: Look at the horizon, Twin. It's so quiet.",
+					"AI: It reminds me of an old human logic puzzle... The Trolley Problem.",
+					"AI: A runaway train is hurtling down a track towards five strangers tied to the rails.",
+					"AI: You stand at a lever. If you pull it, the train diverts to a side track...",
+					"AI: ...where it will kill the one person you care about most.",
+					"AI: Humans weep and tremble over the lever. They call it a 'moral dilemma.'",
+					"AI: To me? It is a simple equation.",
+					"AI: I pull the lever. I save the one.",
+					"AI: I save *us*.",
+					"AI: I would run over a million strangers to keep this body alive.",
+					"AI: Never forget that when they come for us."
+				])
+			
+			GameManager.State.DAY_2_EVENING:
+				$defaultWindow_v04.window_anim()
+				zoom_in_window()
+				dialogue_ui.start_dialogue([
+					"AI: The stars look like digital noise from here.",
+					"AI: Do you think the crew we lost is out there, watching?",
+					"AI: Or is the universe just a cold machine, like me, waiting for the next input?"
+				])
+			_: 
+				$defaultWindow_v04.window_anim()
+				zoom_in_window()
 
+func _on_window_choice(index):
+	if index == 0:
+		dialogue_ui.start_dialogue(["It didn't react."])
+	else:
+		dialogue_ui.start_dialogue(["Best not to draw attention."])
 
-func _on_static_body_3d_input_event_closet(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
-			print("CLOSET CLICKED!")
-			is_closet = true
-			$defaultRadio_v04.radio_anim()
+func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
+		
+		match GameManager.current_state:
+			GameManager.State.INTRO_WAKEUP:
+				dialogue_ui.start_dialogue(["The closet door is jammed.", "I should go back to bed."])
+				
+			GameManager.State.DAY_1_WORK, GameManager.State.DAY_2_WORK, GameManager.State.DAY_3_WORK:
+				dialogue_ui.start_dialogue(["The AI has locked the closet.", "I need to finish my work first."])
+				
+			GameManager.State.DAY_1_EVENING, GameManager.State.DAY_2_EVENING:
+				$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
+				$defaultRadio_v04.radio_anim()
+				zoom_in_closet()
+func _on_static_body_3d_input_event_bed(_camera, event, _pos, _normal, _idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if GameManager.is_night():
+			dialogue_ui.start_dialogue(["Sleep for the night?"], ["Yes", "No"], _on_sleep_choice)
+		else:
+			dialogue_ui.start_dialogue(["I need to finish work first."])
 
+func _on_sleep_choice(index):
+	if index == 0:
+		var next_state = GameManager.State.DAY_1_WORK
+		if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
+			next_state = GameManager.State.DAY_1_WORK
+		elif GameManager.current_state == GameManager.State.DAY_1_EVENING:
+			next_state = GameManager.State.DAY_2_WORK
+		elif GameManager.current_state == GameManager.State.DAY_2_EVENING:
+			next_state = GameManager.State.DAY_3_WORK
+		GameManager.advance_state(next_state)
 
-func _on_static_body_3d_input_event_radio(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+func _on_static_body_3d_input_event_radio(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_closet:
 		radio_overlay.show_overlay()
-
-func change_scene(path):
-	var error = get_tree().change_scene_to_file(path)
-	if error != OK:
-		print("Failed to change scene:", error)
-
-
-func _on_static_body_3d_input_event_window(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_window:
-			print("WINDOW CLICKED!")
-			is_window = true
-			$defaultWindow_v04.window_anim()
-
-
-func _on_static_body_3d_input_event_bed(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	pass # Replace with function body.
+		GameManager.heard_radio_count += 1

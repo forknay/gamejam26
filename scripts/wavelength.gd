@@ -10,6 +10,7 @@ extends Node2D
 @export var scroll_speed := 3.0
 @export var handle_speed := 200.0 # New: Speed of the WASD movement
 
+signal level_cleared
 # Configuration Ranges
 var min_f = 0.5; var max_f = 3.0
 var min_a = 10.0; var max_a = 100.0
@@ -103,7 +104,7 @@ func check_for_win(f: float, a: float):
 
 func win_sequence():
 	is_won = true
-	# Lock the player wave to exactly match the target visually
+	# Lock the pladwwdyer wave to exactly match the target visually
 	draw_wave(player_line, target_freq, target_amp, phase_shift)
 	
 	print("Match Successful!")

@@ -14,9 +14,10 @@ func _ready():
 	else:
 		print("All systems go! Environment found.")
 		 
-func _input(event):
-	if event.is_action_pressed("ui_right"):
-		toggleCycle()
+func _input(_event):
+	#if event.is_action_pressed("ui_right"):
+	#	toggleCycle()
+	pass
 func toggleCycle():
 	# Use single '=' for assignment!
 	if currentMode == "day":
@@ -25,7 +26,13 @@ func toggleCycle():
 		currentMode = "day"
 	
 	apply_mode()
-
+func setNight(b):
+	if b:
+		currentMode = "night"
+	else:
+		currentMode = "day"
+	apply_mode()
+	
 func apply_mode():
 	# Get the actual resource from the node
 	

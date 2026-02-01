@@ -9,7 +9,7 @@ var tween: Tween
 func _ready():
 	pass
 
-func _input(event):
+func _input(_event):
 	#if event.is_action_pressed("ui"): # Spacebar/Enter
 	#	if is_alarm_on:
 	#		stop_alarm()

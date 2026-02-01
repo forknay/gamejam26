@@ -80,14 +80,15 @@ func _on_static_body_3d_input_event_computer(_camera: Node, event: InputEvent, _
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("COMPUTER CLICKED!")
-			zoom_in_computer()
+			#zoom_in_computer()
+			$defaultComputer_v04.comp_anim()
 
 
 func _on_static_body_3d_input_event_closet(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
 			print("CLOSET CLICKED!")
-			zoom_in_closet()
+			$defaultRadio_v04.radio_anim()
 
 
 func _on_static_body_3d_input_event_radio(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -101,7 +102,10 @@ func change_scene(path):
 
 
 func _on_static_body_3d_input_event_window(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	pass # Replace with function body.
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_zoomed_in:
+			print("WINDOW CLICKED!")
+			$defaultWindow_v04.window_anim()
 
 
 func _on_static_body_3d_input_event_bed(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:

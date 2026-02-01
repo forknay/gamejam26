@@ -77,7 +77,13 @@
 [ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://scenes/overlay.gd" id="75_753oq"]
 [ext_resource type="PackedScene" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 [ext_resource type="PackedScene" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
+[ext_resource type="PackedScene" uid="uid://bbye1smrqgm7h" path="res://Animations/defaultComputer_v04.fbx" id="78_fkywm"]
 [ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://scripts/opening_cam_v_04.gd" id="78_s0g06"]
+[ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://scripts/default_computer_v_04.gd" id="79_dku7i"]
+[ext_resource type="PackedScene" uid="uid://b0d3ga1ak5qbd" path="res://Animations/defaultRadio_v04.fbx" id="80_veaf0"]
+[ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://scripts/default_radio_v_04.gd" id="81_dku7i"]
+[ext_resource type="PackedScene" uid="uid://bk0railu7jfwp" path="res://Animations/defaultWindow_v04.fbx" id="81_flw08"]
+[ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://scripts/default_window_v_04.gd" id="83_veaf0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1810,6 +1816,22 @@ script = ExtResource("78_s0g06")
 [node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1026580633]
 transform = Transform3D(0.7664358, 0, -0.64232093, 0, 1, 0, 0.64232093, 0, 0.7664358, -2.369482, 1.147273, 1.1104856)
 
+[node name="defaultComputer_v04" parent="." unique_id=1415429130 instance=ExtResource("78_fkywm")]
+script = ExtResource("79_dku7i")
+
+[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1055138181]
+transform = Transform3D(0.7664358, -1.6183634e-12, -0.64232093, -1.585726e-11, 1, -2.1440894e-11, 0.64232093, 2.6618518e-11, 0.7664358, -2.369482, 1.147273, 1.1104856)
+fov = 45.7
+
+[node name="defaultRadio_v04" parent="." unique_id=1072900776 instance=ExtResource("80_veaf0")]
+script = ExtResource("81_dku7i")
+
+[node name="defaultWindow_v04" parent="." unique_id=1766276658 instance=ExtResource("81_flw08")]
+script = ExtResource("83_veaf0")
+
+[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=643088355]
+transform = Transform3D(0.10497008, 0.22049558, -0.96972317, -0.016278245, 0.9753606, 0.22001535, 0.9943422, -0.007309636, 0.10597296, 2.698916, 0.9507145, 0.1285702)
+
 [node name="overlay" type="Control" parent="." unique_id=2141005858]
 layout_mode = 3
 anchors_preset = 15
@@ -1826,3 +1848,6 @@ script = ExtResource("75_753oq")
 [connection signal="input_event" from="RadioBridge/StaticBody3D" to="." method="_on_static_body_3d_input_event_radio"]
 
 [editable path="openingCam_v04"]
+[editable path="defaultComputer_v04"]
+[editable path="defaultRadio_v04"]
+[editable path="defaultWindow_v04"]

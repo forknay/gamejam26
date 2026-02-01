@@ -1,16 +1,15 @@
 extends Node3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var cam: Camera3D = $Opening_cam
+@onready var cam: Camera3D = $Default_t_Computer
 
 signal anim_done
 
-func _ready():
+func comp_anim():
 	cam.make_current()
 	anim.play(anim.get_animation_list()[0])
 	$AnimationPlayer.animation_finished.connect(_on_animation_finished)
-	
-# Change this line to accept the argument
-func _on_animation_finished(anim_name): 
+
+func _on_animation_finished(anim_name):
 	anim_done.emit()
 	print("emitted")

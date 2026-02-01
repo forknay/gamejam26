@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var radio_overlay = $RadioOverlay
 @export var camera : Camera3D
 @export var target_computer : Marker3D
 @export var target_closet : Marker3D
@@ -91,7 +92,7 @@ func _on_static_body_3d_input_event_closet(_camera: Node, event: InputEvent, _ev
 
 func _on_static_body_3d_input_event_radio(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and is_zoomed_in:
-		change_scene("res://scenes/radio_game.tscn")
+		radio_overlay.show_overlay()
 
 func change_scene(path):
 	var error = get_tree().change_scene_to_file(path)

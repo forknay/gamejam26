@@ -68,7 +68,6 @@
 [ext_resource type="Texture2D" uid="uid://dr43o87ns0j8u" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_39.png" id="66_r2n6p"]
 [ext_resource type="Texture2D" uid="uid://oyg8p3vf0nj0" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_40.png" id="67_deyyv"]
 [ext_resource type="Texture2D" uid="uid://bkc12yroel5ln" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_41.png" id="68_vnd7u"]
-[ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
 [ext_resource type="Script" path="res://Scenes/day_night.gd" id="71_a2m5q"]
@@ -77,6 +76,7 @@
 [ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://scripts/opening_cam_v_02.gd" id="74_753oq"]
 [ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://Scenes/overlay.gd" id="75_753oq"]
 [ext_resource type="PackedScene" path="res://Scenes/terrain.tscn" id="75_ff75x"]
+[ext_resource type="PackedScene" uid="uid://b61reuthpexnb" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1472,11 +1472,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7l6q4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nv0b"]
-shader = ExtResource("69_uxocx")
-shader_parameter/color_levels = 8.0
-shader_parameter/pixel_size = 3
-
 [node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera", "target_computer", "target_closet")]
 script = ExtResource("1_lnu2h")
 camera = NodePath("Camera3D")
@@ -1758,18 +1753,6 @@ mesh = SubResource("CapsuleMesh_ufjh3")
 material_override = SubResource("StandardMaterial3D_eio5l")
 mesh = SubResource("ArrayMesh_jqiwq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=638011131]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=538053240]
-material = SubResource("ShaderMaterial_7nv0b")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Node3D" parent="." unique_id=314615975 instance=ExtResource("70_sxt1d")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.3135743, 1.2710932, -3.2082834)
 
@@ -1815,6 +1798,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("75_753oq")
+
+[node name="RadioOverlay" parent="." unique_id=1854559540 instance=ExtResource("78_ckj55")]
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

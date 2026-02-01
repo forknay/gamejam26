@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co85lx4ontryd"]
 
-[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://scripts/dialogue_canvas.gd" id="1_wyjut"]
+[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://Scripts/dialogue_canvas.gd" id="1_wyjut"]
 [ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="2_ujl4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujl4l"]

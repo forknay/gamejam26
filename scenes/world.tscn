@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cv4dbb04tbts3"]
 
-[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://Scripts/world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="3_4wyf3"]
 

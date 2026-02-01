@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://btf3e1kw0j0vw"]
 
-[ext_resource type="Script" uid="uid://danw7j4nmiacy" path="res://scripts/maze.gd" id="1_8hln8"]
+[ext_resource type="Script" uid="uid://danw7j4nmiacy" path="res://Scripts/maze.gd" id="1_8hln8"]
 [ext_resource type="Texture2D" uid="uid://cv2r5i2ywr0m3" path="res://art/black.png" id="1_ol5qi"]
 [ext_resource type="Texture2D" uid="uid://bu13hi58ya205" path="res://art/gray.png" id="2_fgl6e"]
-[ext_resource type="Script" uid="uid://b4bx7bp54aape" path="res://scripts/finish.gd" id="4_vqf1n"]
+[ext_resource type="Script" uid="uid://b4bx7bp54aape" path="res://Scripts/finish.gd" id="4_vqf1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgl6e"]
 texture = ExtResource("1_ol5qi")

@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://63ioceooy8d4"]
 
 [ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
-[ext_resource type="Script" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
+[ext_resource type="Script" uid="uid://bv523uohwa5x2" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
 [ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://Scenes/maze1.tscn" id="3_5t4e2"]
-[ext_resource type="PackedScene" uid="uid://6t8iqgidf3xo" path="res://Scenes/Wavelength.tscn" id="3_a6664"]
+[ext_resource type="PackedScene" uid="uid://dmam41th4gxgi" path="res://Scenes/Wavelength.tscn" id="3_a6664"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]

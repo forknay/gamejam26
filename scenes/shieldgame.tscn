@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://chg10p5w6lqud"]
 
-[ext_resource type="Script" uid="uid://ckepfwmhky2b6" path="res://scripts/shieldplayer.gd" id="1_ecq7e"]
-[ext_resource type="Script" uid="uid://cnainexh65cln" path="res://scripts/shield.gd" id="2_i7j82"]
-[ext_resource type="Script" uid="uid://bbcufeyvdsrt3" path="res://scripts/projectile_spawner.gd" id="4_4uv6a"]
-[ext_resource type="PackedScene" uid="uid://dacekq42yenco" path="res://scenes/projectile.tscn" id="4_73obn"]
+[ext_resource type="Script" uid="uid://ckepfwmhky2b6" path="res://Scripts/shieldplayer.gd" id="1_ecq7e"]
+[ext_resource type="Script" uid="uid://cnainexh65cln" path="res://Scripts/shield.gd" id="2_i7j82"]
+[ext_resource type="Script" uid="uid://bbcufeyvdsrt3" path="res://Scripts/projectile_spawner.gd" id="4_4uv6a"]
+[ext_resource type="PackedScene" uid="uid://dacekq42yenco" path="res://Scenes/projectile.tscn" id="4_73obn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uv6a"]
 

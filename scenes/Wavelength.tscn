@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmam41th4gxgi"]
 
-[ext_resource type="Script" path="res://scripts/wavelength.gd" id="1_qh5k3"]
+[ext_resource type="Script" uid="uid://cm3wgxvi62cp8" path="res://Scripts/wavelength.gd" id="1_qh5k3"]
 
 [node name="Wavelength" type="Node2D" unique_id=411897449]
 script = ExtResource("1_qh5k3")

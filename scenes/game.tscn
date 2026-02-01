@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dfn2vw2lesmwg"]
 
-[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://Scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_weeiq"]
 [ext_resource type="Texture2D" uid="uid://b2sojx12tnmy4" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_6.png" id="3_uxocx"]
 [ext_resource type="Texture2D" uid="uid://utp7crof68e3" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_7.png" id="4_7nv0b"]
@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://ds4f5sphw7gat" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_3.png" id="39_lddog"]
 [ext_resource type="Texture2D" uid="uid://7ho02ap85t6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_4.png" id="40_boxkr"]
 [ext_resource type="Texture2D" uid="uid://b6xaec1v50u3x" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_5.png" id="41_de5we"]
-[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://scripts/lamp.gd" id="42_8tghg"]
+[ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://Scripts/lamp.gd" id="42_8tghg"]
 [ext_resource type="Texture2D" uid="uid://tk0f5sv3rpr1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_21.png" id="43_473mq"]
 [ext_resource type="Texture2D" uid="uid://ckuexuuvi1nq1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_22.png" id="44_1va0p"]
 [ext_resource type="Texture2D" uid="uid://direc5qkmpp16" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_23.png" id="45_2tvof"]
@@ -78,12 +78,12 @@
 [ext_resource type="PackedScene" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 [ext_resource type="PackedScene" uid="uid://b61reuthpexnb" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
 [ext_resource type="PackedScene" uid="uid://bbye1smrqgm7h" path="res://Animations/defaultComputer_v04.fbx" id="78_fkywm"]
-[ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://scripts/opening_cam_v_04.gd" id="78_s0g06"]
-[ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://scripts/default_computer_v_04.gd" id="79_dku7i"]
+[ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://Scripts/opening_cam_v_04.gd" id="78_s0g06"]
+[ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://Scripts/default_computer_v_04.gd" id="79_dku7i"]
 [ext_resource type="PackedScene" uid="uid://b0d3ga1ak5qbd" path="res://Animations/defaultRadio_v04.fbx" id="80_veaf0"]
-[ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://scripts/default_radio_v_04.gd" id="81_dku7i"]
+[ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://Scripts/default_radio_v_04.gd" id="81_dku7i"]
 [ext_resource type="PackedScene" uid="uid://bk0railu7jfwp" path="res://Animations/defaultWindow_v04.fbx" id="81_flw08"]
-[ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://scripts/default_window_v_04.gd" id="83_veaf0"]
+[ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://Scripts/default_window_v_04.gd" id="83_veaf0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)

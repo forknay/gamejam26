@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dcahuc56xf532"]
 
-[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://scripts/computer.gd" id="1_nlfvp"]
+[ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_nlfvp"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="2_l3tiw"]
-[ext_resource type="Script" uid="uid://cm2s1qijrh2xq" path="res://scripts/player_camera.gd" id="3_xermn"]
+[ext_resource type="Script" uid="uid://cm2s1qijrh2xq" path="res://Scripts/player_camera.gd" id="3_xermn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.334122, 0.334122, 0.334122, 1)

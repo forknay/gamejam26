@@ -37,6 +37,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=368469835]
 layout_mode = 2
 text = "OZYMANDIAS"
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=8839496]
 layout_mode = 2

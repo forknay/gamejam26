@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co85lx4ontryd"]
 
-[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://Scripts/dialogue_canvas.gd" id="1_wyjut"]
+[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://scripts/dialogue_canvas.gd" id="1_wyjut"]
 [ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="2_ujl4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujl4l"]
@@ -45,13 +45,21 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_ujl4l")
 theme_override_font_sizes/normal_font_size = 45
 
-[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueOverlay" unique_id=1031504563]
-layout_mode = 0
-offset_left = 1632.0
-offset_top = 815.0
-offset_right = 1848.0
-offset_bottom = 1031.0
-theme_override_constants/separation = 10
+[node name="ChoiceContainer" type="HBoxContainer" parent="DialogueOverlay" unique_id=476278971]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -60.0
+offset_right = 300.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
 
 [node name="BackPrompt" type="Label" parent="." unique_id=1638385515]
 visible = false

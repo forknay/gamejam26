@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://c4rs3y0iyf0aq"]
-
-[ext_resource type="PackedScene" uid="uid://dn4g7fu30vdix" path="res://Animations/openingCam_v01.fbx" id="1_5fu0j"]
-
-[node name="openingCam_v01" unique_id=1575873190 instance=ExtResource("1_5fu0j")]
-
-[node name="Opening_cam" parent="." index="0" unique_id=847572677]
-transform = Transform3D(0.66297096, 0.42054158, -0.6193661, 0, 0.827316, 0.5617369, 0.7486451, -0.37241524, 0.5484865, -2.2278154, 0.39101002, 0.97110337)

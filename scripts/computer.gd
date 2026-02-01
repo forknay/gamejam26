@@ -6,7 +6,7 @@ var is_mouse_inside = false
 var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
-var flash_color = Color(0.639, 1.945, 2.628, 1.0) # Intense HDR Red
+var base_color = Color(0.645, 0.0, 0.0, 1.0) # Intense HDR Red
 var alarm_active: bool = false
 
 @onready var node_viewport = $SubViewport
@@ -33,8 +33,8 @@ func flash_red():
 	
 	# Initial color (Normal) and Flash color (HDR Red)
 	# Note: Values above 1.0 in Color() trigger the 'Glow' environment effect
-	var normal_color = Color(1, 1, 1, 1)
-	var flash_color = Color(0.639, 1.945, 2.628, 1.0) # Intense HDR Red
+	var normal_color = Color(1.0, 1.0, 1.0, 1.0)
+	var flash_color = Color(2.568, 0.0, 0.0, 1.0) # Intense HDR Red
 
 	# 3. Animate: Go to Red (0.1s) then back to White (0.9s)
 	tween.tween_property(material, "albedo_color", flash_color, 0.1)
@@ -75,16 +75,18 @@ func _unhandled_input(event):
 			return
 	node_viewport.push_input(event)
 
-func _input(event):
-	if event.is_action_pressed("ui_up"):
-		alarm_active = !alarm_active
-		
-		if alarm_active:
-			print("Alarm Restarted")
-			# This is the line that was missing! 
-			# It kickstarts the loop again.
-			_run_alarm_loop(2.0)
-
+##func _input(event):
+	##if event.is_action_pressed("ui_up"):
+		##alarm_active = !alarm_active
+		#
+		#if alarm_active:
+			#print("Alarm Restarted")
+			## This is the line that was missing! 
+			## It kickstarts the loop again.
+			#_run_alarm_loop(2.0)
+		#else:
+			#var material = screen_mesh.get_active_material(0)
+			#material.set_albedo_color(base_color)
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
 	# Get mesh size to detect edges and make conversions. This code only support PlaneMesh and QuadMesh.
 	var quad_mesh_size = node_quad.mesh.size

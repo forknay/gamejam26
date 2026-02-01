@@ -15,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextBox" type="PanelContainer" parent="DialogueOverlay" unique_id=22137122]
 layout_mode = 1
@@ -25,6 +26,7 @@ anchor_right = 0.85
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ujl4l")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueOverlay/TextBox" unique_id=1577776230]
@@ -37,4 +39,5 @@ theme_override_constants/margin_bottom = 20
 [node name="DialogueText" type="RichTextLabel" parent="DialogueOverlay/TextBox/MarginContainer" unique_id=1074334548]
 clip_contents = false
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 24

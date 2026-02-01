@@ -17,7 +17,6 @@ func _input(event):
 		started = true
 
 func _ready():
-	DialogueManager.start_dialogue(["Hello!", "I am a global box."])
 	if finish_area:
 		finish_area.reached_end.connect(_on_finish_line_reached)
 	else:

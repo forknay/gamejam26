@@ -1825,5 +1825,3 @@ mouse_filter = 2
 [connection signal="input_event" from="Window/StaticBody3D" to="." method="_on_static_body_3d_input_event_window"]
 [connection signal="input_event" from="Bed/StaticBody3D" to="." method="_on_static_body_3d_input_event_bed"]
 [connection signal="input_event" from="RadioBridge/StaticBody3D" to="." method="_on_static_body_3d_input_event_radio"]
-
-[editable path="openingCam_v02"]

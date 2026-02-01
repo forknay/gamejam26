@@ -6,7 +6,7 @@ var is_mouse_inside = false
 var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
-
+var flash_color = Color(0.639, 1.945, 2.628, 1.0) # Intense HDR Red
 var alarm_active: bool = false
 
 @onready var node_viewport = $SubViewport
@@ -17,11 +17,11 @@ var alarm_active: bool = false
 @onready var screen_mesh = $Screen
 
 func _ready():
-	start_alarm_interval(2.0)
-	node_area.mouse_entered.connect(_mouse_entered_area)
-	node_area.mouse_exited.connect(_mouse_exited_area)
-	node_area.input_event.connect(_mouse_input_event)
-
+	#start_alarm_interval(2.0)
+	#node_area.mouse_entered.connect(_mouse_entered_area)
+	#node_area.mouse_exited.connect(_mouse_exited_area)
+	#node_area.input_event.connect(_mouse_input_event)
+	pass
 func flash_red():
 	# 1. Get the material from the MeshInstance
 	# We use get_surface_override_material(0) to avoid changing the original resource
@@ -34,7 +34,7 @@ func flash_red():
 	# Initial color (Normal) and Flash color (HDR Red)
 	# Note: Values above 1.0 in Color() trigger the 'Glow' environment effect
 	var normal_color = Color(1, 1, 1, 1)
-	var flash_color = Color(5.0, 0.2, 0.2, 1.0) # Intense HDR Red
+	var flash_color = Color(0.639, 1.945, 2.628, 1.0) # Intense HDR Red
 
 	# 3. Animate: Go to Red (0.1s) then back to White (0.9s)
 	tween.tween_property(material, "albedo_color", flash_color, 0.1)
@@ -76,7 +76,7 @@ func _unhandled_input(event):
 	node_viewport.push_input(event)
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_up"):
 		alarm_active = !alarm_active
 		
 		if alarm_active:

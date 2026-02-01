@@ -10,6 +10,8 @@ enum State {
 	DAY_3_WORK, # Added Day 3
 	ENDING
 }
+@onready var music_player = AudioStreamPlayer.new()
+@export var climax_music: AudioStream # Assign your new track here
 
 var current_state = State.INTRO_WAKEUP
 var transition_overlay : ColorRect
@@ -56,11 +58,23 @@ func game_over(ending_type: String):
 	# 3. Fade the black overlay back to transparent so we can see the menu!
 	fade_in()
 
+func play_climax_music():
+	if not music_player.playing:
+		# If the Inspector slot is empty, load it manually from your folder
+		if climax_music == null:
+			climax_music = load("res://audio/soundtrack.ogg")
+		print("playing music")
+		music_player.stream = climax_music
+		music_player.play()
+
+func stop_music():
+	music_player.stop()
+	
 func _ready():
 	canvas_layer = CanvasLayer.new()
 	canvas_layer.layer = 100 
 	add_child(canvas_layer)
-	
+	add_child(music_player)
 	transition_overlay = ColorRect.new()
 	transition_overlay.color = Color.BLACK
 	transition_overlay.color.a = 0.0

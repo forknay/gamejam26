@@ -85,7 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://bk0railu7jfwp" path="res://Animations/defaultWindow_v04.fbx" id="81_flw08"]
 [ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://Scripts/default_window_v_04.gd" id="83_veaf0"]
 [ext_resource type="PackedScene" uid="uid://co85lx4ontryd" path="res://Scenes/dialogue_canvas.tscn" id="85_7sqp1"]
-[ext_resource type="ArrayMesh" uid="uid://cyjqly683mbf6" path="res://Assets/10026_Horse_v01-it2.obj" id="86_gsm33"]
+[ext_resource type="PackedScene" uid="uid://dll0w3yy8lqkf" path="res://Assets/low-poly_horse.glb" id="86_gsm33"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1508,6 +1508,10 @@ transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.7660
 current = true
 fov = 45.7
 
+[node name="RadioBeeping" type="OmniLight3D" parent="." unique_id=1109653047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1558199, 1.4413006, -3.7835763)
+light_color = Color(1, 0, 0, 1)
+
 [node name="Closet" type="MeshInstance3D" parent="." unique_id=1187232117]
 transform = Transform3D(1.4889376, 0, 0, 0, 2.1499302, 0, 0, 0, 1.187279, 0.25552237, 0.905953, -2.7593842)
 material_override = SubResource("StandardMaterial3D_gsm33")
@@ -1848,9 +1852,8 @@ script = ExtResource("75_753oq")
 
 [node name="DialogueCanvas" parent="." unique_id=1685635480 instance=ExtResource("85_7sqp1")]
 
-[node name="10026HorseV01It2" type="MeshInstance3D" parent="." unique_id=1203268968]
-transform = Transform3D(0.05, 0, 0, 0, -0.00067280506, 0.049995475, 0, -0.049995475, -0.00067280506, 190.33218, -29.718979, -50.271786)
-mesh = ExtResource("86_gsm33")
+[node name="Sketchfab_Scene" parent="." unique_id=530940520 instance=ExtResource("86_gsm33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.360837, -0.14505577, -2.725905)
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="mouse_entered" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_mouse_entered_closet"]

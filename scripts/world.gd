@@ -141,6 +141,7 @@ func _on_computer_finished():
 	elif GameManager.current_state == GameManager.State.DAY_3_WORK:
 		alarm_signal.stop_alarm()
 		if GameManager.heard_radio_count >= 2:
+			GameManager.play_climax_music()
 			dialogue_ui.start_dialogue(
 				["Radio: (Static) ...we are right outside. MAIA is lying. Remove the chip now."],
 				["Trust Radio (Remove Chip)", "Trust MAIA (Keep Jamming)"],

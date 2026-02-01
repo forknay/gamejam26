@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1mtqiavgqlpj"
-path.s3tc="res://.godot/imported/ASM - PBR Metallic Roughness_30.png-6c4abdb72c169876a43e5a553efdb0a7.s3tc.ctex"
+uid="uid://debfyeyfg7e8y"
+path.s3tc="res://.godot/imported/rocky_trail_02_diff_2k.jpg-d251f331585ee41e068f0b94b202790d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "3013c6cc371213c0bba95d91e2b32189"
-}
 
 [deps]
 
-source_file="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_30.png"
-dest_files=["res://.godot/imported/ASM - PBR Metallic Roughness_30.png-6c4abdb72c169876a43e5a553efdb0a7.s3tc.ctex"]
+source_file="res://Scenes/Spaceship/textures/rocky_trail_02_diff_2k.jpg"
+dest_files=["res://.godot/imported/rocky_trail_02_diff_2k.jpg-d251f331585ee41e068f0b94b202790d.s3tc.ctex"]
 
 [params]
 

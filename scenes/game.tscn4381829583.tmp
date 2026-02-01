@@ -1482,14 +1482,13 @@ camera = NodePath("Camera3D")
 target_computer = NodePath("ComputerCamera")
 target_closet = NodePath("ClosetCamera")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
-unique_name_in_owner = true
-environment = SubResource("Environment_fj7yv")
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=24601984]
 transform = Transform3D(0.909258, 0, -0.41623318, 0, 1, 0, 0.41623318, 0, 0.909258, -1.5699277, 0.5089226, 2.5462348)
 current = true
 fov = 37.849285
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
+environment = SubResource("Environment_fj7yv")
 
 [node name="Closet" type="MeshInstance3D" parent="." unique_id=1187232117]
 transform = Transform3D(1.4889376, 0, 0, 0, 2.1499302, 0, 0, 0, 1.187279, 0.25552237, 0.905953, -2.7593842)
@@ -1641,7 +1640,6 @@ mesh = SubResource("ArrayMesh_ae4wi")
 [node name="walls spaceship window" type="Node3D" parent="spaceShip_v03_obj" unique_id=1111493604]
 
 [node name="walls spaceship window2" type="MeshInstance3D" parent="spaceShip_v03_obj/walls spaceship window" unique_id=1654398405]
-visible = false
 material_override = SubResource("StandardMaterial3D_n5r5x")
 mesh = SubResource("ArrayMesh_152wt")
 
@@ -1780,9 +1778,9 @@ light_color = Color(0.8545323, 0.47454387, 0.094557025, 1)
 light_energy = 10.0
 
 [node name="Light" type="OmniLight3D" parent="DayNight" unique_id=1721072776]
-transform = Transform3D(0.42853358, 0.15435353, -0.89024365, -0.17165326, 0.9812633, 0.0875067, 0.88707054, 0.115313694, 0.44699955, 1.159254, -1.8635249, 5.2055)
+transform = Transform3D(0.42853352, 0.15435356, -0.89024365, -0.17165327, 0.98126334, 0.087506734, 0.88707054, 0.1153137, 0.44699946, 2.1940205, -1.4908128, 3.0558548)
 light_color = Color(0.8545323, 0.47454387, 0.094557025, 1)
-light_energy = 2.105
+light_energy = 3.684
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNight" unique_id=1462935509]
 transform = Transform3D(0.99999994, -1.4901161e-08, 2.9802322e-08, 7.450581e-09, 0.99999994, 3.7252903e-09, 2.9802322e-08, 3.7252903e-09, 0.99999994, 4.783881, 4.504982, -2.008915)

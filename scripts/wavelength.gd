@@ -7,7 +7,8 @@ extends Node2D
 
 @export var points_count := 250 
 @export var wave_width := 800.0
-@export var scroll_speed := 3.0  
+@export var scroll_speed := 3.0
+@export var handle_speed := 200.0 # New: Speed of the WASD movement
 
 # Configuration Ranges
 var min_f = 0.5; var max_f = 3.0
@@ -18,10 +19,11 @@ var target_freq : float
 var target_amp : float
 var phase_shift := 0.0
 var is_won := false
-var is_dragging := false
+var is_moving := false # Replaces is_dragging
 
 func _ready():
 	# 1. Randomize goals
+	randomize()
 	target_freq = randf_range(min_f, max_f)
 	target_amp = randf_range(min_a, max_a)
 	
@@ -29,8 +31,9 @@ func _ready():
 	target_line.antialiased = true
 	player_line.antialiased = true
 	
-	# 3. Safety Check: Ensure the handle doesn't block the mouse
-	handle.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 3. Handle setup (Start in center)
+	if input_box.size != Vector2.ZERO:
+		handle.position = (input_box.size / 2) - (handle.size / 2)
 
 func _process(delta):
 	if is_won: return 
@@ -38,52 +41,31 @@ func _process(delta):
 	# Update scrolling animation
 	phase_shift += delta * scroll_speed
 	
-	# Handle dragging and calculations
-	handle_mouse_input()
+	# Handle WASD and calculations
+	handle_keyboard_input(delta)
 	
 	# Mapping handle position to wave values
-	var box_size_adj = input_box.size - handle.size
-	# Prevent division by zero if box size isn't set
-	if box_size_adj.x > 0 and box_size_adj.y > 0:
-		var percent_x = handle.position.x / box_size_adj.x
-		var percent_y = handle.position.y / box_size_adj.y
-		
-		var current_freq = lerp(min_f, max_f, percent_x)
-		var current_amp = lerp(min_a, max_a, percent_y)
-		
-		# Draw the waves
-		draw_wave(target_line, target_freq, target_amp, phase_shift)
-		draw_wave(player_line, current_freq, current_amp, phase_shift)
-		
-		# Check if the player won
-		check_for_win(current_freq, current_amp)
+	update_wave_values()
 
-func handle_mouse_input():
-	# 1. Get the mouse position relative to the InputBox
-	var local_mouse = input_box.get_local_mouse_position()
+func handle_keyboard_input(delta):
+	# 1. Get input vector (using the actions you defined in your maze game)
+	var direction = Input.get_vector("left", "right", "up", "down")
 	
-	# 2. Check if we just started clicking inside the box
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var rect = Rect2(Vector2.ZERO, input_box.size)
-		if rect.has_point(local_mouse) or is_dragging:
-			is_dragging = true
+	if direction != Vector2.ZERO:
+		is_moving = true
+		
+		# 2. Move the handle
+		handle.position += direction * handle_speed * delta
+		
+		# 3. Clamp inside box
+		handle.position.x = clamp(handle.position.x, 0, input_box.size.x - handle.size.x)
+		handle.position.y = clamp(handle.position.y, 0, input_box.size.y - handle.size.y)
 	else:
-		is_dragging = false
-
-	# 3. If dragging, update the point and the WAVES
-	if is_dragging:
-		# Center the handle on the mouse
-		var target_pos = local_mouse - (handle.size / 2)
-		
-		# Keep it inside the box
-		handle.position.x = clamp(target_pos.x, 0, input_box.size.x - handle.size.x)
-		handle.position.y = clamp(target_pos.y, 0, input_box.size.y - handle.size.y)
-		
-		# FORCE update the wave variables immediately
-		update_wave_values()
+		is_moving = false
 
 func update_wave_values():
 	var box_size_adj = input_box.size - handle.size
+	
 	if box_size_adj.x > 0 and box_size_adj.y > 0:
 		var percent_x = handle.position.x / box_size_adj.x
 		var percent_y = handle.position.y / box_size_adj.y
@@ -91,7 +73,11 @@ func update_wave_values():
 		var current_freq = lerp(min_f, max_f, percent_x)
 		var current_amp = lerp(min_a, max_a, percent_y)
 		
+		# Draw waves
+		draw_wave(target_line, target_freq, target_amp, phase_shift)
 		draw_wave(player_line, current_freq, current_amp, phase_shift)
+		
+		# Check win
 		check_for_win(current_freq, current_amp)
 
 func draw_wave(line: Line2D, freq: float, amp: float, offset: float):
@@ -108,8 +94,9 @@ func check_for_win(f: float, a: float):
 
 	if freq_match and amp_match:
 		player_line.default_color = Color.GOLD 
-		# If they found the spot and let go, they win!
-		if not is_dragging:
+		
+		# WIN CONDITION: Matches AND player stopped moving keys
+		if not is_moving:
 			win_sequence()
 	else:
 		player_line.default_color = Color.CYAN
@@ -119,5 +106,7 @@ func win_sequence():
 	# Lock the player wave to exactly match the target visually
 	draw_wave(player_line, target_freq, target_amp, phase_shift)
 	
-	print("Match Successful! No UI found, quitting...")
-	get_tree().quit()
+	print("Match Successful!")
+	# Signal up to the Manager that we won
+	if has_signal("level_cleared"):
+		emit_signal("level_cleared")

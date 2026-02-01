@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://ch52ewog22lp6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb" id="2_go701"]
-[ext_resource type="PackedScene" uid="uid://de2snmx8bnuni" path="res://scenes/node_3d.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://scenes/node_3d.tscn" id="3_4wyf3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -127,7 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 3.4555378, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_f3sb7")
 
 [node name="ComputerCamera" type="Marker3D" parent="." unique_id=545295627]
-transform = Transform3D(0.01486743, 0.044409864, 0.9989028, 0, 0.9990132, -0.044414774, -0.9998895, 0.0006603335, 0.0148527585, -1.1936463, 0.5133571, 1.0202436)
+transform = Transform3D(0.01486743, 0.044409864, 0.9989028, 0, 0.9990132, -0.044414774, -0.9998895, 0.0006603335, 0.0148527585, -1.1288033, 0.5133571, 1.0443835)
 
 [node name="ClosetCamera" type="Marker3D" parent="." unique_id=466368038]
 transform = Transform3D(0.55704755, -0.13998972, 0.81859696, 0, 0.9856906, 0.1685647, -0.83048064, -0.09389855, 0.5490765, -1.3467134, 0.49041033, 0.66575086)

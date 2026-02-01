@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="gamejam"
-run/main_scene="uid://6t8iqgidf3xo"
+run/main_scene="uid://bl5dgyqk82lo6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*uid://co85lx4ontryd"
 Global="*uid://cevtyk7h6rx10"
+DialogueManager="*uid://co85lx4ontryd"
 
 [display]
 

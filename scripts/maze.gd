@@ -1,11 +1,14 @@
 extends Node2D
 
 @onready var spawn = $Spawn
+@onready var finish_area = $Finish 
 const PLAYER_SCENE = preload("res://scenes/maze_player.tscn")
 
 var started = false
 var deaths = 0 # Track deaths here
 var current_player = null # Keep a reference to delete it later
+
+signal level_cleared
 
 func _input(event):
 	# Only allow start if game is NOT running
@@ -14,7 +17,14 @@ func _input(event):
 		started = true
 
 func _ready():
-	pass
+	if finish_area:
+		finish_area.reached_end.connect(_on_finish_line_reached)
+	else:
+		print("ERROR COULD NOT FIND FINISHAREA")
+
+func _on_finish_line_reached():
+	print("child said we won")
+	level_cleared.emit()
 
 func spawn_player():
 	var player = PLAYER_SCENE.instantiate()

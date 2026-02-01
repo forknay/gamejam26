@@ -149,9 +149,9 @@ func _on_final_choice(index):
 			"Twin: (You sit in the dark, starving, but 'safe'.)"
 		], [], func(): GameManager.game_over("END: STARVED"))
 
-func set_back_prompt(is_visible: bool):
+func set_back_prompt(is_visiblee: bool):
 	if back_prompt:
-		back_prompt.visible = is_visible
+		back_prompt.visible = is_visiblee
 
 
 func _input(event):

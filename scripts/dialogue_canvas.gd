@@ -4,10 +4,13 @@ extends CanvasLayer
 @onready var dialogue_label = $DialogueOverlay/TextBox/MarginContainer/DialogueText
 @onready var choice_container = $DialogueOverlay/ChoiceContainer
 
+
 var dialogue_lines: Array = []
 var current_line_index = 0
 var is_typing = false
 var can_advance = false
+
+var custom_font = load("res://Assets/Fonts/insanity.ttf")
 
 # Storage for the choices to show at the end
 var pending_choices: Array = []
@@ -85,7 +88,15 @@ func show_choices():
 	
 	for i in range(pending_choices.size()):
 		var btn = Button.new()
+		btn.add_theme_font_override("font", custom_font)
+		btn.add_theme_font_size_override("font_size", 24)
 		btn.text = pending_choices[i]
+		
+		var style = StyleBoxFlat.new()
+		style.bg_color = Color(0.15, 0.15, 0.15, 1.0)
+		btn.add_theme_stylebox_override("normal", style)
+		
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.pressed.connect(_on_choice_clicked.bind(i))
 		choice_container.add_child(btn)

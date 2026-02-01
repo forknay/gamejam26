@@ -28,23 +28,34 @@ func start_new_game():
 	get_tree().change_scene_to_file(world_scene_path)
 
 func game_over(ending_type: String):
-	await fade_out()
+	ending_label.modulate.a = 0.0
 	
 	var msg = ""
 	match ending_type:
 		"END: RESCUED": msg = "THE CHIP IS REMOVED.\nYOU ARE FREE."
 		"END: STARVED": msg = "THE HUNTERS WERE BLOCKED.\nYOU DIED IN THE DARK, SAFE AND ALONE."
 		"END: ALONE":   msg = "SIGNAL LOST.\nAI DEACTIVATED.\nSYSTEM FAILURE."
-	
+		
 	ending_label.text = msg
+	
+	await fade_out()
+	
+	ending_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	var tween = create_tween()
 	tween.tween_property(ending_label, "modulate:a", 1.0, 2.0)
 	
 	await get_tree().create_timer(6.0).timeout
 	
-	# --- CHANGE HERE: Back to Menu instead of Reload ---
-	ending_label.modulate.a = 0.0
+	var fade_text = create_tween()
+	fade_text.tween_property(ending_label, "modulate:a", 0.0, 1.0)
+	await fade_text.finished
+	
+	# 2. Change the scene
 	get_tree().change_scene_to_file(menu_scene_path)
+	
+	# 3. Fade the black overlay back to transparent so we can see the menu!
+	fade_in()
+
 func _ready():
 	canvas_layer = CanvasLayer.new()
 	canvas_layer.layer = 100 

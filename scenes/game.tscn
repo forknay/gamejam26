@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dfn2vw2lesmwg"]
 
-[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://Scripts/world.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_weeiq"]
 [ext_resource type="Texture2D" uid="uid://b2sojx12tnmy4" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_6.png" id="3_uxocx"]
 [ext_resource type="Texture2D" uid="uid://utp7crof68e3" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_7.png" id="4_7nv0b"]
@@ -71,13 +71,12 @@
 [ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
-[ext_resource type="Script" uid="uid://dvlieg2bcagq7" path="res://Scenes/day_night.gd" id="71_a2m5q"]
+[ext_resource type="Script" path="res://Scenes/day_night.gd" id="71_a2m5q"]
 [ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="72_7gkqi"]
 [ext_resource type="PackedScene" uid="uid://dlqnp7dmeg6ha" path="res://Animations/openingCam_v02.fbx" id="73_7gkqi"]
 [ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://scripts/opening_cam_v_02.gd" id="74_753oq"]
-[ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://scenes/overlay.gd" id="75_753oq"]
-[ext_resource type="Script" uid="uid://co7lrmr2hnytm" path="res://Scripts/opening_cam_v_02.gd" id="74_753oq"]
-[ext_resource type="PackedScene" uid="uid://3il8njkibrx" path="res://Scenes/terrain.tscn" id="75_ff75x"]
+[ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://Scenes/overlay.gd" id="75_753oq"]
+[ext_resource type="PackedScene" path="res://Scenes/terrain.tscn" id="75_ff75x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1493,9 +1492,6 @@ transform = Transform3D(0.58778524, 0, -0.809017, 0, 1, 0, 0.809017, 0, 0.587785
 current = true
 fov = 37.849285
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
-environment = SubResource("Environment_fj7yv")
-
 [node name="Closet" type="MeshInstance3D" parent="." unique_id=1187232117]
 transform = Transform3D(1.4889376, 0, 0, 0, 2.1499302, 0, 0, 0, 1.187279, 0.25552237, 0.905953, -2.7593842)
 material_override = SubResource("StandardMaterial3D_gv5m4")
@@ -1806,12 +1802,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061321616, 0.09376502, 0.1
 [node name="openingCam_v02" parent="." unique_id=847132554 instance=ExtResource("73_7gkqi")]
 script = ExtResource("74_753oq")
 
-[node name="Opening_cam" parent="openingCam_v02" index="0" unique_id=976576168]
+[node name="Opening_cam" parent="openingCam_v02" index="0" unique_id=281995520]
 transform = Transform3D(0.66297096, 0.42054158, -0.6193661, 0, 0.827316, 0.5617369, 0.7486451, -0.37241524, 0.5484865, -2.2278154, 0.39101002, 0.97110337)
 fov = 55.0
 
 [node name="Terrain" parent="." unique_id=900018755 instance=ExtResource("75_ff75x")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2.7884088, 12.0513, -0.6626582, -2.776229)
+
+[node name="overlay" type="Control" parent="." unique_id=2141005858]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("75_753oq")
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

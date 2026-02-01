@@ -13,7 +13,6 @@ func comp_anim():
 func comp_anim_back():
 	cam.make_current()
 	anim.play_backwards(anim.get_animation_list()[0])
-	$AnimationPlayer.animation_finished.connect(_on_animation_finished)
 
 func _on_animation_finished(anim_name):
 	anim_done.emit()

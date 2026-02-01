@@ -1,82 +1,82 @@
 [gd_scene format=4 uid="uid://dfn2vw2lesmwg"]
 
 [ext_resource type="Script" uid="uid://sjev7j0r2ct5" path="res://scripts/world.gd" id="1_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_weeiq"]
-[ext_resource type="Texture2D" uid="uid://b2sojx12tnmy4" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_6.png" id="3_uxocx"]
-[ext_resource type="Texture2D" uid="uid://utp7crof68e3" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_7.png" id="4_7nv0b"]
-[ext_resource type="Texture2D" uid="uid://f3j4ssfphhll" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_8.png" id="5_o8oq8"]
-[ext_resource type="Texture2D" uid="uid://iqel25f470po" path="res://scenes/Spaceship/textures/Metal062C_2K-JPG_Metalness.jpg" id="6_sxt1d"]
-[ext_resource type="Texture2D" uid="uid://bx4c1o41hbi1j" path="res://scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg" id="7_2iuns"]
-[ext_resource type="Texture2D" uid="uid://badjfcwmxbxif" path="res://scenes/Spaceship/textures/Metal062C_2K-JPG_Roughness.jpg" id="8_7gkqi"]
-[ext_resource type="Texture2D" uid="uid://cvifn7rwchus2" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_15.png" id="9_753oq"]
-[ext_resource type="Texture2D" uid="uid://p5ild3fp7yxk" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_16.png" id="10_3x338"]
-[ext_resource type="Texture2D" uid="uid://dwbix0bl3o601" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_17.png" id="11_1yg85"]
-[ext_resource type="Texture2D" uid="uid://h572ewkeg160" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_27.png" id="12_s0g06"]
-[ext_resource type="Texture2D" uid="uid://bus1rys8bb8gf" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_28.png" id="13_2gnni"]
-[ext_resource type="Texture2D" uid="uid://yhgbp0ropfuh" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_29.png" id="14_vgxg3"]
-[ext_resource type="Texture2D" uid="uid://dr4s5bhmvv2ef" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_24.png" id="15_4nbsr"]
-[ext_resource type="Texture2D" uid="uid://buh47k5xtl4wh" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_25.png" id="16_fkywm"]
-[ext_resource type="Texture2D" uid="uid://cbuh38ahbtpy1" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_26.png" id="17_dku7i"]
-[ext_resource type="Texture2D" uid="uid://c121qrdprf3tk" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_9.png" id="18_veaf0"]
-[ext_resource type="Texture2D" uid="uid://dqbnmxejn53j3" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_10.png" id="19_flw08"]
-[ext_resource type="Texture2D" uid="uid://dj08h7criu06t" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_11.png" id="20_84hbc"]
-[ext_resource type="Texture2D" uid="uid://c4avp7ynfo2dl" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_18.png" id="21_15b3c"]
-[ext_resource type="Texture2D" uid="uid://cvbok81pdd3" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_19.png" id="22_veukt"]
-[ext_resource type="Texture2D" uid="uid://cfqb6upd05x4f" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_20.png" id="23_nbjts"]
-[ext_resource type="Texture2D" uid="uid://d0tuje6cxnhe6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_54.png" id="24_i1hsc"]
-[ext_resource type="Texture2D" uid="uid://d4hw05g5tpyix" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_55.png" id="25_ounyb"]
-[ext_resource type="Texture2D" uid="uid://celcttxns5sfs" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_56.png" id="26_iekjf"]
-[ext_resource type="Texture2D" uid="uid://btum37g58hmhd" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_42.png" id="27_okmmv"]
-[ext_resource type="Texture2D" uid="uid://cdnaxq1mx1do7" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_43.png" id="28_ja1h7"]
-[ext_resource type="Texture2D" uid="uid://cuqo0t0l3vtjs" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_44.png" id="29_p4npv"]
-[ext_resource type="Texture2D" uid="uid://cdy4f5twlnje2" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_33.png" id="30_xjcjm"]
-[ext_resource type="Texture2D" uid="uid://djsmb43v86xxn" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_34.png" id="31_tc8uq"]
-[ext_resource type="Texture2D" uid="uid://ci61y6bej8dhn" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_35.png" id="32_h5tdf"]
-[ext_resource type="Texture2D" uid="uid://blqto4l24t0q1" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_45.png" id="33_xbifu"]
-[ext_resource type="Texture2D" uid="uid://dki6p1ie1vpxm" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_46.png" id="34_gdf8r"]
-[ext_resource type="Texture2D" uid="uid://ddda1i0dr7c1s" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_47.png" id="35_x8trd"]
-[ext_resource type="Texture2D" uid="uid://bykcn0dgwbkvf" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_0.png" id="36_s33c4"]
-[ext_resource type="Texture2D" uid="uid://c4vjgp1hxmwsi" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_1.png" id="37_3hv4c"]
-[ext_resource type="Texture2D" uid="uid://btspel0bamd8m" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_2.png" id="38_vniw0"]
-[ext_resource type="Texture2D" uid="uid://ds4f5sphw7gat" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_3.png" id="39_lddog"]
-[ext_resource type="Texture2D" uid="uid://7ho02ap85t6" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_4.png" id="40_boxkr"]
-[ext_resource type="Texture2D" uid="uid://b6xaec1v50u3x" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_5.png" id="41_de5we"]
+[ext_resource type="Texture2D" uid="uid://b3ucnuiu8c4df" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Color.jpg" id="2_weeiq"]
+[ext_resource type="Texture2D" uid="uid://b2sojx12tnmy4" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_6.png" id="3_uxocx"]
+[ext_resource type="Texture2D" uid="uid://utp7crof68e3" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_7.png" id="4_7nv0b"]
+[ext_resource type="Texture2D" uid="uid://f3j4ssfphhll" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_8.png" id="5_o8oq8"]
+[ext_resource type="Texture2D" uid="uid://iqel25f470po" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Metalness.jpg" id="6_sxt1d"]
+[ext_resource type="Texture2D" uid="uid://bx4c1o41hbi1j" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_NormalDX.jpg" id="7_2iuns"]
+[ext_resource type="Texture2D" uid="uid://badjfcwmxbxif" path="res://Scenes/Spaceship/textures/Metal062C_2K-JPG_Roughness.jpg" id="8_7gkqi"]
+[ext_resource type="Texture2D" uid="uid://cvifn7rwchus2" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_15.png" id="9_753oq"]
+[ext_resource type="Texture2D" uid="uid://p5ild3fp7yxk" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_16.png" id="10_3x338"]
+[ext_resource type="Texture2D" uid="uid://dwbix0bl3o601" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_17.png" id="11_1yg85"]
+[ext_resource type="Texture2D" uid="uid://h572ewkeg160" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_27.png" id="12_s0g06"]
+[ext_resource type="Texture2D" uid="uid://bus1rys8bb8gf" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_28.png" id="13_2gnni"]
+[ext_resource type="Texture2D" uid="uid://yhgbp0ropfuh" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_29.png" id="14_vgxg3"]
+[ext_resource type="Texture2D" uid="uid://dr4s5bhmvv2ef" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_24.png" id="15_4nbsr"]
+[ext_resource type="Texture2D" uid="uid://buh47k5xtl4wh" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_25.png" id="16_fkywm"]
+[ext_resource type="Texture2D" uid="uid://cbuh38ahbtpy1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_26.png" id="17_dku7i"]
+[ext_resource type="Texture2D" uid="uid://c121qrdprf3tk" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_9.png" id="18_veaf0"]
+[ext_resource type="Texture2D" uid="uid://dqbnmxejn53j3" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_10.png" id="19_flw08"]
+[ext_resource type="Texture2D" uid="uid://dj08h7criu06t" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_11.png" id="20_84hbc"]
+[ext_resource type="Texture2D" uid="uid://c4avp7ynfo2dl" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_18.png" id="21_15b3c"]
+[ext_resource type="Texture2D" uid="uid://cvbok81pdd3" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_19.png" id="22_veukt"]
+[ext_resource type="Texture2D" uid="uid://cfqb6upd05x4f" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_20.png" id="23_nbjts"]
+[ext_resource type="Texture2D" uid="uid://d0tuje6cxnhe6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_54.png" id="24_i1hsc"]
+[ext_resource type="Texture2D" uid="uid://d4hw05g5tpyix" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_55.png" id="25_ounyb"]
+[ext_resource type="Texture2D" uid="uid://celcttxns5sfs" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_56.png" id="26_iekjf"]
+[ext_resource type="Texture2D" uid="uid://btum37g58hmhd" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_42.png" id="27_okmmv"]
+[ext_resource type="Texture2D" uid="uid://cdnaxq1mx1do7" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_43.png" id="28_ja1h7"]
+[ext_resource type="Texture2D" uid="uid://cuqo0t0l3vtjs" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_44.png" id="29_p4npv"]
+[ext_resource type="Texture2D" uid="uid://cdy4f5twlnje2" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_33.png" id="30_xjcjm"]
+[ext_resource type="Texture2D" uid="uid://djsmb43v86xxn" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_34.png" id="31_tc8uq"]
+[ext_resource type="Texture2D" uid="uid://ci61y6bej8dhn" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_35.png" id="32_h5tdf"]
+[ext_resource type="Texture2D" uid="uid://blqto4l24t0q1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_45.png" id="33_xbifu"]
+[ext_resource type="Texture2D" uid="uid://dki6p1ie1vpxm" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_46.png" id="34_gdf8r"]
+[ext_resource type="Texture2D" uid="uid://ddda1i0dr7c1s" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_47.png" id="35_x8trd"]
+[ext_resource type="Texture2D" uid="uid://bykcn0dgwbkvf" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_0.png" id="36_s33c4"]
+[ext_resource type="Texture2D" uid="uid://c4vjgp1hxmwsi" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_1.png" id="37_3hv4c"]
+[ext_resource type="Texture2D" uid="uid://btspel0bamd8m" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_2.png" id="38_vniw0"]
+[ext_resource type="Texture2D" uid="uid://ds4f5sphw7gat" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_3.png" id="39_lddog"]
+[ext_resource type="Texture2D" uid="uid://7ho02ap85t6" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_4.png" id="40_boxkr"]
+[ext_resource type="Texture2D" uid="uid://b6xaec1v50u3x" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_5.png" id="41_de5we"]
 [ext_resource type="Script" uid="uid://rshbgjd16fh7" path="res://scripts/lamp.gd" id="42_8tghg"]
-[ext_resource type="Texture2D" uid="uid://tk0f5sv3rpr1" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_21.png" id="43_473mq"]
-[ext_resource type="Texture2D" uid="uid://ckuexuuvi1nq1" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_22.png" id="44_1va0p"]
-[ext_resource type="Texture2D" uid="uid://direc5qkmpp16" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_23.png" id="45_2tvof"]
-[ext_resource type="Texture2D" uid="uid://cohho0m0fhkyf" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_36.png" id="46_fsry6"]
-[ext_resource type="Texture2D" uid="uid://cy2qnot688oim" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_37.png" id="47_eky20"]
-[ext_resource type="Texture2D" uid="uid://c1w3dff45tdk8" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_38.png" id="48_o3ulk"]
-[ext_resource type="Texture2D" uid="uid://deo7cl2dyvkc4" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_51.png" id="49_ghitk"]
-[ext_resource type="Texture2D" uid="uid://bolvd4kenfo5s" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_52.png" id="50_rundi"]
-[ext_resource type="Texture2D" uid="uid://dinadrw1q0ekr" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_53.png" id="51_7kwaa"]
-[ext_resource type="Texture2D" uid="uid://dfcwm8ka15l4w" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_48.png" id="52_jye5l"]
-[ext_resource type="Texture2D" uid="uid://bfk3jhqaslj42" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_49.png" id="53_rvhxa"]
-[ext_resource type="Texture2D" uid="uid://dm1ljpchuoevf" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_50.png" id="54_rekj2"]
-[ext_resource type="Texture2D" uid="uid://bohlnwup5t1yo" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_57.png" id="55_ip3rd"]
-[ext_resource type="Texture2D" uid="uid://btgos1iduwrfe" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_58.png" id="56_s6met"]
-[ext_resource type="Texture2D" uid="uid://bmkykpfmjmlr8" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_59.png" id="57_7itva"]
-[ext_resource type="Texture2D" uid="uid://d1mtqiavgqlpj" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_30.png" id="58_o5ny5"]
-[ext_resource type="Texture2D" uid="uid://bf1iio7iq3rkh" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_31.png" id="59_7ss2i"]
-[ext_resource type="Texture2D" uid="uid://b0bp7w3ltxdh8" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_32.png" id="60_1id2h"]
-[ext_resource type="Texture2D" uid="uid://cu2pjwxi25qsr" path="res://scenes/Spaceship/textures/Fabric080_2K-JPG_Color.jpg" id="61_awynl"]
-[ext_resource type="Texture2D" uid="uid://debq18hjtsudd" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_12.png" id="62_65ua2"]
-[ext_resource type="Texture2D" uid="uid://dmlfxg5y7hlr4" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_13.png" id="63_mowrl"]
-[ext_resource type="Texture2D" uid="uid://ycume26aetvd" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_14.png" id="64_g3qou"]
-[ext_resource type="Texture2D" uid="uid://r31asy3jgy5j" path="res://scenes/Spaceship/textures/Fabric062_2K-JPG_Color.jpg" id="65_vvi2r"]
-[ext_resource type="Texture2D" uid="uid://dr43o87ns0j8u" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_39.png" id="66_r2n6p"]
-[ext_resource type="Texture2D" uid="uid://oyg8p3vf0nj0" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_40.png" id="67_deyyv"]
-[ext_resource type="Texture2D" uid="uid://bkc12yroel5ln" path="res://scenes/Spaceship/ASM - PBR Metallic Roughness_41.png" id="68_vnd7u"]
-[ext_resource type="Shader" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
-[ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://scenes/node_3d.tscn" id="70_sxt1d"]
+[ext_resource type="Texture2D" uid="uid://tk0f5sv3rpr1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_21.png" id="43_473mq"]
+[ext_resource type="Texture2D" uid="uid://ckuexuuvi1nq1" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_22.png" id="44_1va0p"]
+[ext_resource type="Texture2D" uid="uid://direc5qkmpp16" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_23.png" id="45_2tvof"]
+[ext_resource type="Texture2D" uid="uid://cohho0m0fhkyf" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_36.png" id="46_fsry6"]
+[ext_resource type="Texture2D" uid="uid://cy2qnot688oim" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_37.png" id="47_eky20"]
+[ext_resource type="Texture2D" uid="uid://c1w3dff45tdk8" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_38.png" id="48_o3ulk"]
+[ext_resource type="Texture2D" uid="uid://deo7cl2dyvkc4" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_51.png" id="49_ghitk"]
+[ext_resource type="Texture2D" uid="uid://bolvd4kenfo5s" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_52.png" id="50_rundi"]
+[ext_resource type="Texture2D" uid="uid://dinadrw1q0ekr" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_53.png" id="51_7kwaa"]
+[ext_resource type="Texture2D" uid="uid://dfcwm8ka15l4w" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_48.png" id="52_jye5l"]
+[ext_resource type="Texture2D" uid="uid://bfk3jhqaslj42" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_49.png" id="53_rvhxa"]
+[ext_resource type="Texture2D" uid="uid://dm1ljpchuoevf" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_50.png" id="54_rekj2"]
+[ext_resource type="Texture2D" uid="uid://bohlnwup5t1yo" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_57.png" id="55_ip3rd"]
+[ext_resource type="Texture2D" uid="uid://btgos1iduwrfe" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_58.png" id="56_s6met"]
+[ext_resource type="Texture2D" uid="uid://bmkykpfmjmlr8" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_59.png" id="57_7itva"]
+[ext_resource type="Texture2D" uid="uid://d1mtqiavgqlpj" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_30.png" id="58_o5ny5"]
+[ext_resource type="Texture2D" uid="uid://bf1iio7iq3rkh" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_31.png" id="59_7ss2i"]
+[ext_resource type="Texture2D" uid="uid://b0bp7w3ltxdh8" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_32.png" id="60_1id2h"]
+[ext_resource type="Texture2D" uid="uid://cu2pjwxi25qsr" path="res://Scenes/Spaceship/textures/Fabric080_2K-JPG_Color.jpg" id="61_awynl"]
+[ext_resource type="Texture2D" uid="uid://debq18hjtsudd" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_12.png" id="62_65ua2"]
+[ext_resource type="Texture2D" uid="uid://dmlfxg5y7hlr4" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_13.png" id="63_mowrl"]
+[ext_resource type="Texture2D" uid="uid://ycume26aetvd" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_14.png" id="64_g3qou"]
+[ext_resource type="Texture2D" uid="uid://r31asy3jgy5j" path="res://Scenes/Spaceship/textures/Fabric062_2K-JPG_Color.jpg" id="65_vvi2r"]
+[ext_resource type="Texture2D" uid="uid://dr43o87ns0j8u" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_39.png" id="66_r2n6p"]
+[ext_resource type="Texture2D" uid="uid://oyg8p3vf0nj0" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_40.png" id="67_deyyv"]
+[ext_resource type="Texture2D" uid="uid://bkc12yroel5ln" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_41.png" id="68_vnd7u"]
+[ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
+[ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
 [ext_resource type="Script" path="res://Scenes/day_night.gd" id="71_a2m5q"]
 [ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="72_7gkqi"]
 [ext_resource type="PackedScene" uid="uid://dod8gdfexyosm" path="res://Animations/openingCam_v04.fbx" id="74_3x338"]
-[ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://scenes/overlay.gd" id="75_753oq"]
+[ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://Scenes/overlay.gd" id="75_753oq"]
 [ext_resource type="PackedScene" path="res://Scenes/terrain.tscn" id="75_ff75x"]
-[ext_resource type="PackedScene" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
+[ext_resource type="PackedScene" uid="uid://b61reuthpexnb" path="res://Scenes/RadioOverlay.tscn" id="78_ckj55"]
 [ext_resource type="PackedScene" uid="uid://bbye1smrqgm7h" path="res://Animations/defaultComputer_v04.fbx" id="78_fkywm"]
 [ext_resource type="Script" uid="uid://bwm7rulyone0s" path="res://scripts/opening_cam_v_04.gd" id="78_s0g06"]
 [ext_resource type="Script" uid="uid://c2rkhlnhisbis" path="res://scripts/default_computer_v_04.gd" id="79_dku7i"]
@@ -1487,8 +1487,8 @@ shader_parameter/pixel_size = 3
 [node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera", "target_computer", "target_closet")]
 script = ExtResource("1_lnu2h")
 camera = NodePath("Camera3D")
-target_computer = NodePath("ComputerCamera")
-target_closet = NodePath("ClosetCamera")
+target_computer = NodePath("")
+target_closet = NodePath("")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
 unique_name_in_owner = true
@@ -1543,12 +1543,6 @@ transform = Transform3D(12.321893, 0, 4.7683716e-07, 0, 0.7949956, 0, -9.313226e
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bed/StaticBody3D" unique_id=1136750388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_f3sb7")
-
-[node name="ComputerCamera" type="Marker3D" parent="." unique_id=545295627]
-transform = Transform3D(0.9999361, -0.00037449686, 0.011301591, 0, 0.99945146, 0.033118475, -0.011307795, -0.033116356, 0.99938756, -1.268147, 1.2669522, -1.7363794)
-
-[node name="ClosetCamera" type="Marker3D" parent="." unique_id=466368038]
-transform = Transform3D(0.8539863, 0.11392256, -0.5076702, 0, 0.9757344, 0.21895741, 0.5202955, -0.18698664, 0.8332638, -0.601953, 1.438512, -2.2023249)
 
 [node name="RadioBridge" type="MeshInstance3D" parent="." unique_id=220736413]
 transform = Transform3D(0.7102087, 0, 0, 0, 0.4094828, 0, 0, 0, 0.1, 0.14820915, 1.400127, -3.771822)
@@ -1766,7 +1760,7 @@ material_override = SubResource("StandardMaterial3D_eio5l")
 mesh = SubResource("ArrayMesh_jqiwq")
 
 [node name="Node3D" parent="." unique_id=314615975 instance=ExtResource("70_sxt1d")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.3135743, 1.2710932, -3.2082834)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.3135743, 1.2710932, -3.2082834)
 
 [node name="DayNight" type="Node3D" parent="." unique_id=1874549406]
 transform = Transform3D(0.4285333, 0.15435353, -0.89024395, -0.1716533, 0.98126334, 0.0875067, 0.8870707, 0.11531377, 0.4469993, 5.778244, 3.0000668, -2.5655308)
@@ -1813,13 +1807,13 @@ mouse_filter = 2
 [node name="openingCam_v04" parent="." unique_id=864377999 instance=ExtResource("74_3x338")]
 script = ExtResource("78_s0g06")
 
-[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1026580633]
+[node name="Opening_cam" parent="openingCam_v04" index="0" unique_id=1858333477]
 transform = Transform3D(0.7664358, 0, -0.64232093, 0, 1, 0, 0.64232093, 0, 0.7664358, -2.369482, 1.147273, 1.1104856)
 
 [node name="defaultComputer_v04" parent="." unique_id=1415429130 instance=ExtResource("78_fkywm")]
 script = ExtResource("79_dku7i")
 
-[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1055138181]
+[node name="Default_t_Computer" parent="defaultComputer_v04" index="0" unique_id=1353477861]
 transform = Transform3D(0.7664358, -1.6183634e-12, -0.64232093, -1.585726e-11, 1, -2.1440894e-11, 0.64232093, 2.6618518e-11, 0.7664358, -2.369482, 1.147273, 1.1104856)
 fov = 45.7
 
@@ -1829,7 +1823,7 @@ script = ExtResource("81_dku7i")
 [node name="defaultWindow_v04" parent="." unique_id=1766276658 instance=ExtResource("81_flw08")]
 script = ExtResource("83_veaf0")
 
-[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=643088355]
+[node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=1576245684]
 transform = Transform3D(0.12366737, -0.035827994, -0.99167675, -0.0126763955, 0.9992094, -0.037680954, 0.99224275, 0.01723079, 0.12311543, 2.806097, 1.0877379, 0.106592394)
 
 [node name="overlay" type="Control" parent="." unique_id=2141005858]

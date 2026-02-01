@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://dr43o87ns0j8u" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_39.png" id="66_r2n6p"]
 [ext_resource type="Texture2D" uid="uid://oyg8p3vf0nj0" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_40.png" id="67_deyyv"]
 [ext_resource type="Texture2D" uid="uid://bkc12yroel5ln" path="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_41.png" id="68_vnd7u"]
+[ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
 [ext_resource type="Script" path="res://Scenes/day_night.gd" id="71_a2m5q"]
@@ -1472,6 +1473,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7l6q4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckj55"]
+shader = ExtResource("69_uxocx")
+shader_parameter/color_levels = 8.0
+shader_parameter/pixel_size = 3
+
 [node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera", "target_computer", "target_closet")]
 script = ExtResource("1_lnu2h")
 camera = NodePath("Camera3D")
@@ -1800,6 +1806,17 @@ offset_bottom = 40.0
 script = ExtResource("75_753oq")
 
 [node name="RadioOverlay" parent="." unique_id=1854559540 instance=ExtResource("78_ckj55")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1454272990]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1868749341]
+material = SubResource("ShaderMaterial_ckj55")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

@@ -11,14 +11,14 @@ func show_overlay():
 	visible = true
 	# Unlock mouse so you can click dials
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
-
+	AudioManager.mute_ambience()
 func hide_overlay():
 	visible = false
 	if audio1 or audio2:
 		audio1.stop()
 		audio2.stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+	AudioManager.unmute_ambience()
 func _input(event):
 	if visible:
 		# Close on ESC or E

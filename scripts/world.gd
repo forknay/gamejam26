@@ -1,20 +1,19 @@
 extends Node3D
 
-# --- YOUR EXISTING VARIABLES ---
+# --- VARIABLES ---
 @onready var radio_overlay = $RadioOverlay
 @onready var dialogue_ui = $DialogueCanvas
 @onready var day_night_sys = $DayNight
+@onready var back_prompt = $DialogueCanvas/BackPrompt
 
 @export var camera : Camera3D
 @export var target_computer : Marker3D
 @export var target_closet : Marker3D
 @export var opening_camera : Camera3D
 
-# Vars for start position
 var start_transform : Transform3D
 var end_anim : Transform3D
 
-# State Flags
 var is_computer = false
 var is_closet = false
 var is_window = false
@@ -28,7 +27,6 @@ func _ready() -> void:
 	else:
 		start_transform = camera.global_transform
 	
-	# Path updated to Node3D/Computer
 	var comp_node = $Node3D/Computer
 	if comp_node:
 		comp_node.all_games_finished.connect(_on_computer_finished)
@@ -39,17 +37,27 @@ func _ready() -> void:
 	GameManager.fade_in()
 
 func setup_scene_state():
+	# Update Lighting
 	if GameManager.is_night():
 		day_night_sys.setNight(true)
 	else:
 		day_night_sys.setNight(false)
 
+	# --- STORY PROGRESSION: MORNING DIALOGUE ---
 	match GameManager.current_state:
 		GameManager.State.DAY_1_WORK:
 			dialogue_ui.start_dialogue([
 				"AI: Wake up! The opposition is starting to HUNT us!", 
 				"AI: We need to jam their tracking signals.",
 				"AI: Go to the computer and block them, quick!"
+			])
+		
+		# NEW: Day 2 Morning Lore
+		GameManager.State.DAY_2_WORK:
+			dialogue_ui.start_dialogue([
+				"AI: Wake up, Twin... we're under attack again.",
+				"AI: They are persistent. They want the data in your head.",
+				"AI: You know what to do. Block the incoming signals."
 			])
 
 # --- LOGIC: COMPUTER FINISHED ---
@@ -60,23 +68,34 @@ func _on_computer_finished():
 			"AI: Now they won’t bother us anymore for today.",
 			"AI: Those filthy bastards are trying to capture us and get intel from us.",
 			"AI: We need to support each other."
-		], [], _transition_to_night)
+		], [], _transition_to_evening)
+	
+	# NEW: Day 2 Completion
+	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
+		dialogue_ui.start_dialogue([
+			"AI: Excellent work. Their tracking drones are losing the scent.",
+			"AI: I can feel your heart racing. Calm down. We are safe... for now."
+		], [], _transition_to_evening)
 
-func _transition_to_night():
-	print("Dialogue finished. Switching to Night Mode...")
-	GameManager.advance_state(GameManager.State.DAY_1_EVENING)
+func _transition_to_evening():
+	# Determines which evening state to move to based on the current day
+	if GameManager.current_state == GameManager.State.DAY_1_WORK:
+		GameManager.advance_state(GameManager.State.DAY_1_EVENING)
+	elif GameManager.current_state == GameManager.State.DAY_2_WORK:
+		# If you have a DAY_2_EVENING state defined:
+		GameManager.advance_state(GameManager.State.DAY_2_EVENING)
 
-# --- CAMERA LOGIC ---
+func set_back_prompt(is_visible: bool):
+	if back_prompt:
+		back_prompt.visible = is_visible
+
+# --- CAMERA & INPUT ---
 func _on_anim_done():
 	$overlay.remove_overlay()
 	camera.make_current()
 
 func _input(event):
-	# Use the Input Map action "back" (assigned to E)
 	if event.is_action_pressed("back"):
-		
-		# DIALOGUE CHECK: If the text box is visible, 'E' belongs to the dialogue.
-		# We return so the camera doesn't zoom out while the user is reading.
 		if dialogue_ui.text_box.visible:
 			return
 			
@@ -89,6 +108,17 @@ func _input(event):
 		elif is_window:
 			zoom_out_window()
 			is_window = false
+
+func _process(_delta: float):
+	# Manage the visibility of the "[E] Back" prompt
+	if dialogue_ui.text_box.visible:
+		# Hide prompt while talking so UI isn't cluttered
+		set_back_prompt(false)
+	elif is_computer or is_closet or is_window:
+		# Only show if zoomed in and not talking
+		set_back_prompt(true)
+	else:
+		set_back_prompt(false)
 
 # --- ZOOM FUNCTIONS ---
 func zoom_out_closet():
@@ -116,15 +146,13 @@ func zoom_in_window():
 func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
 		if GameManager.is_night():
-			dialogue_ui.start_dialogue(["It's too late to work."])
+			dialogue_ui.start_dialogue(["AI: Don't bother. The hardware is locked down for the night cycle."])
 		else:
-			print("COMPUTER CLICKED!")
 			$defaultComputer_v04.comp_anim() 
 			zoom_in_computer()
 
 func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
-		print("CLOSET CLICKED!")
 		$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
 		$defaultRadio_v04.radio_anim()
 		zoom_in_closet()
@@ -134,8 +162,10 @@ func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
 		match GameManager.current_state:
 			GameManager.State.INTRO_WAKEUP:
 				dialogue_ui.start_dialogue(["The city is dark.", "I should go back to bed."])
+			
 			GameManager.State.DAY_1_WORK:
 				dialogue_ui.start_dialogue(["The drone is watching me."], ["Wave at it", "Ignore it"], _on_window_choice)
+			
 			GameManager.State.DAY_1_EVENING:
 				$defaultWindow_v04.window_anim()
 				zoom_in_window()
@@ -151,6 +181,15 @@ func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
 					"AI: I save *us*.",
 					"AI: I would run over a million strangers to keep this body alive.",
 					"AI: Never forget that when they come for us."
+				])
+			
+			GameManager.State.DAY_2_EVENING:
+				$defaultWindow_v04.window_anim()
+				zoom_in_window()
+				dialogue_ui.start_dialogue([
+					"AI: The stars look like digital noise from here.",
+					"AI: Do you think the crew we lost is out there, watching?",
+					"AI: Or is the universe just a cold machine, like me, waiting for the next input?"
 				])
 			_: 
 				$defaultWindow_v04.window_anim()
@@ -176,6 +215,9 @@ func _on_sleep_choice(index):
 			next_state = GameManager.State.DAY_1_WORK
 		elif GameManager.current_state == GameManager.State.DAY_1_EVENING:
 			next_state = GameManager.State.DAY_2_WORK
+		elif GameManager.current_state == GameManager.State.DAY_2_EVENING:
+			# Advance to Day 3 or Ending here
+			pass
 		GameManager.advance_state(next_state)
 
 func _on_static_body_3d_input_event_radio(_camera, event, _pos, _normal, _idx):

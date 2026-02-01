@@ -52,3 +52,11 @@ offset_top = 815.0
 offset_right = 1848.0
 offset_bottom = 1031.0
 theme_override_constants/separation = 10
+
+[node name="BackPrompt" type="Label" parent="." unique_id=1638385515]
+visible = false
+offset_left = 110.0
+offset_top = 959.0
+offset_right = 198.0
+offset_bottom = 1001.0
+text = "[E] Back"

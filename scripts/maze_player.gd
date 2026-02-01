@@ -19,9 +19,9 @@ func _physics_process(_delta):
 	if trail.get_point_count() == 0 \
 	or trail.get_point_position(trail.get_point_count() - 1).distance_to(global_position) > 12:
 		trail.add_point(global_position)
-	
+
 	var collided = move_and_slide()
-	
+
 	if collided:
 		print("wall")
 		i_died.emit()

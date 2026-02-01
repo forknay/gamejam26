@@ -1830,7 +1830,7 @@ script = ExtResource("81_dku7i")
 script = ExtResource("83_veaf0")
 
 [node name="Default_t_Window" parent="defaultWindow_v04" index="0" unique_id=643088355]
-transform = Transform3D(0.10497008, 0.22049558, -0.96972317, -0.016278245, 0.9753606, 0.22001535, 0.9943422, -0.007309636, 0.10597296, 2.698916, 0.9507145, 0.1285702)
+transform = Transform3D(0.12366737, -0.035827994, -0.99167675, -0.0126763955, 0.9992094, -0.037680954, 0.99224275, 0.01723079, 0.12311543, 2.806097, 1.0877379, 0.106592394)
 
 [node name="overlay" type="Control" parent="." unique_id=2141005858]
 layout_mode = 3

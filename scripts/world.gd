@@ -12,7 +12,7 @@ var is_zoomed_in = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"openingCam_v02".anim_done.connect(_on_anim_done)
+	$openingCam_v04.anim_done.connect(_on_anim_done)
 	if not camera or not target_computer:
 		print("ERROR: Please assign Camera and Target in the Inspector!")
 	else:
@@ -23,18 +23,18 @@ func _ready() -> void:
 func _on_anim_done():
 	print(start_transform)
 	$overlay.remove_overlay()
-	var tween = create_tween()
-	var target_pos = Vector3(-2.22, 1.388, 0.971)
-	var target_rot = Vector3(0, deg_to_rad(-46.7), 0) # Convert Y to radians
+	#var tween = create_tween()
+	#var target_pos = Vector3(-2.22, 1.388, 0.971)
+	#var target_rot = Vector3(0, deg_to_rad(-46.7), 0) # Convert Y to radians
 	camera.make_current()
 	# Create a new Transform with this basis (rotation) and origin (position)
-	var trans = Transform3D(Basis.from_euler(target_rot), target_pos)
+	#var trans = Transform3D(Basis.from_euler(target_rot), target_pos)
 	#cubic = cinematic
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	#tween.set_trans(Tween.TRANS_CUBIC)
+	#tween.set_ease(Tween.EASE_IN_OUT)
 	# match camera over 1.5s
 	
-	tween.tween_property(camera, "global_transform", trans, 1.0)
+	#tween.tween_property(camera, "global_transform", trans, 1.0)
 func _input(event):
 	# Temp use SPACE
 	if event.is_action_pressed("ui_accept") and is_zoomed_in:

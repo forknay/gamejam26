@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds4f5sphw7gat"
-path.s3tc="res://.godot/imported/ASM - PBR Metallic Roughness_3.png-c022f5cf6d4950040f53c36cec4f86d7.s3tc.ctex"
+path.s3tc="res://.godot/imported/ASM - PBR Metallic Roughness_3.png-1b6eedbdec99fb67ec04ee01a703c31c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://scenes/Spaceship/ASM - PBR Metallic Roughness_3.png"
-dest_files=["res://.godot/imported/ASM - PBR Metallic Roughness_3.png-c022f5cf6d4950040f53c36cec4f86d7.s3tc.ctex"]
+source_file="res://Scenes/Spaceship/ASM - PBR Metallic Roughness_3.png"
+dest_files=["res://.godot/imported/ASM - PBR Metallic Roughness_3.png-1b6eedbdec99fb67ec04ee01a703c31c.s3tc.ctex"]
 
 [params]
 

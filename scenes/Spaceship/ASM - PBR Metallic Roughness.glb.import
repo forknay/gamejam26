@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ch52ewog22lp6"
-path="res://.godot/imported/ASM - PBR Metallic Roughness.glb-1f22afa753ced73f07ebd1df5a4644a2.scn"
+path="res://.godot/imported/ASM - PBR Metallic Roughness.glb-f705d1177126888ffae3083949137d88.scn"
 
 [deps]
 
-source_file="res://scenes/Spaceship/ASM - PBR Metallic Roughness.glb"
-dest_files=["res://.godot/imported/ASM - PBR Metallic Roughness.glb-1f22afa753ced73f07ebd1df5a4644a2.scn"]
+source_file="res://Scenes/Spaceship/ASM - PBR Metallic Roughness.glb"
+dest_files=["res://.godot/imported/ASM - PBR Metallic Roughness.glb-f705d1177126888ffae3083949137d88.scn"]
 
 [params]
 

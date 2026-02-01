@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d0e6viata4706"]
+
+[ext_resource type="Script" uid="uid://dgs314wo6nu8e" path="res://Scenes/audio_manager.gd" id="1_i2xd5"]
+[ext_resource type="AudioStream" uid="uid://dbc7x8hbc6bjm" path="res://audio/73bcc0f8.ogg" id="2_u6owb"]
+
+[node name="AudioManager" type="Node" unique_id=1916822012]
+script = ExtResource("1_i2xd5")
+
+[node name="AmbienceTrack" type="AudioStreamPlayer" parent="." unique_id=1350964608]
+stream = ExtResource("2_u6owb")
+volume_db = -6.119
+autoplay = true

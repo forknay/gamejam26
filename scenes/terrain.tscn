@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3il8njkibrx"]
+
+[ext_resource type="Texture2D" uid="uid://debfyeyfg7e8y" path="res://Scenes/Spaceship/textures/rocky_trail_02_diff_2k.jpg" id="1_62tj5"]
+[ext_resource type="ArrayMesh" uid="uid://cqmf5v2bah1jr" path="res://Assets/mount.blend1.obj" id="2_pmkc2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvvm8"]
+albedo_texture = ExtResource("1_62tj5")
+
+[node name="Terrain" type="Node3D" unique_id=900018755]
+
+[node name="Mount_blend1" type="MeshInstance3D" parent="." unique_id=1674481366]
+transform = Transform3D(2.0352345, 0, 0, 0, 1, 0, 0, 0, 1.3733805, 1.197101, 1.1920929e-07, -0.56714964)
+material_override = SubResource("StandardMaterial3D_hvvm8")
+mesh = ExtResource("2_pmkc2")

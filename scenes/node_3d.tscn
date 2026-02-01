@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://63ioceooy8d4"]
 
 [ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
-[ext_resource type="Script" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
+[ext_resource type="Script" uid="uid://bv523uohwa5x2" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
 [ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://Scenes/maze1.tscn" id="3_5t4e2"]
 [ext_resource type="PackedScene" uid="uid://dmam41th4gxgi" path="res://Scenes/Wavelength.tscn" id="3_a6664"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
@@ -225,6 +225,6 @@ autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2052029457]
-transform = Transform3D(0.17925628, 0, 0, 0, 0.07974536, 0, 0, 0, 0.061254565, 0.017226063, 0.13602664, 0.20940019)
+transform = Transform3D(0.17925628, 0, 0, 0, 0.07974536, 0, 0, 0, 0.061254565, 0.017226063, 0.12669113, 0.21290569)
 material_override = SubResource("StandardMaterial3D_ifh66")
 mesh = SubResource("QuadMesh_aeo3b")

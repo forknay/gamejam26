@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ck5xoclid0otp" path="res://Assets/radio_img.png" id="1_genht"]
 [ext_resource type="Script" uid="uid://c3o0kwaekgejn" path="res://Scripts/knob_test.gd" id="1_yup0e"]
 [ext_resource type="AudioStream" uid="uid://cvuef1quvrsgw" path="res://audio/Radio_Static_Sound_Effect_128k.mp3" id="2_npoti"]
-[ext_resource type="AudioStream" uid="uid://diyigrr1q4qxf" path="res://audio/this_composition_scored_me_72_100_on_my_music_course_128k.mp3" id="3_genht"]
 [ext_resource type="Texture2D" uid="uid://cm4arjhd2p5x6" path="res://Assets/radio_Image_7.png" id="2_rsgnt"]
 [ext_resource type="AudioStream" uid="uid://6eefoav0clja" path="res://audio/Yakuza_OST_-_We_Are_Charlie_Kirk_(我らはチャーリー・カーク)_Kiryu_full_version_128k.ogg" id="3_pj17d"]
+[ext_resource type="AudioStream" uid="uid://denjngjuyg5d5" path="res://audio/d25851f5-c688-4a16-a73c-7f353e60161d.wav" id="4_g8xq5"]
+[ext_resource type="AudioStream" uid="uid://b66emkfeysxkm" path="res://audio/6bf8c447-6913-4701-a4db-9ae520d1b45f.wav" id="5_2ts1c"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_genht"]
 
@@ -32,8 +33,8 @@ scale = Vector2(52.809536, 50.682236)
 mesh = SubResource("SphereMesh_yup0e")
 texture = ExtResource("2_rsgnt")
 script = ExtResource("1_yup0e")
-night_1_ogg = ExtResource("3_pj17d")
-night_2_ogg = ExtResource("3_genht")
+night_1_ogg = ExtResource("4_g8xq5")
+night_2_ogg = ExtResource("5_2ts1c")
 
 [node name="ColorRect" type="ColorRect" parent="KnobTest" unique_id=2073457483]
 offset_left = -0.238

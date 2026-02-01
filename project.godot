@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*uid://cevtyk7h6rx10"
 DialogueManager="*uid://co85lx4ontryd"
 AudioManager="*uid://d4esc1q2rdffu"
+GameManager="*uid://ds61n2iybeoql"
 
 [display]
 

@@ -1,35 +1,55 @@
+# GameManager.gd (Autoload)
 extends Node
 
-enum State {NIGHT_ALARM_START, DAY_WORK, NIGHT_CHILL, GOOD_END, BAD_END}
-
-var current_day := 0
-var current_state = State.NIGHT_ALARM_START
-
-# Flags for progression
-var flags = {
-	"alarm_turned_off": false,
+# --- STATE DEFINITIONS ---
+enum State {
+	INTRO_WAKEUP,    # Night 0
+	DAY_1_WORK,      # Day 1 Morning
+	DAY_1_EVENING,   # Day 1 Night
+	DAY_2_WORK,
+	DAY_2_EVENING,
+	ENDING
 }
 
-func advance_sequence():
-	match current_state:
-		State.NIGHT_ALARM_START:
-			current_state = State.DAY_WORK
-			current_day = 1
-			# Reload the bedroom to apply Morning lighting
-			get_tree().reload_current_scene()
-		State.DAY_WORK:
-			current_state = State.NIGHT_CHILL
-			get_tree().reload_current_scene()
-		State.NIGHT_CHILL:
-			current_state = State.DAY_WORK
-			current_day += 1
-			get_tree().reload_current_scene()
+var current_state = State.INTRO_WAKEUP
+var transition_overlay : ColorRect
+var canvas_layer : CanvasLayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	# Create a persistent black screen for fading
+	canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100 # Always on top
+	add_child(canvas_layer)
+	
+	transition_overlay = ColorRect.new()
+	transition_overlay.color = Color.BLACK
+	transition_overlay.color.a = 0.0 # Start invisible
+	transition_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	transition_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE # Let clicks through when invisible
+	canvas_layer.add_child(transition_overlay)
 
+# --- TRANSITION LOGIC ---
+func advance_state(new_state):
+	# 1. Block input & Fade Out
+	transition_overlay.mouse_filter = Control.MOUSE_FILTER_STOP # Block clicks
+	var tween = create_tween()
+	tween.tween_property(transition_overlay, "color:a", 1.0, 1.0) # Fade to Black
+	await tween.finished
+	
+	# 2. Update State & Reload
+	current_state = new_state
+	get_tree().reload_current_scene()
+	
+	# 3. Wait for scene to load then Fade In
+	await get_tree().create_timer(0.5).timeout
+	fade_in()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property(transition_overlay, "color:a", 0.0, 1.0)
+	await tween.finished
+	transition_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+# --- HELPER ---
+func is_night() -> bool:
+	return current_state in [State.INTRO_WAKEUP, State.DAY_1_EVENING, State.DAY_2_EVENING]

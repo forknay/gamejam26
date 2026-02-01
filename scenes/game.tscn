@@ -71,7 +71,7 @@
 [ext_resource type="Shader" uid="uid://bo3i6r6lb1odg" path="res://Assets/camera_shader.gdshader" id="69_uxocx"]
 [ext_resource type="PackedScene" uid="uid://63ioceooy8d4" path="res://Scenes/node_3d.tscn" id="70_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://m3tqa45defys" path="res://Assets/radio.glb" id="71_2iuns"]
-[ext_resource type="Script" path="res://Scenes/day_night.gd" id="71_a2m5q"]
+[ext_resource type="Script" uid="uid://dvlieg2bcagq7" path="res://Scenes/day_night.gd" id="71_a2m5q"]
 [ext_resource type="PackedScene" uid="uid://0k5dyiygf6gy" path="res://radio.tscn" id="72_7gkqi"]
 [ext_resource type="PackedScene" uid="uid://dod8gdfexyosm" path="res://Animations/openingCam_v04.fbx" id="74_3x338"]
 [ext_resource type="Script" uid="uid://dk4mne54wjlpi" path="res://Scenes/overlay.gd" id="75_753oq"]
@@ -84,6 +84,7 @@
 [ext_resource type="Script" uid="uid://bciofu5jtqrpq" path="res://Scripts/default_radio_v_04.gd" id="81_dku7i"]
 [ext_resource type="PackedScene" uid="uid://bk0railu7jfwp" path="res://Animations/defaultWindow_v04.fbx" id="81_flw08"]
 [ext_resource type="Script" uid="uid://cdlie4n46kvlg" path="res://Scripts/default_window_v_04.gd" id="83_veaf0"]
+[ext_resource type="PackedScene" uid="uid://co85lx4ontryd" path="res://Scenes/dialogue_canvas.tscn" id="85_7sqp1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -1484,11 +1485,9 @@ shader = ExtResource("69_uxocx")
 shader_parameter/color_levels = 8.0
 shader_parameter/pixel_size = 3
 
-[node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera", "target_computer", "target_closet")]
+[node name="World" type="Node3D" unique_id=784583246 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_lnu2h")
 camera = NodePath("Camera3D")
-target_computer = NodePath("")
-target_closet = NodePath("")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1421559296]
 unique_name_in_owner = true
@@ -1834,6 +1833,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("75_753oq")
+
+[node name="DialogueCanvas" parent="." unique_id=1685635480 instance=ExtResource("85_7sqp1")]
 
 [connection signal="input_event" from="Closet/StaticBody3D" to="." method="_on_static_body_3d_input_event_closet"]
 [connection signal="input_event" from="Computer/StaticBody3D" to="." method="_on_static_body_3d_input_event_computer"]

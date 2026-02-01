@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://Scenes/maze1.tscn" id="3_5t4e2"]
 [ext_resource type="PackedScene" uid="uid://dmam41th4gxgi" path="res://Scenes/Wavelength.tscn" id="3_a6664"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
+[ext_resource type="PackedScene" uid="uid://dacekq42yenco" path="res://Scenes/projectile.tscn" id="4_a8auw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.334122, 0.334122, 0.334122, 1)
@@ -126,6 +127,7 @@ albedo_color = Color(0.113665, 0.113665, 0.113665, 1)
 
 [node name="Computer" type="Node3D" parent="." unique_id=1780405806]
 script = ExtResource("1_okq71")
+day_1_games = Array[PackedScene]([ExtResource("3_a6664"), ExtResource("3_5t4e2"), ExtResource("4_a8auw")])
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Computer" unique_id=553656516]
 
@@ -148,7 +150,6 @@ skeleton = NodePath("../..")
 size = Vector2i(1900, 1024)
 render_target_update_mode = 4
 script = ExtResource("2_oqwcg")
-playlist = Array[PackedScene]([ExtResource("3_5t4e2"), ExtResource("3_a6664")])
 
 [node name="Control" type="Control" parent="Computer/SubViewport" unique_id=990562234]
 layout_mode = 3

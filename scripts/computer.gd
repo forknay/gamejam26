@@ -1,152 +1,95 @@
 extends Node3D
 
-# Used for checking if the mouse is inside the Area3D.
-var is_mouse_inside = false
-# The last processed input touch/mouse event. To calculate relative movement.
-var last_event_pos2D = null
-# The time of the last event in seconds since engine start.
-var last_event_time: float = -1.0
-var base_color = Color(0.645, 0.0, 0.0, 1.0) # Intense HDR Red
-var alarm_active: bool = false
+# --- CONFIGURATION (Assign these in Inspector) ---
+@export_group("Screen Content")
+@export var day_1_games: Array[PackedScene] # Drag your Day 1 Minigames here
+@export var screen_static: PackedScene      # Optional: Drag a "Static Noise" scene here for Night
 
+# --- REFERENCES ---
 @onready var node_viewport = $SubViewport
 @onready var node_quad = $Quad
-@onready var node_area = $Screen/Area3D
-@onready var viewport = $SubViewport
-# We target the MeshInstance3D to change the actual "screen" material's emission
 @onready var screen_mesh = $Screen
+@onready var node_area = $Screen/Area3D
+
+# --- STATE ---
+var is_mouse_inside = false
+var last_event_pos2D = null
+var last_event_time: float = -1.0
 
 func _ready():
-	#start_alarm_interval(2.0)
-	#node_area.mouse_entered.connect(_mouse_entered_area)
-	#node_area.mouse_exited.connect(_mouse_exited_area)
-	#node_area.input_event.connect(_mouse_input_event)
-	pass
-func flash_red():
-	# 1. Get the material from the MeshInstance
-	# We use get_surface_override_material(0) to avoid changing the original resource
-	var material = screen_mesh.get_active_material(0)
-	if not material: return
-
-	# 2. Create a Tween for the smooth transition
-	var tween = create_tween()
+	# 1. Connect Input Signals
+	node_area.mouse_entered.connect(_mouse_entered_area)
+	node_area.mouse_exited.connect(_mouse_exited_area)
+	node_area.input_event.connect(_mouse_input_event)
 	
-	# Initial color (Normal) and Flash color (HDR Red)
-	# Note: Values above 1.0 in Color() trigger the 'Glow' environment effect
-	var normal_color = Color(1.0, 1.0, 1.0, 1.0)
-	var flash_color = Color(2.568, 0.0, 0.0, 1.0) # Intense HDR Red
+	# 2. Setup Screen based on Game State
+	load_day_content(GameManager.current_state)
 
-	# 3. Animate: Go to Red (0.1s) then back to White (0.9s)
-	tween.tween_property(material, "albedo_color", flash_color, 0.1)
-	tween.tween_property(material, "albedo_color", normal_color, 0.9).set_delay(0.1)
+func load_day_content(state):
+	match state:
+		# --- DAY TIME (WORK) ---
+		GameManager.State.DAY_1_WORK:
+			if day_1_games.size() > 0:
+				print("Computer: Starting Work Mode")
+				node_viewport.start_game_sequence(day_1_games)
+			else:
+				print("Computer: No games assigned for Day 1!")
 
+		# --- NIGHT TIME (OFF / STATIC) ---
+		_: 
+			# For Intro, Evening, or any other time:
+			print("Computer: Night Mode (Off)")
+			if screen_static:
+				node_viewport.show_single_scene(screen_static)
+			else:
+				node_viewport.clear_screen()
 
-## Call this to start the repeating red glow
-func start_alarm_interval(interval: float):
-	alarm_active = true
-	_run_alarm_loop(interval)
-
-## This function calls itself recursively to create a clean interval
-func _run_alarm_loop(interval: float):
-	if not alarm_active:
-		return	
-	flash_red()
-	
-	# Wait for the interval, then run again
-	get_tree().create_timer(interval).timeout.connect(
-		func(): _run_alarm_loop(interval)
-	)
-	
-
+# --- MOUSE INPUT LOGIC (Your existing implementation) ---
 func _mouse_entered_area():
 	is_mouse_inside = true
-
 
 func _mouse_exited_area():
 	is_mouse_inside = false
 
-
 func _unhandled_input(event):
-	# Check if the event is a non-mouse/non-touch event
 	for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
 		if is_instance_of(event, mouse_event):
-			# If the event is a mouse/touch event, then we can ignore it here, because it will be
-			# handled via Physics Picking.
 			return
 	node_viewport.push_input(event)
 
-##func _input(event):
-	##if event.is_action_pressed("ui_up"):
-		##alarm_active = !alarm_active
-		#
-		#if alarm_active:
-			#print("Alarm Restarted")
-			## This is the line that was missing! 
-			## It kickstarts the loop again.
-			#_run_alarm_loop(2.0)
-		#else:
-			#var material = screen_mesh.get_active_material(0)
-			#material.set_albedo_color(base_color)
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
-	# Get mesh size to detect edges and make conversions. This code only support PlaneMesh and QuadMesh.
 	var quad_mesh_size = node_quad.mesh.size
-
-	# Event position in Area3D in world coordinate space.
 	var event_pos3D = event_position
-
-	# Current time in seconds since engine start.
 	var now: float = Time.get_ticks_msec() / 1000.0
 
-	# Convert position to a coordinate space relative to the Area3D node.
-	# NOTE: affine_inverse accounts for the Area3D node's scale, rotation, and position in the scene!
 	event_pos3D = node_quad.global_transform.affine_inverse() * event_pos3D
-
-	# TODO: Adapt to bilboard mode or avoid completely.
 
 	var event_pos2D: Vector2 = Vector2()
 
 	if is_mouse_inside:
-		# Convert the relative event position from 3D to 2D.
 		event_pos2D = Vector2(event_pos3D.x, -event_pos3D.y)
-
-		# Right now the event position's range is the following: (-quad_size/2) -> (quad_size/2)
-		# We need to convert it into the following range: -0.5 -> 0.5
 		event_pos2D.x = event_pos2D.x / quad_mesh_size.x
 		event_pos2D.y = event_pos2D.y / quad_mesh_size.y
-		# Then we need to convert it into the following range: 0 -> 1
 		event_pos2D.x += 0.5
 		event_pos2D.y += 0.5
-
-		# Finally, we convert the position to the following range: 0 -> viewport.size
 		event_pos2D.x *= node_viewport.size.x
 		event_pos2D.y *= node_viewport.size.y
-		# We need to do these conversions so the event's position is in the viewport's coordinate system.
 
 	elif last_event_pos2D != null:
-		# Fall back to the last known event position.
 		event_pos2D = last_event_pos2D
 
-	# Set the event's position and global position.
 	event.position = event_pos2D
 	if event is InputEventMouse:
 		event.global_position = event_pos2D
 
-	# Calculate the relative event distance.
 	if event is InputEventMouseMotion or event is InputEventScreenDrag:
-		# If there is not a stored previous position, then we'll assume there is no relative motion.
 		if last_event_pos2D == null:
 			event.relative = Vector2(0, 0)
-		# If there is a stored previous position, then we'll calculate the relative position by subtracting
-		# the previous position from the new position. This will give us the distance the event traveled from prev_pos.
 		else:
 			event.relative = event_pos2D - last_event_pos2D
 			event.velocity = event.relative / (now - last_event_time)
 
-	# Update last_event_pos2D with the position we just calculated.
 	last_event_pos2D = event_pos2D
-
-	# Update last_event_time to current time.
 	last_event_time = now
 
-	# Finally, send the processed input event to the viewport.
 	node_viewport.push_input(event)

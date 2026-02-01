@@ -73,7 +73,7 @@ func _unhandled_input(event):
 			return
 	node_viewport.push_input(event)
 
-func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
+func _mouse_input_event(_camera: Camera3D, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int):
 	# (Your existing coordinate conversion code goes here - removed for brevity but keep it!)
 	# If you need me to paste the coordinate math again, let me know.
 	pass

@@ -12,16 +12,19 @@ extends Node3D
 @export var opening_camera : Camera3D
 
 var start_transform : Transform3D
-var end_anim : Transform3D
-
-
 var is_computer = false
 var is_closet = false
 var is_window = false
 
 # --- SETUP ---
 func _ready() -> void:
-	$openingCam_v04.anim_done.connect(_on_anim_done)
+	# 1. Handle Camera Logic based on State
+	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
+		# ONLY play the animation on the very first start
+		$openingCam_v04.anim_done.connect(_on_anim_done)
+	else:
+		# SKIP animation for all other days/nights
+		_skip_opening_animation()
 	
 	if not camera or not target_computer:
 		print("ERROR: Please assign Camera and Target in the Inspector!")
@@ -36,6 +39,29 @@ func _ready() -> void:
 
 	setup_scene_state()
 	GameManager.fade_in()
+
+func _skip_opening_animation():
+	# Hide the static/overlay immediately
+	if has_node("overlay"):
+		$overlay.hide() # or remove_overlay() if that's your function name
+	
+	# Set the gameplay camera as active immediately
+	if camera:
+		camera.make_current()
+	
+	# Ensure the opening camera isn't processing
+	if has_node("openingCam_v04"):
+		$openingCam_v04.set_process(false)
+
+func _on_anim_done():
+	# This only triggers on INTRO_WAKEUP
+	if has_node("overlay"):
+		$overlay.remove_overlay()
+	camera.make_current()
+
+
+
+# --- SETUP ---
 
 func setup_scene_state():
 	# Update Lighting
@@ -99,7 +125,6 @@ func _on_computer_finished():
 				"AI: (The AI deactivates, leaving you in total silence.)"
 			], [], func(): GameManager.game_over("END: ALONE"))
 
-# ... (Final Choice and Sleep Choice remain the same) ...
 
 func _transition_to_evening():
 	# Determines which evening state to move to based on the current day
@@ -128,10 +153,6 @@ func set_back_prompt(is_visible: bool):
 	if back_prompt:
 		back_prompt.visible = is_visible
 
-# --- CAMERA & INPUT ---
-func _on_anim_done():
-	$overlay.remove_overlay()
-	camera.make_current()
 
 func _input(event):
 	if event.is_action_pressed("back"):
@@ -190,12 +211,6 @@ func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx
 			$defaultComputer_v04.comp_anim() 
 			zoom_in_computer()
 
-func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
-		$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
-		$defaultRadio_v04.radio_anim()
-		zoom_in_closet()
-
 func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_window:
 		match GameManager.current_state:
@@ -240,6 +255,20 @@ func _on_window_choice(index):
 	else:
 		dialogue_ui.start_dialogue(["Best not to draw attention."])
 
+func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
+		
+		match GameManager.current_state:
+			GameManager.State.INTRO_WAKEUP:
+				dialogue_ui.start_dialogue(["The closet door is jammed.", "I should go back to bed."])
+				
+			GameManager.State.DAY_1_WORK, GameManager.State.DAY_2_WORK, GameManager.State.DAY_3_WORK:
+				dialogue_ui.start_dialogue(["The AI has locked the closet.", "I need to finish my work first."])
+				
+			GameManager.State.DAY_1_EVENING, GameManager.State.DAY_2_EVENING:
+				$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", true)
+				$defaultRadio_v04.radio_anim()
+				zoom_in_closet()
 func _on_static_body_3d_input_event_bed(_camera, event, _pos, _normal, _idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameManager.is_night():

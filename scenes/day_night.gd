@@ -14,7 +14,7 @@ func _ready():
 	else:
 		print("All systems go! Environment found.")
 		 
-func _input(event):
+func _input(_event):
 	#if event.is_action_pressed("ui_right"):
 	#	toggleCycle()
 	pass

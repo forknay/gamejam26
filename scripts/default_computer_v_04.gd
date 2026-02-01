@@ -14,6 +14,6 @@ func comp_anim_back():
 	cam.make_current()
 	anim.play_backwards(anim.get_animation_list()[0])
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(_anim_name):
 	anim_done.emit()
 	print("emitted")

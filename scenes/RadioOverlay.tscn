@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b61reuthpexnb"]
+
+[ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://Scenes/radio_overlay.gd" id="1_i5h3r"]
+[ext_resource type="PackedScene" uid="uid://bworwd5ab4fdy" path="res://Scenes/radio_game.tscn" id="2_jlhoq"]
+
+[node name="RadioOverlay" type="CanvasLayer" unique_id=1854559540]
+script = ExtResource("1_i5h3r")
+
+[node name="RadioGame" parent="." unique_id=1447352774 instance=ExtResource("2_jlhoq")]
+scale = Vector2(3, 3)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=836039411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.19215687)

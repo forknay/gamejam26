@@ -17,7 +17,7 @@ func _ready():
 	text_box.visible = false
 	choice_container.visible = false
 
-# Updated Function: Now accepts choices and a "callback" function
+# Accepts choices AND a "callback" function to run when done
 func start_dialogue(lines: Array, choices: Array = [], callback: Callable = Callable()):
 	dialogue_lines = lines
 	pending_choices = choices
@@ -25,7 +25,7 @@ func start_dialogue(lines: Array, choices: Array = [], callback: Callable = Call
 	
 	current_line_index = 0
 	text_box.visible = true
-	choice_container.visible = false # Hide choices initially
+	choice_container.visible = false 
 	show_text()
 
 func show_text():
@@ -46,9 +46,10 @@ func show_text():
 func _unhandled_input(event):
 	if not text_box.visible:
 		return
-	if (event.is_action_pressed("ui_accept") or event.is_action_pressed("interact")) and text_box.visible:
+		
+	if (event.is_action_pressed("back") or event.is_action_pressed("ui_accept")) and text_box.visible:
 		if is_typing:
-			# Skip typing
+			# Skip typing animation
 			var tween = get_tree().create_tween()
 			tween.kill()
 			dialogue_label.visible_ratio = 1.0
@@ -58,29 +59,34 @@ func _unhandled_input(event):
 		elif can_advance:
 			current_line_index += 1
 			if current_line_index >= dialogue_lines.size():
-				# Text finished. Do we have choices?
+				# --- TEXT FINISHED ---
+				
 				if pending_choices.size() > 0:
+					# Case A: Show Buttons
 					show_choices()
 				else:
+					# Case B: Standard Dialogue Finished
 					close_dialogue()
+					
+					# --- THE FIX: TRIGGER THE CALLBACK HERE ---
+					if pending_callback.is_valid():
+						pending_callback.call() 
+						
 			else:
+				# Show next line
 				show_text()
 
 func show_choices():
-	can_advance = false # Stop Spacebar from breaking things
+	can_advance = false 
 	choice_container.visible = true
 	
-	# Clear old buttons
 	for child in choice_container.get_children():
 		child.queue_free()
 	
-	# Create new buttons
 	for i in range(pending_choices.size()):
 		var btn = Button.new()
 		btn.text = pending_choices[i]
-		
 		btn.focus_mode = Control.FOCUS_NONE
-		# Connect click to our handler, passing the index
 		btn.pressed.connect(_on_choice_clicked.bind(i))
 		choice_container.add_child(btn)
 
@@ -88,7 +94,7 @@ func _on_choice_clicked(index):
 	choice_container.visible = false
 	close_dialogue()
 	
-	# Trigger the logic back in the World script
+	# Case C: Choice Clicked Callback (Passes the index)
 	if pending_callback.is_valid():
 		pending_callback.call(index)
 

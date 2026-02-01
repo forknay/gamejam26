@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://63ioceooy8d4"]
 
 [ext_resource type="Script" uid="uid://d2vkfxd0ifcqn" path="res://Scripts/computer.gd" id="1_okq71"]
-[ext_resource type="Script" uid="uid://bv523uohwa5x2" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
+[ext_resource type="Script" path="res://Scenes/minigame_playlist.gd" id="2_oqwcg"]
 [ext_resource type="PackedScene" uid="uid://btf3e1kw0j0vw" path="res://Scenes/maze1.tscn" id="3_5t4e2"]
 [ext_resource type="PackedScene" uid="uid://dmam41th4gxgi" path="res://Scenes/Wavelength.tscn" id="3_a6664"]
 [ext_resource type="Shader" uid="uid://dcvr6r1j1k4vq" path="res://Assets/crt_shader.gdshader" id="3_wosnj"]
+[ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="6_a8auw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.334122, 0.334122, 0.334122, 1)
@@ -122,6 +123,15 @@ data = PackedVector3Array(0.2406, -0.3, 0.0026, 0.3997, 0.3, 0.025, 0.2406, 0.3,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8auw"]
 albedo_color = Color(0.113665, 0.113665, 0.113665, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8auw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifh66"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_a8auw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aeo3b"]
+
 [node name="Node3D" type="Node3D" unique_id=314615975]
 
 [node name="Computer" type="Node3D" parent="." unique_id=1780405806]
@@ -191,3 +201,27 @@ material = SubResource("StandardMaterial3D_wosnj")
 operation = 2
 size = Vector3(3, 3, 3)
 material = SubResource("StandardMaterial3D_a8auw")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=291868751]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport" unique_id=755148723]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+scale = Vector2(0.8803414, 1.2511799)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("6_a8auw")
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "Press E to exit"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2052029457]
+transform = Transform3D(0.17925628, 0, 0, 0, 0.07974536, 0, 0, 0, 0.061254565, 0.017226063, 0.13602664, 0.20940019)
+material_override = SubResource("StandardMaterial3D_ifh66")
+mesh = SubResource("QuadMesh_aeo3b")

@@ -74,3 +74,11 @@ func change_scene(path):
 	var error = get_tree().change_scene_to_file(path)
 	if error != OK:
 		print("Failed to change scene:", error)
+
+
+func _on_static_body_3d_input_event_window(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_static_body_3d_input_event_bed(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	pass # Replace with function body.

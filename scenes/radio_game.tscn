@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3o0kwaekgejn" path="res://Scripts/knob_test.gd" id="1_yup0e"]
 [ext_resource type="AudioStream" uid="uid://cvuef1quvrsgw" path="res://audio/Radio_Static_Sound_Effect_128k.mp3" id="2_npoti"]
+[ext_resource type="AudioStream" uid="uid://diyigrr1q4qxf" path="res://audio/this_composition_scored_me_72_100_on_my_music_course_128k.mp3" id="3_genht"]
 [ext_resource type="AudioStream" uid="uid://6eefoav0clja" path="res://audio/Yakuza_OST_-_We_Are_Charlie_Kirk_(我らはチャーリー・カーク)_Kiryu_full_version_128k.ogg" id="3_pj17d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oa5ig"]
@@ -28,6 +29,8 @@ texture = SubResource("GradientTexture1D_xth47")
 scale = Vector2(52.809536, 50.682236)
 mesh = SubResource("SphereMesh_yup0e")
 script = ExtResource("1_yup0e")
+night_1_ogg = ExtResource("3_pj17d")
+night_2_ogg = ExtResource("3_genht")
 
 [node name="ColorRect" type="ColorRect" parent="KnobTest" unique_id=2073457483]
 offset_left = -0.24835712
@@ -51,3 +54,4 @@ autoplay = true
 stream = ExtResource("3_pj17d")
 volume_db = -80.0
 autoplay = true
+parameters/looping = true

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cqoqlfciota60"]
+
+[ext_resource type="Script" uid="uid://c5plkja884l4e" path="res://Scenes/main_menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="Control" unique_id=70924694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1360000858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23102579, 0.18714675, 0.37204555, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=773833794]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -143.0
+offset_right = 280.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=368469835]
+layout_mode = 2
+text = "OZYMANDIAS"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=8839496]
+layout_mode = 2
+text = "START SYSTEM"

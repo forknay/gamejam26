@@ -16,7 +16,35 @@ var transition_overlay : ColorRect
 var canvas_layer : CanvasLayer
 var ending_label : Label # New: To show ending text on screen
 var heard_radio_count = 0
+# Inside GameManager.gd
 
+# Add this at the top to store the menu path
+var menu_scene_path = "res://scenes/main_menu.tscn" # Adjust to your actual path
+var world_scene_path = "res://scenes/game.tscn"      # Adjust to your actual path
+
+func start_new_game():
+	current_state = State.INTRO_WAKEUP
+	heard_radio_count = 0
+	get_tree().change_scene_to_file(world_scene_path)
+
+func game_over(ending_type: String):
+	await fade_out()
+	
+	var msg = ""
+	match ending_type:
+		"END: RESCUED": msg = "THE CHIP IS REMOVED.\nYOU ARE FREE."
+		"END: STARVED": msg = "THE HUNTERS WERE BLOCKED.\nYOU DIED IN THE DARK, SAFE AND ALONE."
+		"END: ALONE":   msg = "SIGNAL LOST.\nAI DEACTIVATED.\nSYSTEM FAILURE."
+	
+	ending_label.text = msg
+	var tween = create_tween()
+	tween.tween_property(ending_label, "modulate:a", 1.0, 2.0)
+	
+	await get_tree().create_timer(6.0).timeout
+	
+	# --- CHANGE HERE: Back to Menu instead of Reload ---
+	ending_label.modulate.a = 0.0
+	get_tree().change_scene_to_file(menu_scene_path)
 func _ready():
 	canvas_layer = CanvasLayer.new()
 	canvas_layer.layer = 100 
@@ -37,32 +65,6 @@ func _ready():
 	ending_label.modulate.a = 0.0 # Start invisible
 	canvas_layer.add_child(ending_label)
 
-func game_over(ending_type: String):
-	# 1. Fade to total black
-	await fade_out()
-	
-	# 2. Determine text
-	var msg = ""
-	match ending_type:
-		"END: RESCUED":
-			msg = "THE CHIP IS REMOVED.\nYOU ARE FREE."
-		"END: STARVED":
-			msg = "THE HUNTERS WERE BLOCKED.\nYOU DIED IN THE DARK, SAFE AND ALONE."
-		"END: ALONE":
-			msg = "SIGNAL LOST.\nAI DEACTIVATED.\nSYSTEM FAILURE."
-	
-	# 3. Show text over the black screen
-	ending_label.text = msg
-	var tween = create_tween()
-	tween.tween_property(ending_label, "modulate:a", 1.0, 2.0)
-	
-	# 4. Wait 6 seconds for the player to contemplate
-	await get_tree().create_timer(6.0).timeout
-	
-	# 5. Reset the game
-	current_state = State.INTRO_WAKEUP
-	ending_label.modulate.a = 0.0
-	get_tree().reload_current_scene()
 
 # --- TRANSITION LOGIC ---
 

@@ -19,9 +19,11 @@ var is_window = false
 
 # --- SETUP ---
 func _ready() -> void:
+	GameManager.transition_overlay.color.a = 1.0
 	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
 		# ONLY play the animation on the very first start
 		$openingCam_v04.anim_done.connect(_on_anim_done)
+		
 	else:
 		_skip_opening_animation()
 	
@@ -32,6 +34,10 @@ func _ready() -> void:
 		print("ERROR: Could not find node named 'Computer' in World script!")
 
 	setup_scene_state()
+	
+	# Smoother fade in 
+	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
+		await get_tree().create_timer(0.5).timeout
 	GameManager.fade_in()
 
 func _skip_opening_animation():

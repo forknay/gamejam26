@@ -22,6 +22,7 @@ var menu_scene_path = "res://Scenes/main_menu.tscn"
 var world_scene_path = "res://Scenes/game.tscn"     
 
 func start_new_game():
+	transition_overlay.color.a = 1.0
 	current_state = State.INTRO_WAKEUP
 	heard_radio_count = 0
 	get_tree().change_scene_to_file(world_scene_path)

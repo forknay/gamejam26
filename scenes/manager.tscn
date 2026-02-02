@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://q2aooocx73cc"]
-
-[ext_resource type="Script" uid="uid://ds61n2iybeoql" path="res://Scripts/GameManager.gd" id="1_wtnv7"]
-[ext_resource type="AudioStream" uid="uid://b2loy8srgf650" path="res://audio/soundtrack.ogg" id="2_wtnv7"]
-
-[node name="Manager" type="Node" unique_id=294185691]
-script = ExtResource("1_wtnv7")
-climax_music = ExtResource("2_wtnv7")

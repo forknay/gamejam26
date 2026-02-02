@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b61reuthpexnb"]
 
-[ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://Scenes/radio_overlay.gd" id="1_i5h3r"]
+[ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://Scripts/radio_overlay.gd" id="1_i5h3r"]
 [ext_resource type="PackedScene" uid="uid://bworwd5ab4fdy" path="res://Scenes/radio_game.tscn" id="2_jlhoq"]
 [ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="3_jlhoq"]
 

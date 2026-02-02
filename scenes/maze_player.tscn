@@ -10,7 +10,7 @@
 script = ExtResource("1_luano")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=454892780]
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0.5647059, 0.9137255, 0.87058824, 1)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_u4y0o")
 
@@ -19,6 +19,6 @@ scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_uh21s")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1555353427]
-default_color = Color(0, 0, 1, 1)
+default_color = Color(0.5664118, 0.91304135, 0.8711944, 1)
 
 [node name="Maze_Player" type="Node2D" parent="." unique_id=455131943]

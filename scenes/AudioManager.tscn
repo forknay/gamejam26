@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4esc1q2rdffu"]
 
-[ext_resource type="Script" uid="uid://dgs314wo6nu8e" path="res://Scenes/audio_manager.gd" id="1_i2xd5"]
+[ext_resource type="Script" uid="uid://dgs314wo6nu8e" path="res://Scripts/audio_manager.gd" id="1_i2xd5"]
 [ext_resource type="AudioStream" uid="uid://dbc7x8hbc6bjm" path="res://audio/73bcc0f8.ogg" id="2_u6owb"]
 
 [node name="AudioManager" type="Node" unique_id=1916822012]

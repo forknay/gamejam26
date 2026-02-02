@@ -42,52 +42,51 @@ metallic = 0.34
 albedo_color = Color(0.7176471, 0.4862745, 0.4745098, 1)
 
 [node name="radio" unique_id=972764560 instance=ExtResource("1_flxc7")]
-visible = false
 
-[node name="SpaceShip radioPart_1_001" parent="spaceShip_v04_obj/SpaceShip radioPart_1" parent_id_path=PackedInt32Array(167182609) index="0" unique_id=730146000]
+[node name="SpaceShip radioPart_1_001" parent="spaceShip_v04_obj/SpaceShip radioPart_1" parent_id_path=PackedInt32Array(1066399152) index="0" unique_id=1115287286]
 material_override = SubResource("StandardMaterial3D_flxc7")
 
-[node name="SpaceShip radioPart_10_001" parent="spaceShip_v04_obj/SpaceShip radioPart_10" parent_id_path=PackedInt32Array(1705503310) index="0" unique_id=380063837]
+[node name="SpaceShip radioPart_10_001" parent="spaceShip_v04_obj/SpaceShip radioPart_10" parent_id_path=PackedInt32Array(1626338923) index="0" unique_id=1852483899]
 material_override = SubResource("StandardMaterial3D_qxe27")
 
-[node name="SpaceShip radioPart_11_001" parent="spaceShip_v04_obj/SpaceShip radioPart_11" parent_id_path=PackedInt32Array(1580659057) index="0" unique_id=552368595]
+[node name="SpaceShip radioPart_11_001" parent="spaceShip_v04_obj/SpaceShip radioPart_11" parent_id_path=PackedInt32Array(1246817526) index="0" unique_id=688289695]
 material_override = SubResource("StandardMaterial3D_qxe27")
 
-[node name="SpaceShip radioPart_12_001" parent="spaceShip_v04_obj/SpaceShip radioPart_12" parent_id_path=PackedInt32Array(583333017) index="0" unique_id=2017636386]
+[node name="SpaceShip radioPart_12_001" parent="spaceShip_v04_obj/SpaceShip radioPart_12" parent_id_path=PackedInt32Array(984588493) index="0" unique_id=712780914]
 material_override = SubResource("StandardMaterial3D_qxe27")
 
-[node name="SpaceShip radioPart_13_001" parent="spaceShip_v04_obj/SpaceShip radioPart_13" parent_id_path=PackedInt32Array(843906274) index="0" unique_id=1831596562]
+[node name="SpaceShip radioPart_13_001" parent="spaceShip_v04_obj/SpaceShip radioPart_13" parent_id_path=PackedInt32Array(1167928204) index="0" unique_id=113249873]
 material_override = SubResource("StandardMaterial3D_kevmo")
 
-[node name="SpaceShip radioPart_16_001" parent="spaceShip_v04_obj/SpaceShip radioPart_16" parent_id_path=PackedInt32Array(1920283881) index="0" unique_id=797005548]
+[node name="SpaceShip radioPart_16_001" parent="spaceShip_v04_obj/SpaceShip radioPart_16" parent_id_path=PackedInt32Array(531704704) index="0" unique_id=1019239438]
 material_override = SubResource("StandardMaterial3D_nwvhb")
 
-[node name="SpaceShip radioPart_17_001" parent="spaceShip_v04_obj/SpaceShip radioPart_17" parent_id_path=PackedInt32Array(261476357) index="0" unique_id=1608112903]
+[node name="SpaceShip radioPart_17_001" parent="spaceShip_v04_obj/SpaceShip radioPart_17" parent_id_path=PackedInt32Array(902466261) index="0" unique_id=1987235618]
 material_override = SubResource("StandardMaterial3D_fkv45")
 
-[node name="SpaceShip radioPart_18_001" parent="spaceShip_v04_obj/SpaceShip radioPart_18" parent_id_path=PackedInt32Array(821637799) index="0" unique_id=659708960]
+[node name="SpaceShip radioPart_18_001" parent="spaceShip_v04_obj/SpaceShip radioPart_18" parent_id_path=PackedInt32Array(2131302761) index="0" unique_id=580379880]
 material_override = SubResource("StandardMaterial3D_run3b")
 
-[node name="SpaceShip radioPart_2_001" parent="spaceShip_v04_obj/SpaceShip radioPart_2" parent_id_path=PackedInt32Array(1438572986) index="0" unique_id=49583276]
+[node name="SpaceShip radioPart_2_001" parent="spaceShip_v04_obj/SpaceShip radioPart_2" parent_id_path=PackedInt32Array(70561422) index="0" unique_id=47814803]
 material_override = SubResource("StandardMaterial3D_lcdmm")
 
-[node name="SpaceShip radioPart_3_001" parent="spaceShip_v04_obj/SpaceShip radioPart_3" parent_id_path=PackedInt32Array(228400719) index="0" unique_id=1015570712]
+[node name="SpaceShip radioPart_3_001" parent="spaceShip_v04_obj/SpaceShip radioPart_3" parent_id_path=PackedInt32Array(2143604191) index="0" unique_id=1070121159]
 material_override = SubResource("StandardMaterial3D_mc70l")
 
-[node name="SpaceShip radioPart_4_001" parent="spaceShip_v04_obj/SpaceShip radioPart_4" parent_id_path=PackedInt32Array(1848454805) index="0" unique_id=1354106639]
+[node name="SpaceShip radioPart_4_001" parent="spaceShip_v04_obj/SpaceShip radioPart_4" parent_id_path=PackedInt32Array(1924749116) index="0" unique_id=14238412]
 material_override = SubResource("StandardMaterial3D_a66yf")
 
-[node name="SpaceShip radioPart_5_001" parent="spaceShip_v04_obj/SpaceShip radioPart_5" parent_id_path=PackedInt32Array(1213596040) index="0" unique_id=1851070635]
+[node name="SpaceShip radioPart_5_001" parent="spaceShip_v04_obj/SpaceShip radioPart_5" parent_id_path=PackedInt32Array(730492642) index="0" unique_id=995139113]
 material_override = SubResource("StandardMaterial3D_a66yf")
 
-[node name="SpaceShip radioPart_6_001" parent="spaceShip_v04_obj/SpaceShip radioPart_6" parent_id_path=PackedInt32Array(1293344533) index="0" unique_id=1470724867]
+[node name="SpaceShip radioPart_6_001" parent="spaceShip_v04_obj/SpaceShip radioPart_6" parent_id_path=PackedInt32Array(1922799164) index="0" unique_id=1514754420]
 material_override = SubResource("StandardMaterial3D_b0p2u")
 
-[node name="SpaceShip radioPart_7_001" parent="spaceShip_v04_obj/SpaceShip radioPart_7" parent_id_path=PackedInt32Array(315731619) index="0" unique_id=2147367112]
+[node name="SpaceShip radioPart_7_001" parent="spaceShip_v04_obj/SpaceShip radioPart_7" parent_id_path=PackedInt32Array(620479013) index="0" unique_id=61703381]
 material_override = SubResource("StandardMaterial3D_b0p2u")
 
-[node name="SpaceShip radioPart_8_001" parent="spaceShip_v04_obj/SpaceShip radioPart_8" parent_id_path=PackedInt32Array(285416885) index="0" unique_id=2137091884]
+[node name="SpaceShip radioPart_8_001" parent="spaceShip_v04_obj/SpaceShip radioPart_8" parent_id_path=PackedInt32Array(1295229277) index="0" unique_id=2120071367]
 material_override = SubResource("StandardMaterial3D_543sh")
 
-[node name="SpaceShip radioPart_9_001" parent="spaceShip_v04_obj/SpaceShip radioPart_9" parent_id_path=PackedInt32Array(415176086) index="0" unique_id=120759549]
+[node name="SpaceShip radioPart_9_001" parent="spaceShip_v04_obj/SpaceShip radioPart_9" parent_id_path=PackedInt32Array(311540582) index="0" unique_id=1083600917]
 material_override = SubResource("StandardMaterial3D_knxbx")

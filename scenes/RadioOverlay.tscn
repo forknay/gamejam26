@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://b61reuthpexnb"]
 
-[ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://Scripts/radio_overlay.gd" id="1_i5h3r"]
-[ext_resource type="PackedScene" uid="uid://bworwd5ab4fdy" path="res://Scenes/radio_game.tscn" id="2_jlhoq"]
+[ext_resource type="Script" uid="uid://c40ylsk7o1dxa" path="res://scripts/radio_overlay.gd" id="1_i5h3r"]
+[ext_resource type="PackedScene" uid="uid://bworwd5ab4fdy" path="res://scenes/radio_game.tscn" id="2_jlhoq"]
+[ext_resource type="AudioStream" uid="uid://denjngjuyg5d5" path="res://audio/d25851f5-c688-4a16-a73c-7f353e60161d.wav" id="2_pkbfr"]
+[ext_resource type="AudioStream" uid="uid://b66emkfeysxkm" path="res://audio/6bf8c447-6913-4701-a4db-9ae520d1b45f.wav" id="3_if084"]
 [ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="3_jlhoq"]
 
 [node name="RadioOverlay" type="CanvasLayer" unique_id=1854559540]
 script = ExtResource("1_i5h3r")
+night1_voice = ExtResource("2_pkbfr")
+night2_voice = ExtResource("3_if084")
 
 [node name="RadioGame" parent="." unique_id=1447352774 instance=ExtResource("2_jlhoq")]
 scale = Vector2(3, 3)

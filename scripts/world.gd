@@ -9,9 +9,11 @@ extends Node3D
 @onready var window_hitbox = $Window
 @onready var computer_hitbox = $Computer
 @onready var closet_hitbox = $Closet
+@onready var start_prompt = $StartLayer/RichTextLabel
 
 @export var camera : Camera3D
 
+var waiting_for_start = false
 var start_transform : Transform3D
 var is_computer = false
 var is_closet = false
@@ -23,9 +25,16 @@ func _ready() -> void:
 	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
 		# ONLY play the animation on the very first start
 		$openingCam_v04.anim_done.connect(_on_anim_done)
-		
+		# Pause
+		$openingCam_v04.process_mode = Node.PROCESS_MODE_DISABLED
+		if start_prompt:
+			start_prompt.visible = true	
+		waiting_for_start = true
 	else:
 		_skip_opening_animation()
+		if start_prompt:
+			start_prompt.visible = false
+		GameManager.fade_in()
 	
 	var comp_node = $Node3D/Computer
 	if comp_node:
@@ -35,11 +44,6 @@ func _ready() -> void:
 
 	setup_scene_state()
 	
-	# Smoother fade in 
-	if GameManager.current_state == GameManager.State.INTRO_WAKEUP:
-		await get_tree().create_timer(0.5).timeout
-	GameManager.fade_in()
-
 func _skip_opening_animation():
 	# Hide the static/overlay immediately
 	if has_node("overlay"):
@@ -187,6 +191,10 @@ func _process(_delta: float):
 		set_back_prompt(false)
 
 func _input(event):
+	if waiting_for_start:
+		if event.is_action_pressed("back"):
+			_begin_intro_sequence()
+		return
 	if event.is_action_pressed("back"):
 		if dialogue_ui.text_box.visible:
 			return
@@ -200,6 +208,13 @@ func _input(event):
 			zoom_out_window()
 			is_window = false
 
+func _begin_intro_sequence():
+	waiting_for_start = false
+	start_prompt.hide()
+	$openingCam_v04.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	await get_tree().create_timer(0.5).timeout
+	GameManager.fade_in()
 # --- ZOOM FUNCTIONS ---
 func zoom_out_closet():
 	$Closet/StaticBody3D/CollisionShape3D.set_deferred("disabled", false)

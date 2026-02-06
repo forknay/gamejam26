@@ -68,7 +68,7 @@ func stop_music():
 	
 func _ready():
 	canvas_layer = CanvasLayer.new()
-	canvas_layer.layer = 100 
+	canvas_layer.layer = 100
 	add_child(canvas_layer)
 	add_child(music_player)
 	transition_overlay = ColorRect.new()

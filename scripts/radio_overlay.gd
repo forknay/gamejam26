@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@export var night1_voice : AudioStream
+@export var night2_voice : AudioStream
+
 @onready var audio1 = $RadioGame/StaticSound
 @onready var audio2 = $RadioGame/RescueVoice
 
@@ -11,6 +14,20 @@ func show_overlay():
 	# Unlock mouse so you can click dials
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 	AudioManager.mute_ambience()
+	
+	# Play static
+	audio1.play()
+	# Check for voice
+	var stream_voice = null
+	match GameManager.current_state:
+		GameManager.State.DAY_1_EVENING:
+			stream_voice = night1_voice
+		GameManager.State.DAY_2_EVENING:
+			stream_voice = night2_voice
+	
+	if stream_voice:
+		audio2.stream = stream_voice
+		audio2.play(0.0) # Restart
 
 func hide_overlay():
 	visible = false

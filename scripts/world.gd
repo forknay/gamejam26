@@ -239,6 +239,8 @@ func zoom_in_window():
 # --- INTERACTION HANDLERS ---
 
 func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx):
+	if dialogue_ui.text_box.visible:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_computer:
 		if GameManager.is_night():
 			dialogue_ui.start_dialogue(["The computer is turned off..."])
@@ -247,6 +249,8 @@ func _on_static_body_3d_input_event_computer(_camera, event, _pos, _normal, _idx
 			zoom_in_computer()
 
 func _on_static_body_3d_input_event_window(_camera, event, _pos, _normal, _idx):
+	if dialogue_ui.text_box.visible:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_window:
 		match GameManager.current_state:
 			GameManager.State.INTRO_WAKEUP:
@@ -291,6 +295,8 @@ func _on_window_choice(index):
 		dialogue_ui.start_dialogue(["Best not to draw attention."])
 
 func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
+	if dialogue_ui.text_box.visible:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not is_closet:
 		
 		match GameManager.current_state:
@@ -306,6 +312,8 @@ func _on_static_body_3d_input_event_closet(_camera, event, _pos, _normal, _idx):
 				zoom_in_closet()
 
 func _on_static_body_3d_input_event_bed(_camera, event, _pos, _normal, _idx):
+	if dialogue_ui.text_box.visible:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameManager.is_night():
 			dialogue_ui.start_dialogue(["Sleep for the night?"], ["Yes", "No"], _on_sleep_choice)

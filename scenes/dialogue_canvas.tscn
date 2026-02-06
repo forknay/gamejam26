@@ -61,6 +61,18 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
+[node name="e_corner" type="RichTextLabel" parent="DialogueOverlay" unique_id=897575826]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 913.0
+offset_right = 2249.0
+offset_bottom = 1089.0
+theme_override_fonts/normal_font = ExtResource("2_ujl4l")
+theme_override_font_sizes/normal_font_size = 20
+text = "[ E ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BackPrompt" type="Label" parent="." unique_id=1638385515]
 visible = false
 offset_left = 110.0

@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var text_box = $DialogueOverlay/TextBox
 @onready var dialogue_label = $DialogueOverlay/TextBox/MarginContainer/DialogueText
 @onready var choice_container = $DialogueOverlay/ChoiceContainer
-
+@onready var e_corner = $DialogueOverlay/e_corner
 
 var dialogue_lines: Array = []
 var current_line_index = 0
@@ -17,6 +17,7 @@ var pending_callback: Callable
 func _ready():
 	text_box.visible = false
 	choice_container.visible = false
+	e_corner.visible = false
 
 # Accepts choices AND a "callback" function to run when done
 func start_dialogue(lines: Array, choices: Array = [], callback: Callable = Callable()):
@@ -27,6 +28,7 @@ func start_dialogue(lines: Array, choices: Array = [], callback: Callable = Call
 	current_line_index = 0
 	text_box.visible = true
 	choice_container.visible = false 
+	e_corner.visible = true
 	show_text()
 
 func show_text():
@@ -104,3 +106,4 @@ func _on_choice_clicked(index):
 func close_dialogue():
 	text_box.visible = false
 	can_advance = false
+	e_corner.visible = false

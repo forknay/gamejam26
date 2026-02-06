@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co85lx4ontryd"]
 
-[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://scripts/dialogue_canvas.gd" id="1_wyjut"]
+[ext_resource type="Script" uid="uid://c2c6xyvcosxva" path="res://Scripts/dialogue_canvas.gd" id="1_wyjut"]
 [ext_resource type="FontFile" uid="uid://bmaqvi7g1yeeg" path="res://Assets/Fonts/insanity.ttf" id="2_ujl4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujl4l"]
@@ -73,10 +73,11 @@ text = "[ E ]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackPrompt" type="Label" parent="." unique_id=1638385515]
+[node name="BackPrompt" type="RichTextLabel" parent="." unique_id=2023203978]
 visible = false
 offset_left = 110.0
 offset_top = 959.0
 offset_right = 198.0
 offset_bottom = 1001.0
+theme_override_fonts/normal_font = ExtResource("2_ujl4l")
 text = "[E] Back"

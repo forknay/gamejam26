@@ -210,6 +210,8 @@ func _input(event):
 
 func _begin_intro_sequence():
 	waiting_for_start = false
+	GameManager.stop_music()
+	
 	start_prompt.hide()
 	$openingCam_v04.process_mode = Node.PROCESS_MODE_INHERIT
 	
